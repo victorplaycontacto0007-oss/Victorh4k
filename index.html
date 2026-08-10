@@ -123,7 +123,7 @@
   --tx1:#e8f4ff; --tx2:#6b8fae; --tx3:#2d3a4a;
   --gr:#00ff88; --gd:#F0BC5A; --rd:#FF5470; --wa:#25D366;
   --purple:#8855ff; --orange:#ff8800; --pink:#ff44aa;
-  --nav:64px;
+  --nav:80px;
   --mono:'Courier New',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -168,7 +168,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;}
 #nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent;}
 #nav.solid{background:rgba(4,4,10,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(0,255,204,.08);}
 .nav-logo-img{
-  height:48px;width:auto;display:block;
+  height:64px;width:auto;display:block;
   filter: invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.2));
   transition:filter .2s, transform .2s;
 }
@@ -176,7 +176,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;}
   filter: invert(1) drop-shadow(0 0 18px rgba(255,255,255,0.5));
   transform:scale(1.04);
 }
-@media(max-width:768px){.nav-logo-img{height:40px;}}
+@media(max-width:768px){.nav-logo-img{height:50px;}}
 
 .nav-links{display:flex;gap:26px;align-items:center;}
 .nav-links a{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--tx2);transition:color .2s;position:relative;padding-bottom:3px;font-family:var(--mono);}
@@ -437,7 +437,7 @@ footer{background:var(--bg3);border-top:1px solid rgba(0,255,204,.08);padding:36
 <!-- NAVBAR -->
 <nav id="nav" aria-label="Navegación principal">
   <a href="#inicio" class="nav-logo" aria-label="VictorH4K — Inicio">
-    <img src="/assets/logo-nav.png" alt="VictorH4K" class="nav-logo-img" width="144" height="48" loading="eager"/>
+    <img src="/assets/logo-nav.png" alt="VictorH4K" class="nav-logo-img" width="96" height="64" loading="eager"/>
   </a>
   <ul class="nav-links" role="list">
     <li><a href="#inicio" class="act" data-scene="0">Inicio</a></li>
@@ -920,7 +920,7 @@ footer{background:var(--bg3);border-top:1px solid rgba(0,255,204,.08);padding:36
   <footer role="contentinfo">
     <div class="foot-in">
       <a href="#inicio" class="flogo" aria-label="VictorH4K — Volver al inicio">
-        <img src="/assets/logo-nav.png" alt="VictorH4K" height="44" loading="lazy"/>
+        <img src="/assets/logo-nav.png" alt="VictorH4K" height="56" loading="lazy"/>
       </a>
       <nav class="flinks" aria-label="Navegación del pie de página">
         <a href="#vh4k-music">VH4K Music</a>
