@@ -33,13 +33,5 @@
         { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.victorh4k.com" }],
-      "destination": "https://victorh4k.com/$1",
-      "permanent": true
-    }
   ]
 }
