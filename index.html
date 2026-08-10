@@ -168,14 +168,15 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;}
 #nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent;}
 #nav.solid{background:rgba(4,4,10,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(0,255,204,.08);}
 .nav-logo-img{
-  height:36px;width:auto;display:block;
-  filter:drop-shadow(0 0 6px rgba(200,0,0,0.3));
-  transition:filter .2s;
+  height:48px;width:auto;display:block;
+  filter: invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.2));
+  transition:filter .2s, transform .2s;
 }
 .nav-logo:hover .nav-logo-img{
-  filter:drop-shadow(0 0 12px rgba(200,0,0,0.55));
+  filter: invert(1) drop-shadow(0 0 18px rgba(255,255,255,0.5));
+  transform:scale(1.04);
 }
-@media(max-width:768px){.nav-logo-img{height:30px;}}
+@media(max-width:768px){.nav-logo-img{height:40px;}}
 
 .nav-links{display:flex;gap:26px;align-items:center;}
 .nav-links a{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--tx2);transition:color .2s;position:relative;padding-bottom:3px;font-family:var(--mono);}
@@ -382,6 +383,8 @@ footer{background:var(--bg3);border-top:1px solid rgba(0,255,204,.08);padding:36
 .foot-in{max-width:1160px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
 .flogo{font-size:17px;font-weight:800;letter-spacing:.04em;font-family:var(--mono);}
 .flogo span{color:var(--ac);}
+.flogo img{filter:invert(1);transition:filter .2s;opacity:0.85;}
+.flogo:hover img{opacity:1;}
 .flinks{display:flex;gap:22px;flex-wrap:wrap;}
 .flinks a{font-size:11px;color:var(--tx3);transition:color .2s;font-family:var(--mono);letter-spacing:.08em;}
 .flinks a:hover{color:var(--tx1);}
@@ -434,7 +437,7 @@ footer{background:var(--bg3);border-top:1px solid rgba(0,255,204,.08);padding:36
 <!-- NAVBAR -->
 <nav id="nav" aria-label="Navegación principal">
   <a href="#inicio" class="nav-logo" aria-label="VictorH4K — Inicio">
-    <img src="/assets/logo-nav.png" alt="VictorH4K" class="nav-logo-img" width="140" height="36" loading="eager"/>
+    <img src="/assets/logo-nav.png" alt="VictorH4K" class="nav-logo-img" width="144" height="48" loading="eager"/>
   </a>
   <ul class="nav-links" role="list">
     <li><a href="#inicio" class="act" data-scene="0">Inicio</a></li>
@@ -917,7 +920,7 @@ footer{background:var(--bg3);border-top:1px solid rgba(0,255,204,.08);padding:36
   <footer role="contentinfo">
     <div class="foot-in">
       <a href="#inicio" class="flogo" aria-label="VictorH4K — Volver al inicio">
-        <img src="/assets/logo-nav.png" alt="VictorH4K" height="32" loading="lazy"/>
+        <img src="/assets/logo-nav.png" alt="VictorH4K" height="44" loading="lazy"/>
       </a>
       <nav class="flinks" aria-label="Navegación del pie de página">
         <a href="#vh4k-music">VH4K Music</a>
