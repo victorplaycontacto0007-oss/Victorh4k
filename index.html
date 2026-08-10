@@ -3,34 +3,76 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>VictorH4K — Music & Digital | Subsello Musical bajo The Orchard · Desarrollo Web · Automatización IA</title>
-<meta name="description" content="VictorH4K: subsello musical bajo The Orchard, distribución digital y desarrollo de artistas (VH4K Music) · desarrollo web, automatización WhatsApp y bots IA para negocios (VH4K Digital). Colombia."/>
-<meta name="keywords" content="VictorH4K, subsello musical, The Orchard, distribución musical, desarrollo de artistas, producción musical, desarrollo web Colombia, automatización WhatsApp, bots IA, landing pages, plataformas digitales"/>
+
+<!-- ═══ IDENTIDAD ═══ -->
+<title>VictorH4K</title>
+<meta name="application-name" content="VictorH4K"/>
+<meta name="apple-mobile-web-app-title" content="VictorH4K"/>
+<meta name="description" content="VictorH4K — Subsello musical bajo The Orchard, distribución digital, desarrollo de artistas, producción musical, desarrollo web y automatización IA. Colombia."/>
+<meta name="keywords" content="VictorH4K, subsello musical, The Orchard, distribución musical, desarrollo de artistas, producción musical, desarrollo web Colombia, automatización WhatsApp, bots IA"/>
 <meta name="author" content="VictorH4K"/>
 <meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#000000"/>
+
+<!-- ═══ CANONICAL ═══ -->
 <link rel="canonical" href="https://victorh4k.com/"/>
-<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
-<!-- Open Graph -->
+
+<!-- ═══ FAVICON ═══ -->
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/assets/site.webmanifest"/>
+
+<!-- ═══ OPEN GRAPH ═══ -->
+<meta property="og:site_name" content="VictorH4K"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://victorh4k.com/"/>
-<meta property="og:title" content="VictorH4K — Music & Digital"/>
-<meta property="og:description" content="Subsello musical bajo The Orchard, distribución digital y desarrollo de artistas (VH4K Music) · desarrollo web, automatización WhatsApp y bots IA (VH4K Digital). Colombia."/>
+<meta property="og:title" content="VictorH4K"/>
+<meta property="og:description" content="Subsello musical bajo The Orchard, distribución digital, desarrollo de artistas, producción musical, desarrollo web y automatización IA. Colombia."/>
+<meta property="og:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+<meta property="og:image:alt" content="Logo oficial de VictorH4K"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
 <meta property="og:locale" content="es_CO"/>
-<!-- Twitter Card -->
+
+<!-- ═══ TWITTER / X ═══ -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="VictorH4K — Music & Digital"/>
-<meta name="twitter:description" content="Subsello musical bajo The Orchard + desarrollo web y automatización IA. Dos divisiones, una marca."/>
-<!-- Schema.org JSON-LD — WebSite + SiteLinks + BreadcrumbList + Services -->
+<meta name="twitter:title" content="VictorH4K"/>
+<meta name="twitter:description" content="Subsello musical bajo The Orchard · Desarrollo web y automatización IA. Colombia."/>
+<meta name="twitter:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+
+<!-- ═══ SITEMAP ═══ -->
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
+
+<!-- ═══ SCHEMA.ORG JSON-LD ═══ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://victorh4k.com/#organization",
+      "name": "VictorH4K",
+      "url": "https://victorh4k.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://victorh4k.com/#logo",
+        "url": "https://victorh4k.com/images/logo-victorh4k.png",
+        "contentUrl": "https://victorh4k.com/images/logo-victorh4k.png",
+        "caption": "VictorH4K"
+      },
+      "sameAs": [
+        "https://www.instagram.com/victorh4k/",
+        "https://www.youtube.com/@VictorH4K"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://victorh4k.com/#website",
       "url": "https://victorh4k.com/",
       "name": "VictorH4K",
-      "description": "Subsello musical bajo The Orchard y estudio de desarrollo web, automatización e inteligencia artificial. Colombia.",
+      "publisher": { "@id": "https://victorh4k.com/#organization" },
       "inLanguage": "es",
       "potentialAction": {
         "@type": "SearchAction",
@@ -42,56 +84,32 @@
       }
     },
     {
-      "@type": "Person",
-      "@id": "https://victorh4k.com/#person",
-      "name": "VictorH4K",
+      "@type": "WebPage",
+      "@id": "https://victorh4k.com/#webpage",
       "url": "https://victorh4k.com/",
-      "jobTitle": "Desarrollador Web & Productor Musical",
-      "description": "Subsello musical bajo The Orchard, VH4K Music. Distribución digital, desarrollo de artistas y producción musical. VH4K Digital: desarrollo web, automatización WhatsApp y bots IA.",
-      "knowsAbout": ["Desarrollo Web", "Automatización WhatsApp", "Distribución Musical", "Desarrollo de Artistas", "Producción Musical", "Bots IA", "The Orchard"],
-      "sameAs": [
-        "https://www.instagram.com/victorh4k/",
-        "https://www.youtube.com/@VictorH4K",
-        "https://wa.me/573026021232"
-      ]
+      "name": "VictorH4K",
+      "isPartOf": { "@id": "https://victorh4k.com/#website" },
+      "about": { "@id": "https://victorh4k.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://victorh4k.com/#logo" },
+      "inLanguage": "es",
+      "breadcrumb": { "@id": "https://victorh4k.com/#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://victorh4k.com/#breadcrumb",
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"Inicio","item":"https://victorh4k.com/#inicio"},
-        {"@type":"ListItem","position":2,"name":"VH4K Music — Subsello bajo The Orchard","item":"https://victorh4k.com/#vh4k-music"},
-        {"@type":"ListItem","position":3,"name":"VH4K Digital — Proyectos","item":"https://victorh4k.com/#proyectos"},
+        {"@type":"ListItem","position":2,"name":"VH4K Music","item":"https://victorh4k.com/#vh4k-music"},
+        {"@type":"ListItem","position":3,"name":"Proyectos","item":"https://victorh4k.com/#proyectos"},
         {"@type":"ListItem","position":4,"name":"Servicios","item":"https://victorh4k.com/#servicios"},
         {"@type":"ListItem","position":5,"name":"Opiniones","item":"https://victorh4k.com/#opiniones"},
         {"@type":"ListItem","position":6,"name":"Contacto","item":"https://victorh4k.com/#contacto"}
-      ]
-    },
-    {
-      "@type": "ItemList",
-      "name": "Servicios de VictorH4K",
-      "url": "https://victorh4k.com/#servicios",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"Desarrollo Web","url":"https://victorh4k.com/#servicios"},
-        {"@type":"ListItem","position":2,"name":"Automatización WhatsApp","url":"https://victorh4k.com/#servicios"},
-        {"@type":"ListItem","position":3,"name":"Producción Musical con IA","url":"https://victorh4k.com/#servicios"},
-        {"@type":"ListItem","position":4,"name":"Plataformas Digitales","url":"https://victorh4k.com/#servicios"}
-      ]
-    },
-    {
-      "@type": "ItemList",
-      "name": "Proyectos de VictorH4K",
-      "url": "https://victorh4k.com/#proyectos",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"Royalties — Plataforma de análisis musical","url":"https://www.royaltiesmusic.pro/"},
-        {"@type":"ListItem","position":2,"name":"ODIEKC — Plataforma con panel administrativo","url":"https://www.odiekc.shop/"},
-        {"@type":"ListItem","position":3,"name":"Claudia Agudelo Beauty — Sitio web de belleza","url":"https://www.claudiagudelobeauty.com/"},
-        {"@type":"ListItem","position":4,"name":"FinanzApp — Finanzas personales","url":"https://finanzas.victorh4k.com/"},
-        {"@type":"ListItem","position":5,"name":"Flow Independiente — Plataforma para artistas","url":"https://flowindependiente.com/"}
       ]
     }
   ]
 }
 </script>
+<!-- Schema consolidado en el bloque anterior -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -149,9 +167,16 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;}
 /* NAVBAR */
 #nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent;}
 #nav.solid{background:rgba(4,4,10,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(0,255,204,.08);}
-.nav-logo{font-size:19px;font-weight:900;letter-spacing:.04em;display:flex;align-items:center;gap:9px;font-family:var(--mono);}
-.logo-tri{width:26px;height:26px;background:linear-gradient(135deg,var(--ac),var(--ac2));clip-path:polygon(50% 0%,100% 100%,0% 100%);}
-.logo-v{color:var(--tx1);}.logo-h{color:var(--ac);}
+.nav-logo-img{
+  height:36px;width:auto;display:block;
+  filter:drop-shadow(0 0 6px rgba(200,0,0,0.3));
+  transition:filter .2s;
+}
+.nav-logo:hover .nav-logo-img{
+  filter:drop-shadow(0 0 12px rgba(200,0,0,0.55));
+}
+@media(max-width:768px){.nav-logo-img{height:30px;}}
+
 .nav-links{display:flex;gap:26px;align-items:center;}
 .nav-links a{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--tx2);transition:color .2s;position:relative;padding-bottom:3px;font-family:var(--mono);}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--ac);transition:width .3s;}
@@ -401,14 +426,16 @@ footer{background:var(--bg3);border-top:1px solid rgba(0,255,204,.08);padding:36
 </style>
 
 <!-- LOADER -->
-<div id="loader"><div id="ldr-t"></div><div id="ldr-sub">VH4K MUSIC · VH4K DIGITAL</div><div id="ldr-bar"><div id="ldr-fill"></div></div></div>
+<div id="loader"><div id="ldr-t"></div><div id="ldr-sub">victorh4k.com</div><div id="ldr-bar"><div id="ldr-fill"></div></div></div>
 
 <!-- PARTICLES -->
 <div id="pts-layer"></div>
 
 <!-- NAVBAR -->
 <nav id="nav" aria-label="Navegación principal">
-  <a href="#inicio" class="nav-logo" aria-label="VictorH4K — Inicio"><div class="logo-tri"></div><span class="logo-v">VICTOR</span><span class="logo-h">H4K</span></a>
+  <a href="#inicio" class="nav-logo" aria-label="VictorH4K — Inicio">
+    <img src="/assets/logo-nav.png" alt="VictorH4K" class="nav-logo-img" width="140" height="36" loading="eager"/>
+  </a>
   <ul class="nav-links" role="list">
     <li><a href="#inicio" class="act" data-scene="0">Inicio</a></li>
     <li><a href="#vh4k-music" data-scene="1">Music</a></li>
@@ -889,7 +916,9 @@ footer{background:var(--bg3);border-top:1px solid rgba(0,255,204,.08);padding:36
   </div>
   <footer role="contentinfo">
     <div class="foot-in">
-      <a href="#inicio" class="flogo" aria-label="VictorH4K — Volver al inicio">Victor<span>H4K</span></a>
+      <a href="#inicio" class="flogo" aria-label="VictorH4K — Volver al inicio">
+        <img src="/assets/logo-nav.png" alt="VictorH4K" height="32" loading="lazy"/>
+      </a>
       <nav class="flinks" aria-label="Navegación del pie de página">
         <a href="#vh4k-music">VH4K Music</a>
         <a href="#servicios">VH4K Digital</a>

@@ -1,16 +1,50 @@
 {
   "version": 2,
   "builds": [
-    { "src": "**/*.{html,xml,txt}", "use": "@vercel/static" }
+    { "src": "**/*.{html,xml,txt,json,svg,png,ico,webmanifest,jpg,jpeg,gif,webp}", "use": "@vercel/static" }
   ],
   "headers": [
     {
       "source": "/sitemap.xml",
-      "headers": [{ "key": "Content-Type", "value": "application/xml" }]
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml" },
+        { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
     },
     {
       "source": "/robots.txt",
       "headers": [{ "key": "Content-Type", "value": "text/plain" }]
+    },
+    {
+      "source": "/assets/site.webmanifest",
+      "headers": [{ "key": "Content-Type", "value": "application/manifest+json" }]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(favicon.ico|favicon-32x32\\.png|favicon-48x48\\.png|apple-touch-icon\\.png)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.victorh4k.com" }],
+      "destination": "https://victorh4k.com/$1",
+      "permanent": true
     }
   ]
 }
