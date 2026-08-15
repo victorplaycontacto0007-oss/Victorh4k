@@ -3,23 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-
 <title>VictorH4K — Tecnología, Música y Soluciones Digitales</title>
-<meta name="application-name" content="VictorH4K"/>
-<meta name="apple-mobile-web-app-title" content="VictorH4K"/>
-<meta name="description" content="VictorH4K — Subsello musical bajo The Orchard, distribución digital global, desarrollo web, automatización e IA. Colombia."/>
+<meta name="description" content="VictorH4K — Subsello musical bajo The Orchard y estudio de soluciones digitales. Distribución global, desarrollo web, automatización e IA. Colombia."/>
 <meta name="author" content="VictorH4K"/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#050505"/>
-
 <link rel="canonical" href="https://victorh4k.com/"/>
-
 <link rel="icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/assets/site.webmanifest"/>
-
 <meta property="og:site_name" content="VictorH4K"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://victorh4k.com/"/>
@@ -28,940 +22,104 @@
 <meta property="og:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
 <meta property="og:image:alt" content="Logo oficial de VictorH4K"/>
 <meta property="og:locale" content="es_CO"/>
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="VictorH4K"/>
 <meta name="twitter:description" content="Subsello musical bajo The Orchard · Desarrollo web y automatización IA."/>
 <meta name="twitter:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
-
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
-
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://victorh4k.com/#organization",
-      "name": "VictorH4K",
-      "url": "https://victorh4k.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://victorh4k.com/images/logo-victorh4k.png",
-        "contentUrl": "https://victorh4k.com/images/logo-victorh4k.png",
-        "caption": "VictorH4K"
-      },
-      "sameAs": [
-        "https://www.instagram.com/victorh4k/",
-        "https://www.youtube.com/@VictorH4K"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://victorh4k.com/#website",
-      "url": "https://victorh4k.com/",
-      "name": "VictorH4K",
-      "publisher": { "@id": "https://victorh4k.com/#organization" },
-      "inLanguage": "es"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://victorh4k.com/#webpage",
-      "url": "https://victorh4k.com/",
-      "name": "VictorH4K — Tecnología, Música y Soluciones Digitales",
-      "isPartOf": { "@id": "https://victorh4k.com/#website" },
-      "about": { "@id": "https://victorh4k.com/#organization" },
-      "inLanguage": "es"
-    }
-  ]
-}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://victorh4k.com/#organization","name":"VictorH4K","url":"https://victorh4k.com/","logo":{"@type":"ImageObject","url":"https://victorh4k.com/images/logo-victorh4k.png","contentUrl":"https://victorh4k.com/images/logo-victorh4k.png","caption":"VictorH4K"},"sameAs":["https://www.instagram.com/victorh4k/","https://www.youtube.com/@VictorH4K"]},{"@type":"WebSite","@id":"https://victorh4k.com/#website","url":"https://victorh4k.com/","name":"VictorH4K","publisher":{"@id":"https://victorh4k.com/#organization"},"inLanguage":"es"},{"@type":"WebPage","@id":"https://victorh4k.com/#webpage","url":"https://victorh4k.com/","name":"VictorH4K — Tecnología, Música y Soluciones Digitales","isPartOf":{"@id":"https://victorh4k.com/#website"},"about":{"@id":"https://victorh4k.com/#organization"},"inLanguage":"es"}]}
 </script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="/shared.css"/>
 <style>
-/* ═══════════════════════════════════════════
-   SISTEMA DE DISEÑO — VICTORH4K
-   ═══════════════════════════════════════════ */
-:root {
-  --black:       #050505;
-  --black-soft:  #0B0B0B;
-  --graphite:    #111111;
-  --graphite-2:  #1A1A1A;
-  --graphite-3:  #222222;
-  --red:         #C40000;
-  --red-bright:  #E00000;
-  --white:       #FFFFFF;
-  --gray-1:      #E8E8E8;
-  --gray-2:      #A0A0A0;
-  --gray-3:      #555555;
-  --border:      rgba(255,255,255,0.08);
-  --border-red:  rgba(196,0,0,0.35);
-  --wa:          #25D366;
-
-  --nav-h: 72px;
-  --max-w: 1160px;
-  --pad-x: clamp(20px, 5vw, 48px);
-  --section-py: clamp(80px, 10vw, 140px);
-
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-
-  --shadow-card: 0 2px 32px rgba(0,0,0,0.6);
-  --shadow-red:  0 8px 32px rgba(196,0,0,0.25);
-
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 0.18s;
-  --dur-mid:  0.32s;
-  --dur-slow: 0.55s;
-
-  --font-display: 'Syne', 'Inter', sans-serif;
-  --font-body:    'Inter', sans-serif;
-}
-
-/* ── RESET ─────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  background: var(--black);
-  color: var(--gray-1);
-  overflow-x: hidden;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
-img { display: block; max-width: 100%; }
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-button { cursor: pointer; font-family: inherit; border: none; background: none; }
-input, textarea, select { font-family: inherit; }
-
-/* ── SCROLLBAR ─────────────────────────── */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
-
-/* ── REDUCED MOTION ────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-}
-</style>
-<style>
-/* ── UTILIDADES ────────────────────────── */
-.container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad-x); }
-.section-py { padding-top: var(--section-py); padding-bottom: var(--section-py); }
-.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-
-.label {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 11px; font-weight: 700; letter-spacing: .16em;
-  text-transform: uppercase; color: var(--red);
-  margin-bottom: 14px;
-}
-.label::before { content:''; width:20px; height:1px; background:var(--red); }
-
-.heading-xl {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 7vw, 80px);
-  font-weight: 800; line-height: 1.0;
-  letter-spacing: -0.03em; color: var(--white);
-}
-.heading-lg {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 800; line-height: 1.1;
-  letter-spacing: -0.025em; color: var(--white);
-}
-.heading-md {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 30px);
-  font-weight: 700; line-height: 1.2;
-  letter-spacing: -0.02em; color: var(--white);
-}
-.body-lg { font-size: clamp(15px, 1.6vw, 18px); color: var(--gray-2); line-height: 1.75; }
-.body-md { font-size: 15px; color: var(--gray-2); line-height: 1.7; }
-
-.accent { color: var(--red); }
-.text-center { text-align: center; }
-
-/* ── BOTONES ───────────────────────────── */
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 28px; border-radius: var(--radius-sm);
-  font-size: 13px; font-weight: 700; letter-spacing: .06em;
-  text-transform: uppercase; transition: all var(--dur-mid) var(--ease-out);
-  cursor: pointer; white-space: nowrap; position: relative; overflow: hidden;
-  border: 1px solid transparent;
-}
-.btn-primary {
-  background: var(--red); color: var(--white); border-color: var(--red);
-}
-.btn-primary:hover {
-  background: var(--red-bright); border-color: var(--red-bright);
-  transform: translateY(-2px); box-shadow: var(--shadow-red);
-}
-.btn-outline {
-  background: transparent; color: var(--white); border-color: var(--border);
-}
-.btn-outline:hover {
-  border-color: var(--white); transform: translateY(-2px);
-}
-.btn-ghost {
-  background: transparent; color: var(--gray-2); border-color: transparent;
-  padding-left: 0; padding-right: 0;
-}
-.btn-ghost:hover { color: var(--white); }
-.btn-ghost i { font-size: 11px; transition: transform var(--dur-fast) var(--ease-out); }
-.btn-ghost:hover i { transform: translateX(4px); }
-.btn-wa {
-  background: rgba(37,211,102,0.1); color: var(--wa);
-  border-color: rgba(37,211,102,0.3);
-}
-.btn-wa:hover { background: var(--wa); color: var(--white); transform: translateY(-2px); }
-.btn-sm { padding: 9px 18px; font-size: 11px; }
-.btn-lg { padding: 16px 36px; font-size: 14px; }
-
-/* ── TARJETAS ──────────────────────────── */
-.card {
-  background: var(--graphite);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  transition: border-color var(--dur-mid) var(--ease-out),
-              transform var(--dur-mid) var(--ease-out);
-}
-.card:hover { border-color: rgba(255,255,255,0.16); transform: translateY(-4px); }
-.card-red:hover { border-color: var(--border-red); }
-
-/* ── DIVIDER ───────────────────────────── */
-.divider { width: 40px; height: 2px; background: var(--red); margin: 20px 0; }
-.divider-center { margin: 20px auto; }
-</style>
-<style>
-/* ═══════════════════════════════════════════
-   NAVBAR
-   ═══════════════════════════════════════════ */
-#nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  height: var(--nav-h);
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--pad-x);
-  border-bottom: 1px solid transparent;
-  transition: background var(--dur-mid), border-color var(--dur-mid);
-}
-#nav.scrolled {
-  background: rgba(5,5,5,0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom-color: var(--border);
-}
-.nav-logo img {
-  height: 52px; width: auto;
-  filter: invert(1);
-  transition: opacity var(--dur-fast);
-}
-.nav-logo:hover img { opacity: 0.8; }
-
-.nav-links {
-  display: flex; align-items: center; gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 12px; font-weight: 600; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--gray-2);
-  transition: color var(--dur-fast);
-  position: relative; padding-bottom: 2px;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 1px; background: var(--red);
-  transition: width var(--dur-mid) var(--ease-out);
-}
-.nav-links a:hover, .nav-links a.active { color: var(--white); }
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
-.nav-cta {
-  display: flex; align-items: center; gap: 8px;
-  padding: 9px 22px; border-radius: var(--radius-sm);
-  background: var(--red); color: var(--white);
-  font-size: 12px; font-weight: 700; letter-spacing: .08em;
-  text-transform: uppercase;
-  transition: background var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast);
-}
-.nav-cta:hover {
-  background: var(--red-bright);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-red);
-}
-
-/* Hamburger */
-.nav-burger {
-  display: none; flex-direction: column; gap: 5px;
-  width: 36px; height: 36px; align-items: center; justify-content: center;
-}
-.nav-burger span {
-  display: block; width: 22px; height: 2px;
-  background: var(--white); border-radius: 2px;
-  transition: all var(--dur-mid) var(--ease-out);
-}
-.nav-burger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-.nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-burger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-
-/* Mobile menu */
-#mobile-menu {
-  display: none; position: fixed;
-  top: var(--nav-h); left: 0; right: 0; bottom: 0;
-  background: rgba(5,5,5,0.98);
-  backdrop-filter: blur(20px);
-  flex-direction: column;
-  padding: 40px var(--pad-x);
-  gap: 0; z-index: 999;
-  overflow-y: auto;
-}
-#mobile-menu.open { display: flex; }
-#mobile-menu a {
-  font-family: var(--font-display);
-  font-size: 28px; font-weight: 800;
-  color: var(--gray-3); letter-spacing: -0.02em;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-  transition: color var(--dur-fast);
-}
-#mobile-menu a:hover { color: var(--white); }
-#mobile-menu .mob-cta {
-  margin-top: 32px; background: var(--red);
-  color: var(--white) !important; text-align: center;
-  border-radius: var(--radius-sm); padding: 16px !important;
-  font-size: 14px !important; border: none;
-}
-#mobile-menu .mob-cta:hover { background: var(--red-bright) !important; }
-
-@media (max-width: 900px) {
-  .nav-links, .nav-cta { display: none; }
-  .nav-burger { display: flex; }
-}
-</style>
-<style>
-/* ═══════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════ */
-#hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding-top: var(--nav-h);
-  position: relative; overflow: hidden;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(196,0,0,0.07), transparent),
-    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(196,0,0,0.04), transparent);
-  pointer-events: none;
-}
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
-  pointer-events: none; opacity: 0.4;
-}
-.hero-inner {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 48px; align-items: center;
-  padding: clamp(60px,10vw,120px) 0;
-}
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 11px; font-weight: 700; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--red);
-  margin-bottom: 24px;
-}
-.hero-eyebrow::before { content:''; width:24px; height:1px; background:var(--red); }
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(52px, 9vw, 100px);
-  font-weight: 800; line-height: 0.92;
-  letter-spacing: -0.04em; color: var(--white);
-  margin-bottom: 28px;
-}
-.hero-title em { font-style: normal; color: var(--red); }
-.hero-desc {
-  font-size: clamp(15px,1.6vw,18px);
-  color: var(--gray-2); line-height: 1.75;
-  max-width: 520px; margin-bottom: 44px;
-}
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-/* Logo visual del hero */
-.hero-visual {
-  width: clamp(180px, 22vw, 280px);
-  flex-shrink: 0;
-}
-.hero-visual img {
-  width: 100%;
-  filter: invert(1);
-  opacity: 0.12;
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute; bottom: 36px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--gray-3);
-}
-.scroll-indicator::after {
-  content: '';
-  width: 1px; height: 40px;
-  background: linear-gradient(to bottom, var(--red), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
+/* ── HERO HOME ── */
+#hero { min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h);position:relative;overflow:hidden; }
+.hero-bg { position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(196,0,0,0.07),transparent),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(196,0,0,0.04),transparent);pointer-events:none; }
+.hero-grid { position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);pointer-events:none;opacity:0.4; }
+.hero-inner { position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;padding:clamp(60px,10vw,120px) 0; }
+.hero-eyebrow { display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:24px; }
+.hero-eyebrow::before { content:'';width:24px;height:1px;background:var(--red); }
+.hero-title { font-family:var(--font-display);font-size:clamp(52px,9vw,100px);font-weight:800;line-height:0.92;letter-spacing:-0.04em;color:var(--white);margin-bottom:28px; }
+.hero-title em { font-style:normal;color:var(--red); }
+.hero-desc { font-size:clamp(15px,1.6vw,18px);color:var(--gray-2);line-height:1.75;max-width:520px;margin-bottom:44px; }
+.hero-actions { display:flex;gap:14px;flex-wrap:wrap; }
+.hero-visual { width:clamp(180px,22vw,280px);flex-shrink:0; }
+.hero-visual img { width:100%;mix-blend-mode:screen;opacity:0.15; }
+.scroll-indicator { position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-3); }
+.scroll-indicator::after { content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--red),transparent);animation:scrollPulse 2s ease-in-out infinite; }
 @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-@media (max-width: 768px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero-visual { width: 120px; margin: 0 auto; }
-}
+/* ── HIGHLIGHTS (cards de preview) ── */
+.highlights { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+.hl-card { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;transition:border-color var(--dur-mid),transform var(--dur-mid);display:flex;flex-direction:column;gap:14px; }
+.hl-card:hover { border-color:rgba(255,255,255,0.16);transform:translateY(-4px); }
+.hl-icon { width:44px;height:44px;border-radius:var(--radius-sm);background:rgba(196,0,0,0.1);border:1px solid var(--border-red);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--red); }
+.hl-label { font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red); }
+.hl-title { font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--white);letter-spacing:-0.01em; }
+.hl-desc { font-size:13px;color:var(--gray-2);line-height:1.65;flex:1; }
+.hl-link { font-size:12px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;margin-top:4px;transition:gap var(--dur-fast); }
+.hl-link:hover { gap:10px; }
+
+/* ── BRAND STRIP ── */
+.brand-strip { border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0; }
+.brand-strip-inner { display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap; }
+.brand-phrase { font-family:var(--font-display);font-size:clamp(18px,2.5vw,28px);font-weight:800;color:var(--white);letter-spacing:-0.02em;max-width:560px; }
+.brand-phrase em { font-style:normal;color:var(--red); }
+
+@media (max-width:900px) { .highlights{grid-template-columns:1fr 1fr;} }
+@media (max-width:600px) { .highlights{grid-template-columns:1fr;} .hero-inner{grid-template-columns:1fr;} .hero-visual{display:none;} }
 </style>
-<style>
-/* ═══════════════════════════════════════════
-   SECCIONES: MUSIC & DIGITAL
-   ═══════════════════════════════════════════ */
-.division-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-}
-.division-card {
-  background: var(--graphite);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: clamp(28px, 4vw, 48px);
-  transition: border-color var(--dur-mid);
-}
-.division-card:hover { border-color: rgba(255,255,255,0.14); }
-.division-card.music-card { border-top: 2px solid var(--red); }
-.division-card.digital-card { border-top: 2px solid rgba(255,255,255,0.3); }
-.division-icon {
-  width: 52px; height: 52px; border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 24px;
-}
-.division-icon.red { background: rgba(196,0,0,0.12); color: var(--red); border: 1px solid var(--border-red); }
-.division-icon.white { background: rgba(255,255,255,0.06); color: var(--white); border: 1px solid var(--border); }
-.division-number {
-  font-size: 10px; font-weight: 700; letter-spacing: .2em;
-  text-transform: uppercase; color: var(--gray-3); margin-bottom: 6px;
-}
-.division-name {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 3vw, 32px);
-  font-weight: 800; color: var(--white);
-  letter-spacing: -0.02em; margin-bottom: 16px;
-}
-.feature-list { display: flex; flex-direction: column; gap: 10px; margin: 20px 0 28px; }
-.feature-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px; color: var(--gray-2);
-}
-.feature-item::before {
-  content: ''; flex-shrink: 0;
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--red); margin-top: 8px;
-}
+</head>
+<body>
 
-/* ═══════════════════════════════════════════
-   PROYECTOS
-   ═══════════════════════════════════════════ */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
-}
-.project-card {
-  background: var(--graphite);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  transition: border-color var(--dur-mid), transform var(--dur-mid);
-  display: flex; flex-direction: column;
-}
-.project-card:hover { border-color: rgba(255,255,255,0.16); transform: translateY(-4px); }
-.project-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--red);
-  margin-bottom: 12px;
-}
-.project-name {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 26px);
-  font-weight: 800; color: var(--white);
-  letter-spacing: -0.02em; margin-bottom: 12px;
-}
-.project-desc { font-size: 14px; color: var(--gray-2); line-height: 1.7; margin-bottom: 24px; flex: 1; }
-.project-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 20px; border-top: 1px solid var(--border);
-}
-.project-tech { display: flex; gap: 6px; flex-wrap: wrap; }
-.tech-tag {
-  font-size: 10px; padding: 3px 8px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 4px; color: var(--gray-2);
-}
-
-@media (max-width: 768px) {
-  .division-grid { grid-template-columns: 1fr; }
-  .projects-grid { grid-template-columns: 1fr; }
-}
-</style>
-<style>
-/* ═══════════════════════════════════════════
-   SERVICIOS
-   ═══════════════════════════════════════════ */
-.services-grid {
-  display: grid; grid-template-columns: repeat(2,1fr); gap: 2px;
-  background: var(--border); border-radius: var(--radius-lg); overflow: hidden;
-}
-.service-item {
-  background: var(--graphite); padding: clamp(24px,3vw,40px);
-  transition: background var(--dur-fast);
-}
-.service-item:hover { background: var(--graphite-2); }
-.service-item:first-child { border-radius: var(--radius-lg) 0 0 0; }
-.service-item:nth-child(2) { border-radius: 0 var(--radius-lg) 0 0; }
-.service-item:nth-child(3) { border-radius: 0 0 0 var(--radius-lg); }
-.service-item:last-child { border-radius: 0 0 var(--radius-lg) 0; }
-.service-icon {
-  width: 44px; height: 44px; border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: var(--red);
-  background: rgba(196,0,0,0.1); border: 1px solid var(--border-red);
-  margin-bottom: 20px;
-}
-.service-name {
-  font-family: var(--font-display);
-  font-size: 18px; font-weight: 800;
-  color: var(--white); margin-bottom: 10px;
-}
-.service-desc { font-size: 14px; color: var(--gray-2); line-height: 1.65; margin-bottom: 20px; }
-.service-list { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 24px; }
-.service-list li {
-  font-size: 13px; color: var(--gray-2);
-  padding-left: 14px; position: relative;
-}
-.service-list li::before {
-  content: '—'; position: absolute; left: 0;
-  color: var(--red); font-weight: 700;
-}
-
-/* Platforms accordion */
-.plat-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
-.plat-item {
-  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); overflow: hidden;
-}
-.plat-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 14px; cursor: pointer;
-  font-size: 13px; font-weight: 600; color: var(--gray-1);
-  transition: background var(--dur-fast); user-select: none;
-}
-.plat-header:hover { background: rgba(255,255,255,0.04); }
-.plat-header i { font-size: 11px; color: var(--gray-3); transition: transform var(--dur-mid); }
-.plat-body { max-height: 0; overflow: hidden; transition: max-height .35s var(--ease-in-out); }
-.plat-body-inner { padding: 0 14px 12px; font-size: 12px; color: var(--gray-2); line-height: 1.6; }
-
-@media (max-width: 768px) {
-  .services-grid { grid-template-columns: 1fr; }
-  .service-item:first-child  { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
-  .service-item:nth-child(2) { border-radius: 0; }
-  .service-item:nth-child(3) { border-radius: 0; }
-  .service-item:last-child   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
-}
-
-/* ═══════════════════════════════════════════
-   PROCESO
-   ═══════════════════════════════════════════ */
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(5,1fr); gap: 0;
-  position: relative;
-}
-.process-grid::before {
-  content: ''; position: absolute;
-  top: 28px; left: 10%; right: 10%;
-  height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent);
-}
-.process-step { text-align: center; padding: 0 12px; }
-.step-num {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: var(--graphite); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 18px; font-weight: 800;
-  color: var(--white); margin: 0 auto 16px;
-  position: relative; z-index: 1;
-  transition: border-color var(--dur-mid), background var(--dur-mid);
-}
-.process-step:hover .step-num { background: var(--red); border-color: var(--red); }
-.step-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
-.step-desc { font-size: 12px; color: var(--gray-3); line-height: 1.5; }
-
-@media (max-width: 768px) {
-  .process-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
-  .process-grid::before { display: none; }
-  .process-step:last-child { grid-column: 1/-1; max-width: 180px; margin: 0 auto; }
-}
-</style>
-<style>
-/* ═══════════════════════════════════════════
-   NOSOTROS
-   ═══════════════════════════════════════════ */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.about-values { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
-.value-item { display: flex; gap: 16px; align-items: flex-start; }
-.value-icon {
-  width: 40px; height: 40px; flex-shrink: 0;
-  border-radius: var(--radius-sm);
-  background: rgba(196,0,0,0.1); border: 1px solid var(--border-red);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; color: var(--red);
-}
-.value-content h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-.value-content p { font-size: 13px; color: var(--gray-2); line-height: 1.6; }
-
-.about-visual {
-  position: relative;
-}
-.about-logo-wrap {
-  aspect-ratio: 1;
-  background: var(--graphite);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  display: flex; align-items: center; justify-content: center;
-  padding: 40px;
-}
-.about-logo-wrap img { width: 100%; max-width: 280px; filter: invert(1); opacity: 0.9; }
-
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about-visual { max-width: 320px; margin: 0 auto; }
-}
-
-/* ═══════════════════════════════════════════
-   OPINIONES / REVIEWS
-   ═══════════════════════════════════════════ */
-.reviews-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
-}
-.review-card {
-  background: var(--graphite); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 24px;
-  display: flex; flex-direction: column; gap: 12px;
-}
-.review-stars { color: #F0BC5A; font-size: 13px; letter-spacing: 2px; }
-.review-text { font-size: 14px; color: var(--gray-2); line-height: 1.75; flex: 1; }
-.review-author { padding-top: 14px; border-top: 1px solid var(--border); }
-.review-name { font-size: 13px; font-weight: 700; color: var(--white); }
-.review-role { font-size: 11px; color: var(--gray-3); margin-top: 2px; }
-
-/* Review form */
-.review-form-wrap {
-  background: var(--graphite); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: clamp(24px,4vw,40px);
-  max-width: 600px; margin: 60px auto 0;
-}
-.form-title { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 4px; }
-.form-subtitle { font-size: 13px; color: var(--gray-3); margin-bottom: 28px; }
-.form-group { margin-bottom: 18px; }
-.form-label {
-  display: block; font-size: 11px; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--gray-2); margin-bottom: 8px;
-}
-.form-input, .form-textarea {
-  width: 100%; padding: 12px 16px;
-  background: var(--black-soft); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); color: var(--white);
-  font-size: 14px; outline: none;
-  transition: border-color var(--dur-fast);
-}
-.form-input::placeholder, .form-textarea::placeholder { color: var(--gray-3); }
-.form-input:focus, .form-textarea:focus { border-color: var(--red); }
-.form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
-.char-count { font-size: 10px; color: var(--gray-3); text-align: right; margin-top: 4px; }
-.star-row { display: flex; gap: 6px; }
-.star {
-  font-size: 28px; cursor: pointer; color: var(--gray-3);
-  transition: color var(--dur-fast), transform var(--dur-fast);
-}
-.star:hover, .star.active { color: #F0BC5A; transform: scale(1.15); }
-.form-notice { font-size: 12px; color: var(--gray-3); margin-bottom: 16px; }
-.form-msg { font-size: 13px; text-align: center; min-height: 20px; margin-top: 12px; }
-.form-msg.ok { color: #4ade80; } .form-msg.err { color: var(--red); }
-
-@media (max-width: 768px) {
-  .reviews-grid { grid-template-columns: 1fr; }
-}
-@media (min-width: 481px) and (max-width: 768px) {
-  .reviews-grid { grid-template-columns: 1fr 1fr; }
-}
-</style>
-<style>
-/* ═══════════════════════════════════════════
-   CONTACTO
-   ═══════════════════════════════════════════ */
-.contact-grid {
-  display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start;
-}
-.contact-channels { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-.contact-link {
-  display: flex; align-items: center; gap: 16px;
-  padding: 18px 20px; background: var(--graphite);
-  border: 1px solid var(--border); border-radius: var(--radius-md);
-  color: var(--white); font-size: 15px; font-weight: 600;
-  transition: border-color var(--dur-mid), transform var(--dur-mid);
-}
-.contact-link:hover { border-color: rgba(255,255,255,0.2); transform: translateX(4px); }
-.contact-link.wa-link:hover { border-color: rgba(37,211,102,0.4); color: var(--wa); }
-.contact-link.ig-link:hover { border-color: rgba(225,48,108,0.4); color: #e1306c; }
-.contact-link-icon { font-size: 20px; width: 24px; text-align: center; flex-shrink: 0; }
-.contact-link-sub { font-size: 12px; font-weight: 400; color: var(--gray-3); margin-top: 2px; }
-.contact-form-wrap {
-  background: var(--graphite); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: clamp(24px,4vw,40px);
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-@media (max-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .form-row { grid-template-columns: 1fr; }
-}
-
-/* ═══════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════ */
-#footer {
-  background: var(--black-soft);
-  border-top: 1px solid var(--border);
-  padding: 56px 0 32px;
-}
-.footer-top {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 40px; margin-bottom: 48px;
-}
-.footer-brand img { height: 40px; filter: invert(1); margin-bottom: 16px; }
-.footer-brand p { font-size: 13px; color: var(--gray-3); line-height: 1.7; max-width: 240px; }
-.footer-col h5 {
-  font-size: 11px; font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--white); margin-bottom: 16px;
-}
-.footer-col ul { display: flex; flex-direction: column; gap: 10px; }
-.footer-col ul li a { font-size: 13px; color: var(--gray-3); transition: color var(--dur-fast); }
-.footer-col ul li a:hover { color: var(--white); }
-.footer-bottom {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 28px; border-top: 1px solid var(--border);
-  flex-wrap: wrap; gap: 16px;
-}
-.footer-copy { font-size: 12px; color: var(--gray-3); }
-.footer-socials { display: flex; gap: 10px; }
-.social-btn {
-  width: 36px; height: 36px; border-radius: var(--radius-sm);
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; color: var(--gray-3);
-  transition: all var(--dur-fast);
-}
-.social-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); }
-
-@media (max-width: 900px) {
-  .footer-top { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: 1/-1; }
-}
-@media (max-width: 480px) {
-  .footer-top { grid-template-columns: 1fr; }
-}
-
-/* ═══════════════════════════════════════════
-   FLOTANTES
-   ═══════════════════════════════════════════ */
-#wa-float {
-  position: fixed; bottom: 28px; right: 28px; z-index: 900;
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--wa); color: var(--white);
-  font-size: 22px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  transition: transform var(--dur-fast), box-shadow var(--dur-fast);
-}
-#wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
-#back-top {
-  position: fixed; bottom: 92px; right: 28px; z-index: 900;
-  width: 40px; height: 40px; border-radius: var(--radius-sm);
-  background: var(--graphite); border: 1px solid var(--border);
-  color: var(--gray-2); font-size: 14px;
-  display: none; align-items: center; justify-content: center;
-  transition: all var(--dur-fast); cursor: pointer;
-}
-#back-top.visible { display: flex; }
-#back-top:hover { color: var(--white); border-color: var(--red); }
-
-/* ═══════════════════════════════════════════
-   LOADER
-   ═══════════════════════════════════════════ */
-#loader {
-  position: fixed; inset: 0; z-index: 9999;
-  background: var(--black);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 20px;
-  transition: opacity .6s var(--ease-out);
-}
-#loader.out { opacity: 0; pointer-events: none; }
-.loader-logo { height: 56px; filter: invert(1); }
-.loader-bar-wrap { width: 180px; height: 1px; background: rgba(255,255,255,0.08); }
-.loader-bar { height: 100%; width: 0; background: var(--red); animation: loaderAnim 1.8s var(--ease-out) .2s forwards; }
-@keyframes loaderAnim { to { width: 100%; } }
-
-/* ═══════════════════════════════════════════
-   ADMIN MODAL
-   ═══════════════════════════════════════════ */
-#adm-modal {
-  display: none; position: fixed; inset: 0; z-index: 9998;
-  background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-  align-items: center; justify-content: center; padding: 20px;
-}
-#adm-modal.open { display: flex; }
-.adm-box {
-  background: var(--graphite); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 36px;
-  width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto; position: relative;
-}
-.adm-close {
-  position: absolute; top: 16px; right: 16px;
-  font-size: 18px; color: var(--gray-3); cursor: pointer; transition: color var(--dur-fast);
-}
-.adm-close:hover { color: var(--white); }
-.adm-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-.adm-tab {
-  padding: 7px 16px; border-radius: var(--radius-sm);
-  border: 1px solid var(--border); background: transparent;
-  color: var(--gray-3); font-size: 12px; font-weight: 700;
-  letter-spacing: .08em; cursor: pointer; transition: all var(--dur-fast);
-}
-.adm-tab.active { background: var(--red); border-color: var(--red); color: var(--white); }
-.adm-item {
-  background: var(--black-soft); border: 1px solid var(--border);
-  border-radius: var(--radius-md); padding: 16px; margin-bottom: 10px;
-  display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;
-}
-.adm-item-name { font-size: 13px; font-weight: 700; color: var(--white); }
-.adm-item-stars { color: #F0BC5A; font-size: 12px; margin: 4px 0; }
-.adm-item-text { font-size: 12px; color: var(--gray-2); line-height: 1.5; }
-.adm-item-date { font-size: 10px; color: var(--gray-3); margin-top: 4px; }
-.adm-actions { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
-.ab {
-  padding: 5px 12px; border-radius: var(--radius-sm); font-size: 11px;
-  font-weight: 700; cursor: pointer; border: 1px solid; transition: all var(--dur-fast);
-}
-.ab-ok { border-color: rgba(74,222,128,.3); color: #4ade80; background: rgba(74,222,128,.06); }
-.ab-ok:hover { background: rgba(74,222,128,.15); }
-.ab-no { border-color: rgba(196,0,0,.3); color: var(--red); background: rgba(196,0,0,.06); }
-.ab-no:hover { background: rgba(196,0,0,.15); }
-.ab-dl { border-color: rgba(196,0,0,.2); color: var(--red); background: transparent; }
-.ab-dl:hover { background: rgba(196,0,0,.1); }
-.adm-empty { text-align: center; padding: 32px; color: var(--gray-3); font-size: 13px; }
-
-/* ═══════════════════════════════════════════
-   ANIMACIONES REVEAL
-   ═══════════════════════════════════════════ */
-.reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: .1s; }
-.reveal-delay-2 { transition-delay: .2s; }
-.reveal-delay-3 { transition-delay: .3s; }
-.reveal-delay-4 { transition-delay: .4s; }
-</style>
-
-<!-- ════════════════════════════════════════
-     LOADER
-     ════════════════════════════════════════ -->
 <div id="loader" role="status" aria-label="Cargando VictorH4K">
-  <img src="/assets/logo-nav.png" alt="VictorH4K" class="loader-logo"/>
+  <img src="/assets/og-image.png" alt="VictorH4K" class="loader-logo"/>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
 
-<!-- ════════════════════════════════════════
-     NAVBAR
-     ════════════════════════════════════════ -->
 <nav id="nav" aria-label="Navegación principal">
-  <a href="#inicio" class="nav-logo" aria-label="VictorH4K — Inicio">
-    <img src="/assets/logo-nav.png" alt="VictorH4K" width="130" height="52" loading="eager"/>
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio">
+    <img src="/assets/og-image.png" alt="VictorH4K" width="160" height="80" loading="eager"/>
   </a>
-
   <ul class="nav-links" role="list">
-    <li><a href="#inicio"    class="active">Inicio</a></li>
-    <li><a href="#music">Music</a></li>
-    <li><a href="#digital">Digital</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="/" class="active">Inicio</a></li>
+    <li><a href="/music/">Music</a></li>
+    <li><a href="/digital/">Digital</a></li>
+    <li><a href="/proyectos/">Proyectos</a></li>
+    <li><a href="/nosotros/">Nosotros</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
   </ul>
-
-  <a href="https://wa.me/573026021232?text=Hola%2C+quiero+hablar+con+VictorH4K" target="_blank" rel="noopener" class="nav-cta" aria-label="Contactar por WhatsApp">
-    Hablemos
-  </a>
-
-  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="https://wa.me/573026021232?text=Hola%2C+quiero+hablar+con+VictorH4K" target="_blank" rel="noopener" class="nav-cta">Hablemos</a>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
 </nav>
-
 <nav id="mobile-menu" aria-label="Menú móvil">
-  <a href="#inicio"    onclick="closeMobileMenu()">Inicio</a>
-  <a href="#music"     onclick="closeMobileMenu()">Music</a>
-  <a href="#digital"   onclick="closeMobileMenu()">Digital</a>
-  <a href="#proyectos" onclick="closeMobileMenu()">Proyectos</a>
-  <a href="#nosotros"  onclick="closeMobileMenu()">Nosotros</a>
-  <a href="#contacto"  onclick="closeMobileMenu()">Contacto</a>
+  <a href="/" onclick="closeMobileMenu()">Inicio</a>
+  <a href="/music/" onclick="closeMobileMenu()">Music</a>
+  <a href="/digital/" onclick="closeMobileMenu()">Digital</a>
+  <a href="/proyectos/" onclick="closeMobileMenu()">Proyectos</a>
+  <a href="/nosotros/" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="/contacto/" onclick="closeMobileMenu()">Contacto</a>
   <a href="https://wa.me/573026021232?text=Hola%2C+quiero+hablar+con+VictorH4K" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Hablemos</a>
 </nav>
 
-<!-- ════════════════════════════════════════
-     MAIN
-     ════════════════════════════════════════ -->
-<main id="contenido-principal">
-
-<!-- ── HERO ──────────────────────────────── -->
+<main>
+<!-- HERO -->
 <section id="hero" aria-labelledby="hero-title">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="container">
-    <div class="hero-inner" id="inicio">
+    <div class="hero-inner">
       <div>
         <p class="hero-eyebrow">Tecnología · Música · Digital</p>
-        <h1 class="hero-title" id="hero-title">
-          VICTOR<em>H4K</em>
-        </h1>
-        <p class="hero-desc">
-          Subsello musical bajo The Orchard y estudio de soluciones digitales. Distribución global, desarrollo web, automatización e inteligencia artificial. Colombia.
-        </p>
+        <h1 class="hero-title" id="hero-title">VICTOR<em>H4K</em></h1>
+        <p class="hero-desc">Subsello musical bajo The Orchard y estudio de soluciones digitales. Distribución global, desarrollo web, automatización e inteligencia artificial. Colombia.</p>
         <div class="hero-actions">
-          <a href="#proyectos" class="btn btn-primary btn-lg">Explorar proyectos</a>
-          <a href="#contacto"  class="btn btn-outline btn-lg">Hablemos</a>
+          <a href="/proyectos/" class="btn btn-primary btn-lg">Explorar proyectos</a>
+          <a href="/contacto/"  class="btn btn-outline btn-lg">Hablemos</a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
@@ -972,808 +130,78 @@ input, textarea, select { font-family: inherit; }
   <div class="scroll-indicator" aria-hidden="true">Scroll</div>
 </section>
 
-<!-- ── MUSIC ─────────────────────────────── -->
-<section id="music" class="section-py" aria-labelledby="music-title">
+<!-- BRAND STRIP -->
+<div class="brand-strip">
   <div class="container">
-    <div class="reveal">
-      <p class="label">División 01</p>
-      <h2 class="heading-lg" id="music-title" style="margin-bottom:16px">VH4K Music</h2>
-      <div class="divider"></div>
-      <p class="body-lg" style="max-width:560px;margin-bottom:48px">
-        Subsello musical bajo The Orchard. Desarrollo integral de artistas, producción musical y distribución digital a más de 150 plataformas globales.
-      </p>
-    </div>
-    <div class="division-grid reveal">
-      <div class="division-card music-card">
-        <div class="division-icon red"><i class="fas fa-compact-disc" aria-hidden="true"></i></div>
-        <p class="division-number">Distribución</p>
-        <h3 class="division-name">Distribución Global</h3>
-        <p class="body-md">Lleva tu música a Spotify, Apple Music, Tidal, Amazon Music y más de 150 plataformas de streaming en todo el mundo.</p>
-        <ul class="feature-list">
-          <li class="feature-item">Distribución a +150 plataformas</li>
-          <li class="feature-item">Gestión de royalties y derechos</li>
-          <li class="feature-item">Reportes y analytics musicales</li>
-          <li class="feature-item">Operamos bajo The Orchard</li>
-        </ul>
-        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+la+distribución+musical" target="_blank" rel="noopener" class="btn btn-primary">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Distribuir mi música
-        </a>
-      </div>
-      <div class="division-card music-card">
-        <div class="division-icon red"><i class="fas fa-music" aria-hidden="true"></i></div>
-        <p class="division-number">Producción</p>
-        <h3 class="division-name">Desarrollo de Artistas</h3>
-        <p class="body-md">Acompañamos el desarrollo musical de artistas con producción profesional. Pop, Reggaetón, Trap, R&amp;B y EDM.</p>
-        <ul class="feature-list">
-          <li class="feature-item">Producción musical profesional</li>
-          <li class="feature-item">Desarrollo integral de artistas</li>
-          <li class="feature-item">Múltiples géneros musicales</li>
-          <li class="feature-item">Plataforma Royalties Music Pro</li>
-        </ul>
-        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+desarrollo+de+artistas" target="_blank" rel="noopener" class="btn btn-outline">
-          Consultar disponibilidad
-        </a>
-      </div>
+    <div class="brand-strip-inner">
+      <p class="brand-phrase">Una marca. <em>Dos divisiones.</em> Música y tecnología al máximo nivel.</p>
+      <a href="/nosotros/" class="btn btn-outline">Conocer VictorH4K</a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── DIGITAL ────────────────────────────── -->
-<section id="digital" class="section-py" aria-labelledby="digital-title" style="background:var(--black-soft);">
-  <div class="container">
-    <div class="reveal">
-      <p class="label">División 02</p>
-      <h2 class="heading-lg" id="digital-title" style="margin-bottom:16px">VH4K Digital</h2>
-      <div class="divider"></div>
-      <p class="body-lg" style="max-width:560px;margin-bottom:48px">
-        Estudio de soluciones digitales. Desarrollo web, automatización con IA, bots WhatsApp y plataformas a medida para negocios y emprendedores.
-      </p>
-    </div>
-    <div class="services-grid reveal">
-      <div class="service-item">
-        <div class="service-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
-        <h3 class="service-name">Desarrollo Web</h3>
-        <p class="service-desc">Sitios modernos, rápidos y optimizados para convertir visitantes en clientes.</p>
-        <ul class="service-list">
-          <li>Landing Pages y sitios corporativos</li>
-          <li>Tiendas y plataformas online</li>
-          <li>Paneles administrativos</li>
-          <li>Sistemas personalizados</li>
-        </ul>
-        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+Desarrollo+Web" target="_blank" rel="noopener" class="btn btn-wa btn-sm">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar
-        </a>
-      </div>
-      <div class="service-item">
-        <div class="service-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
-        <h3 class="service-name">Automatización WhatsApp</h3>
-        <p class="service-desc">Bots inteligentes que atienden, venden y agendan por ti las 24 horas del día.</p>
-        <ul class="service-list">
-          <li>Respuestas automáticas 24/7</li>
-          <li>Menús interactivos</li>
-          <li>Confirmación de citas</li>
-          <li>IA integrada</li>
-        </ul>
-        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+automatización+WhatsApp" target="_blank" rel="noopener" class="btn btn-wa btn-sm">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar
-        </a>
-      </div>
-      <div class="service-item">
-        <div class="service-icon"><i class="fas fa-music" aria-hidden="true"></i></div>
-        <h3 class="service-name">Producción Musical con IA</h3>
-        <p class="service-desc">Canciones originales humanizadas con inteligencia artificial para creadores digitales.</p>
-        <ul class="service-list">
-          <li>Creación y producción con IA</li>
-          <li>Humanización vocal</li>
-          <li>Distribución global</li>
-          <li>Pop, Reggaetón, Trap, R&amp;B, EDM</li>
-        </ul>
-        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+Producción+Musical+IA" target="_blank" rel="noopener" class="btn btn-wa btn-sm">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar
-        </a>
-      </div>
-      <div class="service-item">
-        <div class="service-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
-        <h3 class="service-name">Plataformas Digitales</h3>
-        <p class="service-desc">Streaming premium internacional con soporte en tu idioma.</p>
-        <div class="plat-list">
-          <div class="plat-item">
-            <div class="plat-header" onclick="togglePlat(this)">
-              🍎 Apple Music — 24 países
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </div>
-            <div class="plat-body">
-              <div class="plat-body-inner">Lossless · Dolby Atmos · 100M canciones. USA, Colombia, México, Argentina, Brasil, España y más.</div>
-            </div>
-          </div>
-          <div class="plat-item">
-            <div class="plat-header" onclick="togglePlat(this)">
-              🎧 Spotify Familiar — 6 miembros
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </div>
-            <div class="plat-body">
-              <div class="plat-body-inner">Sin anuncios · Offline · 320kbps · 6 cuentas independientes.</div>
-            </div>
-          </div>
-          <div class="plat-item">
-            <div class="plat-header" onclick="togglePlat(this)">
-              🔊 TIDAL + DJ — 18 países
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </div>
-            <div class="plat-body">
-              <div class="plat-body-inner">HiFi MQA · DJ Extension para Serato y Traktor.</div>
-            </div>
-          </div>
-        </div>
-        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesan+las+Plataformas+Digitales" target="_blank" rel="noopener" class="btn btn-wa btn-sm">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── PROYECTOS ──────────────────────────── -->
-<section id="proyectos" class="section-py" aria-labelledby="proyectos-title">
-  <div class="container">
-    <div class="reveal">
-      <p class="label">Portafolio</p>
-      <h2 class="heading-lg" id="proyectos-title" style="margin-bottom:16px">Proyectos</h2>
-      <div class="divider"></div>
-      <p class="body-lg" style="max-width:480px;margin-bottom:56px">
-        Soluciones reales construidas para clientes reales.
-      </p>
-    </div>
-    <div class="projects-grid">
-
-      <article class="project-card reveal">
-        <p class="project-tag">Música · Plataforma Web</p>
-        <h3 class="project-name">Royalties Music Pro</h3>
-        <p class="project-desc">Plataforma para analizar reportes musicales de múltiples distribuidoras. Analytics por país, plataforma y artista.</p>
-        <div class="project-footer">
-          <div class="project-tech">
-            <span class="tech-tag">Web App</span>
-            <span class="tech-tag">Analytics</span>
-            <span class="tech-tag">Música</span>
-          </div>
-          <a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            Ver <i class="fas fa-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </article>
-
-      <article class="project-card reveal reveal-delay-1">
-        <p class="project-tag">E-commerce · Panel Admin</p>
-        <h3 class="project-name">ODIEKC</h3>
-        <p class="project-desc">Plataforma web con panel administrativo completo para gestión de servicios y herramientas digitales.</p>
-        <div class="project-footer">
-          <div class="project-tech">
-            <span class="tech-tag">Dashboard</span>
-            <span class="tech-tag">Admin</span>
-          </div>
-          <a href="https://www.odiekc.shop" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            Ver <i class="fas fa-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </article>
-
-      <article class="project-card reveal reveal-delay-2">
-        <p class="project-tag">Beauty · Sitio Web</p>
-        <h3 class="project-name">Claudia Agudelo Beauty</h3>
-        <p class="project-desc">Sitio web profesional para estudio de belleza con catálogo de servicios, galería y reservas directas por WhatsApp.</p>
-        <div class="project-footer">
-          <div class="project-tech">
-            <span class="tech-tag">Diseño Web</span>
-            <span class="tech-tag">Mobile</span>
-          </div>
-          <a href="https://www.claudiaagudelobeauty.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            Ver <i class="fas fa-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </article>
-
-      <article class="project-card reveal reveal-delay-1">
-        <p class="project-tag">Finanzas · Web App</p>
-        <h3 class="project-name">FinanzApp</h3>
-        <p class="project-desc">Plataforma de finanzas personales con autenticación segura, registro de ingresos/gastos e historial de movimientos.</p>
-        <div class="project-footer">
-          <div class="project-tech">
-            <span class="tech-tag">Web App</span>
-            <span class="tech-tag">Auth</span>
-          </div>
-          <a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            Ver <i class="fas fa-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </article>
-
-      <article class="project-card reveal reveal-delay-2">
-        <p class="project-tag">Música · Plataforma</p>
-        <h3 class="project-name">Flow Independiente</h3>
-        <p class="project-desc">Recursos, guías y herramientas para artistas independientes que quieren distribuir música y gestionar derechos sin sello.</p>
-        <div class="project-footer">
-          <div class="project-tech">
-            <span class="tech-tag">Indie</span>
-            <span class="tech-tag">Distribución</span>
-          </div>
-          <a href="https://flowindependiente.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            Ver <i class="fas fa-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── PROCESO ───────────────────────────── -->
-<section class="section-py" style="background:var(--black-soft);" aria-labelledby="proceso-title">
-  <div class="container">
-    <div class="reveal text-center" style="margin-bottom:64px">
-      <p class="label" style="justify-content:center">Metodología</p>
-      <h2 class="heading-lg" id="proceso-title">Cómo trabajamos</h2>
-      <div class="divider divider-center"></div>
-    </div>
-    <div class="process-grid reveal">
-      <div class="process-step">
-        <div class="step-num">01</div>
-        <h3 class="step-title">Descubrimiento</h3>
-        <p class="step-desc">Entendemos tu proyecto, objetivos y contexto.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">02</div>
-        <h3 class="step-title">Estrategia</h3>
-        <p class="step-desc">Definimos la solución más adecuada y el plan.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">03</div>
-        <h3 class="step-title">Desarrollo</h3>
-        <p class="step-desc">Construimos con calidad y atención al detalle.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">04</div>
-        <h3 class="step-title">Lanzamiento</h3>
-        <p class="step-desc">Publicamos y verificamos que todo funciona.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">05</div>
-        <h3 class="step-title">Soporte</h3>
-        <p class="step-desc">Acompañamiento continuo después del lanzamiento.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── NOSOTROS ──────────────────────────── -->
-<section id="nosotros" class="section-py" aria-labelledby="nosotros-title">
-  <div class="container">
-    <div class="about-grid">
-      <div class="reveal">
-        <p class="label">Nosotros</p>
-        <h2 class="heading-lg" id="nosotros-title" style="margin-bottom:16px">VictorH4K</h2>
-        <div class="divider"></div>
-        <p class="body-lg" style="margin-bottom:24px">
-          Somos una marca colombiana con dos frentes: la industria musical y las soluciones digitales. Operamos bajo el sello The Orchard para distribución musical y desarrollamos tecnología a medida para negocios y creadores.
-        </p>
-        <p class="body-md" style="margin-bottom:36px">
-          Nuestro enfoque combina creatividad, tecnología y ejecución. Trabajamos con artistas, emprendedores y empresas que necesitan resultados reales.
-        </p>
-        <div class="about-values">
-          <div class="value-item">
-            <div class="value-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
-            <div class="value-content">
-              <h4>Resultados sobre ruido</h4>
-              <p>Priorizamos ejecución limpia y resultados medibles sobre promesas vacías.</p>
-            </div>
-          </div>
-          <div class="value-item">
-            <div class="value-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
-            <div class="value-content">
-              <h4>Calidad sin atajos</h4>
-              <p>Cada proyecto recibe atención real, sin plantillas genéricas.</p>
-            </div>
-          </div>
-          <div class="value-item">
-            <div class="value-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
-            <div class="value-content">
-              <h4>Comunicación directa</h4>
-              <p>Acceso directo al equipo, sin intermediarios ni burocracia.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="about-visual reveal reveal-delay-2">
-        <div class="about-logo-wrap">
-          <img src="/images/logo-victorh4k.png" alt="Logo VictorH4K" loading="lazy"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── OPINIONES ──────────────────────────── -->
-<section id="opiniones" class="section-py" aria-labelledby="opiniones-title" style="background:var(--black-soft);">
+<!-- HIGHLIGHTS -->
+<section class="section-py" aria-labelledby="highlights-title">
   <div class="container">
     <div class="reveal text-center" style="margin-bottom:56px">
-      <p class="label" style="justify-content:center">Opiniones</p>
-      <h2 class="heading-lg" id="opiniones-title">Lo que dicen los clientes</h2>
+      <p class="label" style="justify-content:center">Lo que hacemos</p>
+      <h2 class="heading-lg" id="highlights-title">Dos mundos, una marca</h2>
       <div class="divider divider-center"></div>
     </div>
-
-    <!-- Opiniones reales de Supabase -->
-    <div class="reviews-grid" id="reviews-container" style="margin-bottom:48px">
-      <!-- Se cargan dinámicamente desde Supabase -->
-    </div>
-
-    <!-- Opiniones estáticas por defecto si no hay reviews aprobadas -->
-    <div class="reviews-grid" id="reviews-static" style="margin-bottom:48px">
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Victor desarrolló mi sitio en tiempo récord. Diseño impecable, funcional y el soporte es excelente."</p>
-        <div class="review-author">
-          <div class="review-name">Carlos M.</div>
-          <div class="review-role">Emprendedor · Colombia</div>
-        </div>
+    <div class="highlights">
+      <div class="hl-card reveal">
+        <div class="hl-icon"><i class="fas fa-compact-disc" aria-hidden="true"></i></div>
+        <p class="hl-label">División 01</p>
+        <h3 class="hl-title">Music</h3>
+        <p class="hl-desc">Subsello bajo The Orchard. Distribución a +150 plataformas, desarrollo de artistas y producción musical profesional.</p>
+        <a href="/music/" class="hl-link">Ver Music <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
-      <div class="review-card reveal reveal-delay-1">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"La plataforma Royalties es increíble. Ahorro horas de trabajo cada mes con los reportes automáticos."</p>
-        <div class="review-author">
-          <div class="review-name">María L.</div>
-          <div class="review-role">Productora Musical · México</div>
-        </div>
+      <div class="hl-card reveal reveal-delay-1">
+        <div class="hl-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+        <p class="hl-label">División 02</p>
+        <h3 class="hl-title">Digital</h3>
+        <p class="hl-desc">Desarrollo web, automatización con bots WhatsApp e IA, plataformas SaaS y soluciones digitales a medida.</p>
+        <a href="/digital/" class="hl-link">Ver Digital <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
-      <div class="review-card reveal reveal-delay-2">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"El bot de WhatsApp marcó una diferencia real en la atención a mis clientes. Muy recomendado."</p>
-        <div class="review-author">
-          <div class="review-name">Luis H.</div>
-          <div class="review-role">Empresario · Argentina</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Formulario de opinión -->
-    <div class="review-form-wrap reveal">
-      <h3 class="form-title">Deja tu opinión</h3>
-      <p class="form-subtitle">Tu experiencia ayuda a otros. Revisada antes de publicarse.</p>
-      <div class="form-group">
-        <label class="form-label" for="rv-name">Nombre</label>
-        <input type="text" class="form-input" id="rv-name" placeholder="Tu nombre" maxlength="50" autocomplete="name"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Calificación</label>
-        <div class="star-row" id="star-row" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas">
-          <span class="star" data-v="1" role="radio" aria-checked="false" tabindex="0" aria-label="1 estrella">★</span>
-          <span class="star" data-v="2" role="radio" aria-checked="false" tabindex="0" aria-label="2 estrellas">★</span>
-          <span class="star" data-v="3" role="radio" aria-checked="false" tabindex="0" aria-label="3 estrellas">★</span>
-          <span class="star" data-v="4" role="radio" aria-checked="false" tabindex="0" aria-label="4 estrellas">★</span>
-          <span class="star" data-v="5" role="radio" aria-checked="false" tabindex="0" aria-label="5 estrellas">★</span>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="rv-text">Comentario <span id="rv-count" style="color:var(--gray-3)">(0/400)</span></label>
-        <textarea class="form-textarea" id="rv-text" maxlength="400" placeholder="Cuéntanos tu experiencia..."></textarea>
-      </div>
-      <p class="form-notice"><i class="fas fa-shield-halved" aria-hidden="true"></i> Tu opinión será revisada antes de publicarse.</p>
-      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitReview()" id="rv-submit">
-        <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar opinión
-      </button>
-      <p class="form-msg" id="rv-msg" aria-live="polite"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACTO ──────────────────────────── -->
-<section id="contacto" class="section-py" aria-labelledby="contacto-title">
-  <div class="container">
-    <div class="reveal text-center" style="margin-bottom:56px">
-      <p class="label" style="justify-content:center">Contacto</p>
-      <h2 class="heading-lg" id="contacto-title">¿Tienes un proyecto en mente?</h2>
-      <div class="divider divider-center"></div>
-      <p class="body-lg" style="max-width:460px;margin:0 auto">
-        Cuéntame sobre tu proyecto. Respondo en menos de 2 horas.
-      </p>
-    </div>
-    <div class="contact-grid">
-      <div class="reveal">
-        <h3 class="heading-md" style="margin-bottom:12px">Canales directos</h3>
-        <p class="body-md" style="margin-bottom:0">Disponible de lunes a domingo.</p>
-        <div class="contact-channels">
-          <a href="https://wa.me/573026021232?text=Hola%2C+vi+tu+página+web+y+me+gustaría+más+información" target="_blank" rel="noopener" class="contact-link wa-link">
-            <span class="contact-link-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
-            <div>
-              <div>WhatsApp</div>
-              <div class="contact-link-sub">+57 302 602 1232 · Respuesta inmediata</div>
-            </div>
-          </a>
-          <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="contact-link ig-link">
-            <span class="contact-link-icon"><i class="fab fa-instagram" aria-hidden="true"></i></span>
-            <div>
-              <div>Instagram</div>
-              <div class="contact-link-sub">@victorh4k · DM abierto</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="contact-form-wrap reveal reveal-delay-2">
-        <h3 class="form-title" style="margin-bottom:24px">Enviar mensaje</h3>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="ct-name">Nombre</label>
-            <input type="text" class="form-input" id="ct-name" placeholder="Tu nombre" autocomplete="name"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="ct-phone">WhatsApp</label>
-            <input type="tel" class="form-input" id="ct-phone" placeholder="+57 300 000 0000" autocomplete="tel"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="ct-email">Email</label>
-          <input type="email" class="form-input" id="ct-email" placeholder="tu@email.com" autocomplete="email"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="ct-msg">Mensaje</label>
-          <textarea class="form-textarea" id="ct-msg" rows="4" placeholder="Cuéntame sobre tu proyecto..."></textarea>
-        </div>
-        <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center" onclick="submitContact()">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp
-        </button>
+      <div class="hl-card reveal reveal-delay-2">
+        <div class="hl-icon"><i class="fas fa-folder-open" aria-hidden="true"></i></div>
+        <p class="hl-label">Portafolio</p>
+        <h3 class="hl-title">Proyectos</h3>
+        <p class="hl-desc">Royalties Music Pro, ODIEKC, FinanzApp, Flow Independiente, Claudia Agudelo Beauty y más proyectos reales.</p>
+        <a href="/proyectos/" class="hl-link">Ver proyectos <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-<!-- ── FOOTER ─────────────────────────────── -->
+<!-- FOOTER -->
 <footer id="footer" role="contentinfo">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#inicio" aria-label="VictorH4K — Inicio">
-          <img src="/assets/logo-nav.png" alt="VictorH4K" width="120" height="40" loading="lazy"/>
-        </a>
+        <a href="/" aria-label="VictorH4K"><img src="/assets/og-image.png" alt="VictorH4K" width="120" height="48" loading="lazy"/></a>
         <p>Tecnología, música y soluciones digitales. Colombia.</p>
       </div>
-      <div class="footer-col">
-        <h5>Marca</h5>
-        <ul>
-          <li><a href="#music">VH4K Music</a></li>
-          <li><a href="#digital">VH4K Digital</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Proyectos</h5>
-        <ul>
-          <li><a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener">Royalties</a></li>
-          <li><a href="https://www.odiekc.shop/" target="_blank" rel="noopener">ODIEKC</a></li>
-          <li><a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener">FinanzApp</a></li>
-          <li><a href="https://flowindependiente.com/" target="_blank" rel="noopener">Flow Independiente</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Servicios</h5>
-        <ul>
-          <li><a href="#digital">Desarrollo Web</a></li>
-          <li><a href="#digital">Automatización</a></li>
-          <li><a href="#music">Distribución Musical</a></li>
-          <li><a href="#digital">Plataformas Streaming</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h5>Marca</h5><ul><li><a href="/music/">Music</a></li><li><a href="/digital/">Digital</a></li><li><a href="/nosotros/">Nosotros</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5>Proyectos</h5><ul><li><a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener">Royalties</a></li><li><a href="https://www.odiekc.shop/" target="_blank" rel="noopener">ODIEKC</a></li><li><a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener">FinanzApp</a></li><li><a href="https://flowindependiente.com/" target="_blank" rel="noopener">Flow Independiente</a></li></ul></div>
+      <div class="footer-col"><h5>Contacto</h5><ul><li><a href="https://wa.me/573026021232" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener">YouTube</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© 2025 VictorH4K · Colombia · Todos los derechos reservados.</p>
       <div class="footer-socials">
-        <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-        <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-        <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
   </div>
 </footer>
 
-</main>
+<a href="https://wa.me/573026021232?text=Hola%2C+vi+victorh4k.com" target="_blank" rel="noopener" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 
-<!-- ── FLOTANTES ──────────────────────────── -->
-<a href="https://wa.me/573026021232?text=Hola%2C+vi+tu+página+web+y+me+gustaría+más+información" target="_blank" rel="noopener" id="wa-float" aria-label="Contactar por WhatsApp">
-  <i class="fab fa-whatsapp" aria-hidden="true"></i>
-</a>
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
-  <i class="fas fa-chevron-up" aria-hidden="true"></i>
-</button>
-
-<!-- ── ADMIN MODAL ────────────────────────── -->
-<div id="adm-modal" role="dialog" aria-modal="true" aria-label="Panel de administración">
-  <div class="adm-box">
-    <button class="adm-close" onclick="document.getElementById('adm-modal').classList.remove('open')" aria-label="Cerrar panel"><i class="fas fa-times" aria-hidden="true"></i></button>
-    <h2 style="font-size:20px;font-weight:800;color:var(--white);margin-bottom:16px">Panel Admin</h2>
-    <div class="adm-tabs">
-      <button class="adm-tab active" onclick="admTab('pending',this)">Pendientes</button>
-      <button class="adm-tab" onclick="admTab('approved',this)">Aprobadas</button>
-      <button class="adm-tab" onclick="admTab('rejected',this)">Rechazadas</button>
-    </div>
-    <div id="adm-list"><div class="adm-empty">Cargando...</div></div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     SCRIPTS
-     ════════════════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-'use strict';
-
-/* ── CONFIG ──────────────────────────── */
-const SB_URL  = 'https://qejdkzmanvcolfignqiq.supabase.co';
-const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFlamRrem1hbnZjb2xmaWducWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2NjAyMjcsImV4cCI6MjA5NzIzNjIyN30.XSGLfFlU-KgiRGuH-IjyITFRDvwIidqjzOQ_eXX8CSo';
-const ADMIN_PW = 'victorh4k2025';
-let sb = null;
-try { if (window.supabase) sb = window.supabase.createClient(SB_URL, SB_KEY); } catch(e) {}
-
-/* ── LOADER ───────────────────────────── */
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  setTimeout(() => {
-    loader.classList.add('out');
-    document.body.style.overflow = '';
-    setTimeout(() => { loader.style.display = 'none'; }, 700);
-  }, 1200);
-});
-document.body.style.overflow = 'hidden';
-
-/* ── NAVBAR ───────────────────────────── */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 500);
-  updateActiveNav();
-}, { passive: true });
-
-function updateActiveNav() {
-  const sections = ['hero','music','digital','proyectos','nosotros','opiniones','contacto'];
-  const scrollY = window.scrollY + 100;
-  let current = 'hero';
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && el.offsetTop <= scrollY) current = id;
-  });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href').replace('#','');
-    a.classList.toggle('active', href === current);
-  });
-}
-
-/* ── MOBILE MENU ─────────────────────── */
-const burger = document.getElementById('nav-burger');
-const mobileMenu = document.getElementById('mobile-menu');
-
-burger.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  burger.setAttribute('aria-expanded', isOpen);
-  burger.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
-
-function closeMobileMenu() {
-  mobileMenu.classList.remove('open');
-  burger.setAttribute('aria-expanded', 'false');
-  burger.setAttribute('aria-label', 'Abrir menú');
-  document.body.style.overflow = '';
-}
-
-/* ── SMOOTH SCROLL ───────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-    closeMobileMenu();
-  });
-});
-
-/* ── REVEAL ON SCROLL ────────────────── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ── PLATFORM ACCORDION ──────────────── */
-function togglePlat(header) {
-  const body = header.nextElementSibling;
-  const icon = header.querySelector('i');
-  const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
-  // Close all
-  document.querySelectorAll('.plat-body').forEach(b => b.style.maxHeight = '0');
-  document.querySelectorAll('.plat-header i').forEach(i => i.style.transform = '');
-  if (!isOpen) {
-    body.style.maxHeight = body.scrollHeight + 'px';
-    icon.style.transform = 'rotate(180deg)';
-  }
-}
-
-/* ── STAR RATING ─────────────────────── */
-let selectedStar = 0;
-document.querySelectorAll('.star').forEach(star => {
-  star.addEventListener('mouseenter', () => {
-    const v = +star.dataset.v;
-    document.querySelectorAll('.star').forEach(s => s.classList.toggle('active', +s.dataset.v <= v));
-  });
-  star.addEventListener('mouseleave', () => {
-    document.querySelectorAll('.star').forEach(s => s.classList.toggle('active', +s.dataset.v <= selectedStar));
-  });
-  star.addEventListener('click', () => {
-    selectedStar = +star.dataset.v;
-    document.querySelectorAll('.star').forEach(s => {
-      s.classList.toggle('active', +s.dataset.v <= selectedStar);
-      s.setAttribute('aria-checked', +s.dataset.v === selectedStar ? 'true' : 'false');
-    });
-  });
-  star.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); star.click(); }
-  });
-});
-
-/* ── CHAR COUNTER ────────────────────── */
-const rvText = document.getElementById('rv-text');
-if (rvText) {
-  rvText.addEventListener('input', () => {
-    document.getElementById('rv-count').textContent = `(${rvText.value.length}/400)`;
-  });
-}
-
-/* ── LOAD REVIEWS ────────────────────── */
-async function loadReviews() {
-  if (!sb) return;
-  try {
-    const { data } = await sb.from('reviews').select('*')
-      .eq('status', 'approved')
-      .order('created_at', { ascending: false })
-      .limit(6);
-    if (!data || !data.length) return;
-    const container = document.getElementById('reviews-container');
-    const staticGrid = document.getElementById('reviews-static');
-    if (staticGrid) staticGrid.style.display = 'none';
-    data.forEach((r, i) => {
-      const card = document.createElement('div');
-      card.className = 'review-card reveal' + (i > 0 ? ' reveal-delay-' + Math.min(i, 4) : '');
-      card.innerHTML = `
-        <div class="review-stars">${'★'.repeat(r.rating || 5)}</div>
-        <p class="review-text">"${esc(r.text || r.comment || '')}"</p>
-        <div class="review-author">
-          <div class="review-name">${esc(r.name)}</div>
-          <div class="review-role">${new Date(r.created_at).toLocaleDateString('es', {year:'numeric',month:'long'})}</div>
-        </div>`;
-      container.appendChild(card);
-      revealObserver.observe(card);
-    });
-  } catch(e) {}
-}
-loadReviews();
-
-/* ── SUBMIT REVIEW ───────────────────── */
-async function submitReview() {
-  const name = document.getElementById('rv-name').value.trim();
-  const text = document.getElementById('rv-text').value.trim();
-  const msg  = document.getElementById('rv-msg');
-  if (!name) { showMsg(msg, 'err', 'Ingresa tu nombre.'); return; }
-  if (!selectedStar) { showMsg(msg, 'err', 'Selecciona una calificación.'); return; }
-  if (text.length < 10) { showMsg(msg, 'err', 'Escribe al menos 10 caracteres.'); return; }
-  const btn = document.getElementById('rv-submit');
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-  try {
-    if (sb) await sb.from('reviews').insert([{
-      name, rating: selectedStar, text,
-      status: 'pending', featured: false,
-      created_at: new Date().toISOString()
-    }]);
-  } catch(e) {}
-  showMsg(msg, 'ok', '✓ Gracias. Tu opinión será revisada y publicada pronto.');
-  document.getElementById('rv-name').value = '';
-  document.getElementById('rv-text').value = '';
-  document.getElementById('rv-count').textContent = '(0/400)';
-  selectedStar = 0;
-  document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
-  btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar opinión';
-}
-
-/* ── SUBMIT CONTACT ──────────────────── */
-function submitContact() {
-  const name = document.getElementById('ct-name').value.trim();
-  const msg  = document.getElementById('ct-msg').value.trim();
-  if (!name || !msg) { alert('Completa nombre y mensaje.'); return; }
-  const phone = document.getElementById('ct-phone').value.trim();
-  const email = document.getElementById('ct-email').value.trim();
-  const text = `Hola Victor! 👋\n\n👤 ${name}${phone ? '\n📱 ' + phone : ''}${email ? '\n📧 ' + email : ''}\n\n📝 ${msg}`;
-  window.open('https://wa.me/573026021232?text=' + encodeURIComponent(text), '_blank');
-}
-
-/* ── ADMIN ───────────────────────────── */
-if (location.search.includes('admin')) {
-  const pw = prompt('Password:');
-  if (pw === ADMIN_PW) {
-    document.getElementById('adm-modal').classList.add('open');
-    admLoad('pending');
-  }
-}
-document.getElementById('adm-modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('adm-modal'))
-    document.getElementById('adm-modal').classList.remove('open');
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.getElementById('adm-modal').classList.remove('open');
-});
-
-function admTab(status, btn) {
-  document.querySelectorAll('.adm-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  admLoad(status);
-}
-
-async function admLoad(status) {
-  const list = document.getElementById('adm-list');
-  list.innerHTML = '<div class="adm-empty">Cargando...</div>';
-  if (!sb) { list.innerHTML = '<div class="adm-empty">Supabase no disponible.</div>'; return; }
-  try {
-    const { data, error } = await sb.from('reviews').select('*')
-      .eq('status', status).order('created_at', { ascending: false });
-    if (error) throw error;
-    if (!data || !data.length) { list.innerHTML = '<div class="adm-empty">Sin opiniones.</div>'; return; }
-    list.innerHTML = data.map(r => `
-      <div class="adm-item" id="ai-${r.id}">
-        <div>
-          <div class="adm-item-name">${esc(r.name)}</div>
-          <div class="adm-item-stars">${'★'.repeat(r.rating || 5)}</div>
-          <div class="adm-item-text">"${esc(r.text || r.comment || '')}"</div>
-          <div class="adm-item-date">${new Date(r.created_at).toLocaleString('es')}</div>
-        </div>
-        <div class="adm-actions">
-          ${status !== 'approved' ? `<button class="ab ab-ok" onclick="admAct('${r.id}','approve')">✓ Aprobar</button>` : ''}
-          ${status !== 'rejected' ? `<button class="ab ab-no" onclick="admAct('${r.id}','reject')">✗ Rechazar</button>` : ''}
-          <button class="ab ab-dl" onclick="admAct('${r.id}','del')">🗑</button>
-        </div>
-      </div>`).join('');
-  } catch(e) { list.innerHTML = `<div class="adm-empty">Error: ${esc(e.message)}</div>`; }
-}
-
-async function admAct(id, action) {
-  if (!sb) return;
-  try {
-    if (action === 'del') {
-      if (!confirm('¿Eliminar esta opinión?')) return;
-      await sb.from('reviews').delete().eq('id', id);
-    } else if (action === 'approve') {
-      await sb.from('reviews').update({ status: 'approved' }).eq('id', id);
-    } else if (action === 'reject') {
-      await sb.from('reviews').update({ status: 'rejected' }).eq('id', id);
-    }
-    document.getElementById('ai-' + id)?.remove();
-  } catch(e) { alert('Error: ' + e.message); }
-}
-
-/* ── UTILS ───────────────────────────── */
-function esc(s) {
-  return String(s || '')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function showMsg(el, type, text) {
-  el.className = 'form-msg ' + type;
-  el.textContent = text;
-  setTimeout(() => { el.textContent = ''; el.className = 'form-msg'; }, 6000);
-}
-</script>
+<script src="/shared.js"></script>
 </body>
 </html>

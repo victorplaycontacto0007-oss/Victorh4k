@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Nosotros — VictorH4K</title>
+<meta name="description" content="Conoce VictorH4K — marca colombiana con dos divisiones: música y tecnología. Subsello bajo The Orchard y estudio de soluciones digitales."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#050505"/>
+<link rel="canonical" href="https://victorh4k.com/nosotros/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:site_name" content="VictorH4K"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/nosotros/"/>
+<meta property="og:title" content="Nosotros — VictorH4K"/>
+<meta property="og:description" content="Marca colombiana con dos divisiones: música y tecnología."/>
+<meta property="og:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+<meta property="og:locale" content="es_CO"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+.about-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
+.about-logo-wrap { aspect-ratio:1;background:#ffffff;border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;padding:40px; }
+.about-logo-wrap img { width:100%;max-width:280px; }
+.values-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px; }
+.value-card { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:border-color var(--dur-mid); }
+.value-card:hover { border-color:var(--border-red); }
+.value-icon { width:44px;height:44px;border-radius:var(--radius-sm);background:rgba(196,0,0,0.1);border:1px solid var(--border-red);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--red);margin-bottom:16px; }
+.value-title { font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--white);margin-bottom:8px; }
+.value-desc { font-size:13px;color:var(--gray-2);line-height:1.65; }
+.divisions-grid { display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px; }
+.division-block { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px; }
+.division-block.music { border-top:2px solid var(--red); }
+.division-block.digital { border-top:2px solid rgba(255,255,255,0.2); }
+.div-num { font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-3);margin-bottom:6px; }
+.div-name { font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);margin-bottom:12px; }
+@media (max-width:900px) { .about-grid{grid-template-columns:1fr;gap:40px;} .about-logo-wrap{max-width:280px;margin:0 auto;} }
+@media (max-width:768px) { .values-grid{grid-template-columns:1fr;} .divisions-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+</div>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio"><img src="/assets/og-image.png" alt="VictorH4K" width="160" height="80" loading="eager"/></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/music/">Music</a></li>
+    <li><a href="/digital/">Digital</a></li>
+    <li><a href="/proyectos/">Proyectos</a></li>
+    <li><a href="/nosotros/" class="active">Nosotros</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573026021232?text=Hola%2C+quiero+conocer+más+sobre+VictorH4K" target="_blank" rel="noopener" class="nav-cta">Hablemos</a>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+</nav>
+<nav id="mobile-menu" aria-label="Menú móvil">
+  <a href="/" onclick="closeMobileMenu()">Inicio</a>
+  <a href="/music/" onclick="closeMobileMenu()">Music</a>
+  <a href="/digital/" onclick="closeMobileMenu()">Digital</a>
+  <a href="/proyectos/" onclick="closeMobileMenu()">Proyectos</a>
+  <a href="/nosotros/" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="/contacto/" onclick="closeMobileMenu()">Contacto</a>
+  <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Hablemos</a>
+</nav>
+
+<main>
+<section class="page-hero" aria-labelledby="nosotros-title">
+  <div class="page-hero-bg"></div><div class="page-hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <p class="label">La marca</p>
+    <h1 class="heading-xl" id="nosotros-title" style="margin-bottom:20px">Nosotros</h1>
+    <div class="divider"></div>
+    <p class="body-lg" style="max-width:560px">Somos VictorH4K — una marca colombiana con dos divisiones: música y tecnología digital.</p>
+  </div>
+</section>
+
+<section class="section-py" aria-labelledby="quienes-title">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="label">Quiénes somos</p>
+        <h2 class="heading-lg" id="quienes-title" style="margin-bottom:16px">VictorH4K</h2>
+        <div class="divider"></div>
+        <p class="body-lg" style="margin-bottom:24px">Somos una marca colombiana construida sobre dos pilares: la industria musical y las soluciones tecnológicas digitales.</p>
+        <p class="body-md" style="margin-bottom:20px">En el frente musical, operamos como subsello bajo The Orchard — una de las principales distribuidoras del mundo — ofreciendo distribución digital global, desarrollo de artistas y producción musical profesional.</p>
+        <p class="body-md">En el frente digital, desarrollamos tecnología a medida: sitios web, automatización con bots WhatsApp e IA, plataformas SaaS y soluciones digitales para negocios y emprendedores.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="about-logo-wrap">
+          <img src="/images/logo-victorh4k.png" alt="Logo oficial VictorH4K" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-py" style="background:var(--black-soft)" aria-labelledby="divisiones-title">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:48px">
+      <p class="label" style="justify-content:center">Estructura</p>
+      <h2 class="heading-lg" id="divisiones-title">Dos divisiones</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="divisions-grid reveal">
+      <div class="division-block music">
+        <p class="div-num">División 01</p>
+        <h3 class="div-name">Music</h3>
+        <p class="body-md" style="margin-bottom:16px">Subsello musical bajo The Orchard. Distribución digital global, desarrollo de artistas y producción musical profesional.</p>
+        <a href="/music/" class="btn btn-outline btn-sm">Ver Music <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="division-block digital">
+        <p class="div-num">División 02</p>
+        <h3 class="div-name">Digital</h3>
+        <p class="body-md" style="margin-bottom:16px">Estudio de soluciones digitales. Desarrollo web, automatización, bots WhatsApp e IA, plataformas y sistemas personalizados.</p>
+        <a href="/digital/" class="btn btn-outline btn-sm">Ver Digital <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-py" aria-labelledby="valores-title">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:48px">
+      <p class="label" style="justify-content:center">Filosofía</p>
+      <h2 class="heading-lg" id="valores-title">Cómo trabajamos</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon"><i class="fas fa-bolt"></i></div>
+        <h3 class="value-title">Resultados sobre ruido</h3>
+        <p class="value-desc">Priorizamos ejecución limpia y resultados medibles sobre promesas vacías o estética sin sustancia.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3 class="value-title">Calidad sin atajos</h3>
+        <p class="value-desc">Cada proyecto recibe atención real, construcción cuidadosa y sin plantillas genéricas.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+        <h3 class="value-title">Comunicación directa</h3>
+        <p class="value-desc">Acceso directo al equipo, sin intermediarios, sin burocracia y con respuestas rápidas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/"><img src="/assets/og-image.png" alt="VictorH4K" width="120" height="48" loading="lazy"/></a><p>Tecnología, música y soluciones digitales. Colombia.</p></div>
+      <div class="footer-col"><h5>Marca</h5><ul><li><a href="/music/">Music</a></li><li><a href="/digital/">Digital</a></li><li><a href="/nosotros/">Nosotros</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5>Proyectos</h5><ul><li><a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener">Royalties</a></li><li><a href="https://www.odiekc.shop/" target="_blank" rel="noopener">ODIEKC</a></li><li><a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener">FinanzApp</a></li><li><a href="https://flowindependiente.com/" target="_blank" rel="noopener">Flow Independiente</a></li></ul></div>
+      <div class="footer-col"><h5>Contacto</h5><ul><li><a href="https://wa.me/573026021232" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 VictorH4K · Colombia · Todos los derechos reservados.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/573026021232" target="_blank" rel="noopener" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/shared.js"></script>
+</body>
+</html>

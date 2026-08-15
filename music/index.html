@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Music — VictorH4K | Subsello bajo The Orchard</title>
+<meta name="description" content="VictorH4K es un subsello musical asociado a The Orchard. Artistas: Jack Holy, VictorH4K Producer, joseneiman. Distribución digital global y desarrollo de artistas."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#050505"/>
+<link rel="canonical" href="https://victorh4k.com/music/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:site_name" content="VictorH4K"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/music/"/>
+<meta property="og:title" content="Music — VictorH4K | Subsello bajo The Orchard"/>
+<meta property="og:description" content="Subsello musical asociado a The Orchard. Artistas: Jack Holy, VictorH4K Producer, joseneiman."/>
+<meta property="og:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+<meta property="og:locale" content="es_CO"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Music — VictorH4K"/>
+<meta name="twitter:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "VictorH4K",
+  "url": "https://victorh4k.com/music/",
+  "description": "Subsello musical asociado a The Orchard. Distribución digital global y desarrollo de artistas.",
+  "genre": ["Pop", "Reggaetón", "Trap", "R&B", "EDM"],
+  "member": [
+    {"@type": "Person", "name": "Jack Holy", "url": "https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns"},
+    {"@type": "Person", "name": "VictorH4K Producer", "url": "https://open.spotify.com/artist/4uDSnTqKriGk7plg6LuFku"},
+    {"@type": "Person", "name": "joseneiman", "url": "https://open.spotify.com/artist/52DXUNl2kPMEMTP8ORleFU"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+/* ── HERO MUSIC ── */
+.music-hero {
+  min-height: 80vh;
+  display: flex; align-items: center;
+  padding-top: var(--nav-h);
+  position: relative; overflow: hidden;
+}
+.music-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 60% at 90% 40%, rgba(196,0,0,0.1), transparent),
+    radial-gradient(ellipse 40% 50% at 10% 70%, rgba(196,0,0,0.05), transparent);
+  pointer-events: none;
+}
+.music-hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+  pointer-events: none; opacity: 0.3;
+}
+.music-hero-inner {
+  position: relative; z-index: 1;
+  padding: clamp(60px,10vw,100px) 0;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 60px; align-items: center;
+}
+.music-hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(196,0,0,0.08); border: 1px solid var(--border-red);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 24px;
+}
+.music-hero-badge::before { content:''; width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+.music-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 88px);
+  font-weight: 800; line-height: .92;
+  letter-spacing: -0.04em; color: var(--white);
+  margin-bottom: 24px;
+}
+.music-hero-title em { font-style: normal; color: var(--red); }
+.music-hero-desc {
+  font-size: clamp(15px,1.6vw,18px);
+  color: var(--gray-2); line-height: 1.75;
+  max-width: 500px; margin-bottom: 40px;
+}
+.music-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.orchard-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 14px 20px;
+  color: var(--gray-2); font-size: 13px; font-weight: 500;
+}
+.orchard-badge strong { color: var(--white); font-weight: 700; }
+.orchard-logo-text {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 800;
+  color: var(--white); letter-spacing: -0.02em;
+  writing-mode: vertical-lr; text-orientation: mixed;
+  transform: rotate(180deg);
+  border-left: 2px solid var(--red); padding-left: 16px;
+  opacity: 0.15;
+}
+
+/* ── SELLO SECTION ── */
+.sello-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  margin-top: 48px;
+}
+.sello-card {
+  background: var(--graphite); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 32px;
+  transition: border-color var(--dur-mid);
+}
+.sello-card:hover { border-color: var(--border-red); }
+.sello-card-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  background: rgba(196,0,0,0.1); border: 1px solid var(--border-red);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--red); margin-bottom: 20px;
+}
+.sello-card-title {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 800; color: var(--white); margin-bottom: 10px;
+}
+.sello-card-desc { font-size: 14px; color: var(--gray-2); line-height: 1.7; }
+
+/* ── ARTISTAS ── */
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.artist-card {
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--dur-mid), transform var(--dur-mid), box-shadow var(--dur-mid);
+  display: flex; flex-direction: column;
+}
+.artist-card:hover {
+  border-color: rgba(196,0,0,0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,0,0,0.1);
+}
+
+/* VISUAL CARD — ecualizador animado */
+.artist-visual {
+  aspect-ratio: 1;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, #111 0%, #050505 100%);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+/* Glow de fondo rojo */
+.artist-visual::before {
+  content: '';
+  position: absolute;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(196,0,0,0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100% { opacity: 0.6; transform: translate(-50%,-55%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%,-55%) scale(1.15); }
+}
+
+/* Iniciales centrales */
+.artist-initials {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 72px);
+  font-weight: 800; color: var(--white);
+  letter-spacing: -0.04em;
+  position: relative; z-index: 3;
+  text-shadow: 0 0 60px rgba(196,0,0,0.5), 0 2px 12px rgba(0,0,0,0.8);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Ecualizador — barras en la parte inferior */
+.artist-eq {
+  position: absolute; bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: flex-end; gap: 3px;
+  z-index: 4;
+}
+.eq-bar {
+  width: 3px; border-radius: 2px;
+  background: var(--red);
+  animation: eqAnim linear infinite;
+  transform-origin: bottom;
+}
+.eq-bar:nth-child(1)  { height:8px;  animation-duration:0.7s; animation-delay:0s; }
+.eq-bar:nth-child(2)  { height:16px; animation-duration:0.5s; animation-delay:0.1s; }
+.eq-bar:nth-child(3)  { height:24px; animation-duration:0.8s; animation-delay:0.05s; }
+.eq-bar:nth-child(4)  { height:18px; animation-duration:0.6s; animation-delay:0.2s; }
+.eq-bar:nth-child(5)  { height:28px; animation-duration:0.45s; animation-delay:0s; }
+.eq-bar:nth-child(6)  { height:20px; animation-duration:0.7s; animation-delay:0.15s; }
+.eq-bar:nth-child(7)  { height:12px; animation-duration:0.55s; animation-delay:0.08s; }
+.eq-bar:nth-child(8)  { height:22px; animation-duration:0.65s; animation-delay:0.18s; }
+.eq-bar:nth-child(9)  { height:10px; animation-duration:0.5s; animation-delay:0.03s; }
+.eq-bar:nth-child(10) { height:18px; animation-duration:0.75s; animation-delay:0.12s; }
+.eq-bar:nth-child(11) { height:6px;  animation-duration:0.6s; animation-delay:0.22s; }
+.eq-bar:nth-child(12) { height:14px; animation-duration:0.8s; animation-delay:0.07s; }
+@keyframes eqAnim {
+  0%,100% { transform: scaleY(0.2); opacity: 0.5; }
+  50%      { transform: scaleY(1);   opacity: 1; }
+}
+
+/* Indicador EN REPRODUCCIÓN */
+.artist-playing {
+  position: absolute; top: 14px; left: 14px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 9px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--red);
+  z-index: 4;
+}
+.playing-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--red);
+  animation: playingDot 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes playingDot {
+  0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(196,0,0,0.5); }
+  50%      { opacity:.4; box-shadow: 0 0 0 4px rgba(196,0,0,0); }
+}
+
+/* Línea de progreso */
+.artist-progress {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: rgba(255,255,255,0.06);
+  z-index: 4;
+}
+.artist-progress-fill {
+  height: 100%; background: var(--red);
+  border-radius: 2px;
+  animation: progressAnim 8s linear infinite;
+}
+@keyframes progressAnim {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* BODY & FOOTER */
+.artist-body {
+  padding: 20px 22px 14px;
+  display: flex; flex-direction: column; gap: 8px; flex: 1;
+}
+.artist-index {
+  font-size: 10px; font-weight: 700; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--red);
+}
+.artist-name {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 800; color: var(--white);
+  letter-spacing: -0.02em;
+}
+.artist-genres { display: flex; gap: 5px; flex-wrap: wrap; }
+.genre-pill {
+  font-size: 10px; font-weight: 600; padding: 3px 9px;
+  border-radius: 100px;
+  background: rgba(196,0,0,0.07); border: 1px solid rgba(196,0,0,0.25);
+  color: rgba(196,0,0,0.9);
+}
+.artist-footer {
+  padding: 0 22px 22px;
+  margin-top: auto;
+}
+.btn-spotify {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 12px;
+  background: #1DB954; color: #000;
+  border-radius: var(--radius-sm);
+  font-size: 12px; font-weight: 800; letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: background var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast);
+  border: none; cursor: pointer;
+}
+.btn-spotify:hover {
+  background: #1ed760;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29,185,84,0.35);
+}
+.btn-spotify i { font-size: 14px; }
+
+/* ── PLATAFORMAS ── */
+.platforms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+  gap: 12px; margin-top: 48px;
+}
+.platform-card {
+  background: var(--graphite); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 20px 16px; text-align: center;
+  transition: border-color var(--dur-mid), transform var(--dur-mid);
+}
+.platform-card:hover { border-color: var(--border-red); transform: translateY(-3px); }
+.platform-emoji { font-size: 26px; margin-bottom: 10px; display: block; }
+.platform-name { font-size: 13px; font-weight: 700; color: var(--white); }
+.platform-detail { font-size: 11px; color: var(--gray-3); margin-top: 3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .music-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .orchard-logo-text { display: none; }
+  .roster-grid { grid-template-columns: 1fr 1fr; }
+  .sello-grid { grid-template-columns: 1fr; }
+}
+@media (max-width:560px) {
+  .roster-grid { grid-template-columns: 1fr; }
+  .platforms-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio">
+    <img src="/assets/og-image.png" alt="VictorH4K" width="160" height="80" loading="eager"/>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/music/" class="active">Music</a></li>
+    <li><a href="/digital/">Digital</a></li>
+    <li><a href="/proyectos/">Proyectos</a></li>
+    <li><a href="/nosotros/">Nosotros</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+VH4K+Music" target="_blank" rel="noopener" class="nav-cta">Hablemos</a>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav id="mobile-menu" aria-label="Menú móvil">
+  <a href="/" onclick="closeMobileMenu()">Inicio</a>
+  <a href="/music/" onclick="closeMobileMenu()">Music</a>
+  <a href="/digital/" onclick="closeMobileMenu()">Digital</a>
+  <a href="/proyectos/" onclick="closeMobileMenu()">Proyectos</a>
+  <a href="/nosotros/" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="/contacto/" onclick="closeMobileMenu()">Contacto</a>
+  <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+VH4K+Music" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Hablemos</a>
+</nav>
+
+<main>
+
+<!-- ══ HERO ══════════════════════════════ -->
+<section class="music-hero" aria-labelledby="music-hero-title">
+  <div class="music-hero-bg"></div>
+  <div class="music-hero-grid"></div>
+  <div class="container">
+    <div class="music-hero-inner">
+      <div>
+        <div class="music-hero-badge">Subsello Activo · The Orchard</div>
+        <h1 class="music-hero-title" id="music-hero-title">
+          VICTOR<em>H4K</em>
+        </h1>
+        <p class="music-hero-desc">
+          Subsello musical asociado a The Orchard. Desarrollamos, gestionamos y proyectamos artistas y lanzamientos musicales con distribución digital global.
+        </p>
+        <div class="music-hero-actions">
+          <a href="#artistas" class="btn btn-primary btn-lg">
+            <i class="fas fa-users" aria-hidden="true"></i> Ver artistas
+          </a>
+          <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+VH4K+Music" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+            Distribuir mi música
+          </a>
+        </div>
+      </div>
+      <div class="orchard-logo-text" aria-hidden="true">THE ORCHARD</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRESENTACIÓN DEL SUBSELLO ═════════ -->
+<section class="section-py" style="background:var(--black-soft)" aria-labelledby="sello-title">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:48px">
+      <p class="label">El subsello</p>
+      <h2 class="heading-lg" id="sello-title" style="margin-bottom:16px">VictorH4K</h2>
+      <div class="divider"></div>
+      <p class="body-lg" style="max-width:640px;margin-bottom:24px">
+        VictorH4K opera como subsello musical asociado a <strong style="color:var(--white)">The Orchard</strong>, una de las principales distribuidoras y sello discográfico independiente del mundo, propiedad de Sony Music.
+      </p>
+      <p class="body-md" style="max-width:600px">
+        Desde VictorH4K desarrollamos artistas, gestionamos lanzamientos y distribuimos música a más de 150 plataformas digitales globales incluyendo Spotify, Apple Music, TIDAL, Amazon Music y YouTube Music.
+      </p>
+    </div>
+
+    <div class="sello-grid reveal">
+      <div class="sello-card">
+        <div class="sello-card-icon"><i class="fas fa-building" aria-hidden="true"></i></div>
+        <h3 class="sello-card-title">Asociado a The Orchard</h3>
+        <p class="sello-card-desc">Operamos bajo la estructura de The Orchard, lo que nos permite ofrecer distribución profesional, gestión de royalties y acceso a herramientas de nivel major.</p>
+      </div>
+      <div class="sello-card">
+        <div class="sello-card-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+        <h3 class="sello-card-title">Distribución Global</h3>
+        <p class="sello-card-desc">La música de nuestros artistas llega a más de 150 plataformas en todo el mundo. Cobertura internacional con reportes detallados y gestión de derechos.</p>
+      </div>
+      <div class="sello-card">
+        <div class="sello-card-icon"><i class="fas fa-user-music" aria-hidden="true"></i></div>
+        <h3 class="sello-card-title">Desarrollo de Artistas</h3>
+        <p class="sello-card-desc">Acompañamos el desarrollo musical integral del artista: producción, lanzamientos, estrategia digital y crecimiento en plataformas.</p>
+      </div>
+      <div class="sello-card">
+        <div class="sello-card-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+        <h3 class="sello-card-title">Royalties y Analytics</h3>
+        <p class="sello-card-desc">Gestión transparente de royalties con reportes detallados por plataforma, país y canción mediante nuestra plataforma Royalties Music Pro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ARTISTAS DEL SUBSELLO ══════════════ -->
+<section class="section-py" id="artistas" aria-labelledby="roster-title">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:64px">
+      <p class="label" style="justify-content:center">Roster</p>
+      <h2 class="heading-lg" id="roster-title">Artistas del subsello</h2>
+      <div class="divider divider-center"></div>
+      <p class="body-lg" style="max-width:460px;margin:0 auto">
+        Artistas que forman parte de VictorH4K y distribuyen su música bajo The Orchard.
+      </p>
+    </div>
+
+    <div class="roster-grid">
+
+      <!-- ARTISTA 1 — Jack Holy -->
+      <article class="artist-card reveal" aria-label="Artista: Jack Holy">
+        <div class="artist-visual">
+          <div class="artist-playing"><span class="playing-dot"></span> En reproducción</div>
+          <div class="artist-initials">JH</div>
+          <div class="artist-eq" aria-hidden="true">
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+          </div>
+          <div class="artist-progress"><div class="artist-progress-fill"></div></div>
+        </div>
+        <div class="artist-body">
+          <p class="artist-index">Artista 01</p>
+          <h3 class="artist-name">Jack Holy</h3>
+          <div class="artist-genres">
+            <span class="genre-pill">Pop</span>
+            <span class="genre-pill">Trap</span>
+            <span class="genre-pill">R&amp;B</span>
+          </div>
+        </div>
+        <div class="artist-footer">
+          <a href="https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns" target="_blank" rel="noopener" class="btn-spotify" aria-label="Escuchar a Jack Holy en Spotify">
+            <i class="fab fa-spotify" aria-hidden="true"></i> Escuchar en Spotify
+          </a>
+        </div>
+      </article>
+
+      <!-- ARTISTA 2 — VictorH4K Producer -->
+      <article class="artist-card reveal reveal-delay-1" aria-label="Artista: VictorH4K Producer">
+        <div class="artist-visual">
+          <div class="artist-playing"><span class="playing-dot"></span> En reproducción</div>
+          <div class="artist-initials">VP</div>
+          <div class="artist-eq" aria-hidden="true">
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+          </div>
+          <div class="artist-progress"><div class="artist-progress-fill" style="animation-delay:-3s"></div></div>
+        </div>
+        <div class="artist-body">
+          <p class="artist-index">Artista 02</p>
+          <h3 class="artist-name">VictorH4K Producer</h3>
+          <div class="artist-genres">
+            <span class="genre-pill">Producción</span>
+            <span class="genre-pill">EDM</span>
+            <span class="genre-pill">Reggaetón</span>
+          </div>
+        </div>
+        <div class="artist-footer">
+          <a href="https://open.spotify.com/artist/4uDSnTqKriGk7plg6LuFku" target="_blank" rel="noopener" class="btn-spotify" aria-label="Escuchar a VictorH4K Producer en Spotify">
+            <i class="fab fa-spotify" aria-hidden="true"></i> Escuchar en Spotify
+          </a>
+        </div>
+      </article>
+
+      <!-- ARTISTA 3 — joseneiman -->
+      <article class="artist-card reveal reveal-delay-2" aria-label="Artista: joseneiman">
+        <div class="artist-visual">
+          <div class="artist-playing"><span class="playing-dot"></span> En reproducción</div>
+          <div class="artist-initials">JN</div>
+          <div class="artist-eq" aria-hidden="true">
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+          </div>
+          <div class="artist-progress"><div class="artist-progress-fill" style="animation-delay:-5.5s"></div></div>
+        </div>
+        <div class="artist-body">
+          <p class="artist-index">Artista 03</p>
+          <h3 class="artist-name">joseneiman</h3>
+          <div class="artist-genres">
+            <span class="genre-pill">Pop</span>
+            <span class="genre-pill">R&amp;B</span>
+          </div>
+        </div>
+        <div class="artist-footer">
+          <a href="https://open.spotify.com/artist/52DXUNl2kPMEMTP8ORleFU" target="_blank" rel="noopener" class="btn-spotify" aria-label="Escuchar a joseneiman en Spotify">
+            <i class="fab fa-spotify" aria-hidden="true"></i> Escuchar en Spotify
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DISTRIBUCIÓN ════════════════════════ -->
+<section class="section-py" style="background:var(--black-soft)" aria-labelledby="distrib-title">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:48px">
+      <p class="label" style="justify-content:center">Alcance global</p>
+      <h2 class="heading-lg" id="distrib-title">Plataformas de distribución</h2>
+      <div class="divider divider-center"></div>
+      <p class="body-lg" style="max-width:480px;margin:0 auto">
+        La música del subsello VictorH4K está disponible en las principales plataformas del mundo.
+      </p>
+    </div>
+    <div class="platforms-grid reveal">
+      <div class="platform-card">
+        <span class="platform-emoji">🟢</span>
+        <div class="platform-name">Spotify</div>
+        <div class="platform-detail">320kbps · Global</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-emoji">🍎</span>
+        <div class="platform-name">Apple Music</div>
+        <div class="platform-detail">Lossless · Dolby Atmos</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-emoji">🔊</span>
+        <div class="platform-name">TIDAL</div>
+        <div class="platform-detail">HiFi MQA</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-emoji">🎵</span>
+        <div class="platform-name">Amazon Music</div>
+        <div class="platform-detail">HD · Unlimited</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-emoji">▶️</span>
+        <div class="platform-name">YouTube Music</div>
+        <div class="platform-detail">Global</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-emoji">🎶</span>
+        <div class="platform-name">Deezer</div>
+        <div class="platform-detail">FLAC 1411kbps</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-emoji">📻</span>
+        <div class="platform-name">Pandora</div>
+        <div class="platform-detail">USA</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-emoji">🌐</span>
+        <div class="platform-name">+150 más</div>
+        <div class="platform-detail">Cobertura global</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════ -->
+<section class="section-py" aria-labelledby="music-cta-title">
+  <div class="container text-center">
+    <div class="reveal">
+      <p class="label" style="justify-content:center">¿Eres artista?</p>
+      <h2 class="heading-lg" id="music-cta-title" style="margin-bottom:16px">Únete al subsello</h2>
+      <div class="divider divider-center"></div>
+      <p class="body-lg" style="max-width:440px;margin:0 auto 36px">
+        Si quieres distribuir tu música bajo VictorH4K y The Orchard, hablemos. Respondemos en menos de 2 horas.
+      </p>
+      <a href="https://wa.me/573026021232?text=Hola%2C+quiero+distribuir+mi+música+con+VictorH4K" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> Quiero distribuir mi música
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" aria-label="VictorH4K"><img src="/assets/og-image.png" alt="VictorH4K" width="120" height="48" loading="lazy"/></a>
+        <p>Tecnología, música y soluciones digitales. Colombia.</p>
+      </div>
+      <div class="footer-col"><h5>Marca</h5><ul>
+        <li><a href="/music/">Music</a></li>
+        <li><a href="/digital/">Digital</a></li>
+        <li><a href="/nosotros/">Nosotros</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Artistas</h5><ul>
+        <li><a href="https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns" target="_blank" rel="noopener">Jack Holy</a></li>
+        <li><a href="https://open.spotify.com/artist/4uDSnTqKriGk7plg6LuFku" target="_blank" rel="noopener">VictorH4K Producer</a></li>
+        <li><a href="https://open.spotify.com/artist/52DXUNl2kPMEMTP8ORleFU" target="_blank" rel="noopener">joseneiman</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Proyectos</h5><ul>
+        <li><a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener">Royalties</a></li>
+        <li><a href="/proyectos/">Ver todos</a></li>
+        <li><a href="https://wa.me/573026021232" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 VictorH4K · Subsello musical · The Orchard · Colombia</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/573026021232" target="_blank" rel="noopener" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/shared.js"></script>
+</body>
+</html>

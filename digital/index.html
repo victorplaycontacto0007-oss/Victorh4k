@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Digital — VictorH4K</title>
+<meta name="description" content="VictorH4K Digital — Desarrollo web, automatización WhatsApp, bots con IA, plataformas y soluciones digitales a medida. Colombia."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#050505"/>
+<link rel="canonical" href="https://victorh4k.com/digital/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:site_name" content="VictorH4K"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/digital/"/>
+<meta property="og:title" content="Digital — VictorH4K"/>
+<meta property="og:description" content="Desarrollo web, automatización con IA, bots WhatsApp y plataformas digitales a medida."/>
+<meta property="og:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+<meta property="og:locale" content="es_CO"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+.services-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);border-radius:var(--radius-lg);overflow:hidden; }
+.service-item { background:var(--graphite);padding:clamp(24px,3vw,40px);transition:background var(--dur-fast); }
+.service-item:hover { background:var(--graphite-2); }
+.service-item:first-child { border-radius:var(--radius-lg) 0 0 0; }
+.service-item:nth-child(2) { border-radius:0 var(--radius-lg) 0 0; }
+.service-item:nth-child(3) { border-radius:0 0 0 var(--radius-lg); }
+.service-item:last-child { border-radius:0 0 var(--radius-lg) 0; }
+.service-icon { width:44px;height:44px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--red);background:rgba(196,0,0,0.1);border:1px solid var(--border-red);margin-bottom:20px; }
+.service-name { font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--white);margin-bottom:10px; }
+.service-desc { font-size:14px;color:var(--gray-2);line-height:1.65;margin-bottom:20px; }
+.service-list { list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:24px; }
+.service-list li { font-size:13px;color:var(--gray-2);padding-left:14px;position:relative; }
+.service-list li::before { content:'—';position:absolute;left:0;color:var(--red);font-weight:700; }
+.plat-list { display:flex;flex-direction:column;gap:6px;margin-bottom:20px; }
+.plat-item { background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden; }
+.plat-header { display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--gray-1);transition:background var(--dur-fast);user-select:none; }
+.plat-header:hover { background:rgba(255,255,255,0.04); }
+.plat-header i { font-size:11px;color:var(--gray-3);transition:transform var(--dur-mid); }
+.plat-body { max-height:0;overflow:hidden;transition:max-height .35s var(--ease-in-out); }
+.plat-body-inner { padding:0 14px 12px;font-size:12px;color:var(--gray-2);line-height:1.6; }
+.process-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative; }
+.process-grid::before { content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,var(--border),transparent); }
+.process-step { text-align:center;padding:0 12px; }
+.step-num { width:56px;height:56px;border-radius:50%;background:var(--graphite);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--white);margin:0 auto 16px;position:relative;z-index:1;transition:border-color var(--dur-mid),background var(--dur-mid); }
+.process-step:hover .step-num { background:var(--red);border-color:var(--red); }
+.step-title { font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px; }
+.step-desc { font-size:12px;color:var(--gray-3);line-height:1.5; }
+@media (max-width:768px) {
+  .services-grid{grid-template-columns:1fr;}
+  .service-item:first-child{border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+  .service-item:nth-child(2){border-radius:0;}
+  .service-item:nth-child(3){border-radius:0;}
+  .service-item:last-child{border-radius:0 0 var(--radius-lg) var(--radius-lg);}
+  .process-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
+  .process-grid::before{display:none;}
+  .process-step:last-child{grid-column:1/-1;max-width:180px;margin:0 auto;}
+}
+</style>
+</head>
+<body>
+</div>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio"><img src="/assets/og-image.png" alt="VictorH4K" width="160" height="80" loading="eager"/></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/music/">Music</a></li>
+    <li><a href="/digital/" class="active">Digital</a></li>
+    <li><a href="/proyectos/">Proyectos</a></li>
+    <li><a href="/nosotros/">Nosotros</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+VH4K+Digital" target="_blank" rel="noopener" class="nav-cta">Hablemos</a>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+</nav>
+<nav id="mobile-menu" aria-label="Menú móvil">
+  <a href="/" onclick="closeMobileMenu()">Inicio</a>
+  <a href="/music/" onclick="closeMobileMenu()">Music</a>
+  <a href="/digital/" onclick="closeMobileMenu()">Digital</a>
+  <a href="/proyectos/" onclick="closeMobileMenu()">Proyectos</a>
+  <a href="/nosotros/" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="/contacto/" onclick="closeMobileMenu()">Contacto</a>
+  <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+VH4K+Digital" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Hablemos</a>
+</nav>
+
+<main>
+<section class="page-hero" aria-labelledby="digital-title">
+  <div class="page-hero-bg"></div><div class="page-hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <p class="label">División 02</p>
+    <h1 class="heading-xl" id="digital-title" style="margin-bottom:20px">Digital</h1>
+    <div class="divider"></div>
+    <p class="body-lg" style="max-width:580px;margin-bottom:40px">Estudio de soluciones digitales. Desarrollo web, automatización con bots WhatsApp e IA, plataformas SaaS y sistemas personalizados.</p>
+    <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+VH4K+Digital" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fab fa-whatsapp"></i> Iniciar proyecto</a>
+  </div>
+</section>
+
+<section class="section-py" aria-labelledby="servicios-digital-title">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:48px">
+      <p class="label">Servicios</p>
+      <h2 class="heading-lg" id="servicios-digital-title">Soluciones digitales</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-item">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <h3 class="service-name">Desarrollo Web</h3>
+        <p class="service-desc">Sitios modernos, rápidos y optimizados para convertir visitantes en clientes.</p>
+        <ul class="service-list"><li>Landing Pages y sitios corporativos</li><li>Tiendas y plataformas online</li><li>Paneles administrativos</li><li>Sistemas personalizados</li></ul>
+        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+Desarrollo+Web" target="_blank" rel="noopener" class="btn btn-wa btn-sm"><i class="fab fa-whatsapp"></i> Consultar</a>
+      </div>
+      <div class="service-item">
+        <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
+        <h3 class="service-name">Automatización WhatsApp</h3>
+        <p class="service-desc">Bots inteligentes que atienden, venden y agendan por ti las 24 horas del día.</p>
+        <ul class="service-list"><li>Respuestas automáticas 24/7</li><li>Menús interactivos</li><li>Confirmación de citas</li><li>IA integrada</li></ul>
+        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+automatización+WhatsApp" target="_blank" rel="noopener" class="btn btn-wa btn-sm"><i class="fab fa-whatsapp"></i> Consultar</a>
+      </div>
+      <div class="service-item">
+        <div class="service-icon"><i class="fas fa-music"></i></div>
+        <h3 class="service-name">Producción Musical con IA</h3>
+        <p class="service-desc">Canciones originales humanizadas con inteligencia artificial para creadores digitales.</p>
+        <ul class="service-list"><li>Creación y producción con IA</li><li>Humanización vocal</li><li>Distribución global</li><li>Pop, Reggaetón, Trap, R&amp;B, EDM</li></ul>
+        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesa+Producción+Musical+IA" target="_blank" rel="noopener" class="btn btn-wa btn-sm"><i class="fab fa-whatsapp"></i> Consultar</a>
+      </div>
+      <div class="service-item">
+        <div class="service-icon"><i class="fas fa-globe"></i></div>
+        <h3 class="service-name">Plataformas Digitales</h3>
+        <p class="service-desc">Streaming premium internacional con soporte en tu idioma.</p>
+        <div class="plat-list">
+          <div class="plat-item"><div class="plat-header" onclick="togglePlat(this)">🍎 Apple Music — 24 países <i class="fas fa-chevron-down"></i></div><div class="plat-body"><div class="plat-body-inner">Lossless · Dolby Atmos · 100M canciones. USA, Colombia, México, Argentina, Brasil, España y más.</div></div></div>
+          <div class="plat-item"><div class="plat-header" onclick="togglePlat(this)">🎧 Spotify Familiar — 6 miembros <i class="fas fa-chevron-down"></i></div><div class="plat-body"><div class="plat-body-inner">Sin anuncios · Offline · 320kbps · 6 cuentas independientes.</div></div></div>
+          <div class="plat-item"><div class="plat-header" onclick="togglePlat(this)">🔊 TIDAL + DJ — 18 países <i class="fas fa-chevron-down"></i></div><div class="plat-body"><div class="plat-body-inner">HiFi MQA · DJ Extension para Serato y Traktor.</div></div></div>
+        </div>
+        <a href="https://wa.me/573026021232?text=Hola%2C+me+interesan+las+Plataformas+Digitales" target="_blank" rel="noopener" class="btn btn-wa btn-sm"><i class="fab fa-whatsapp"></i> Consultar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-py" style="background:var(--black-soft)" aria-labelledby="proceso-title">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:64px">
+      <p class="label" style="justify-content:center">Metodología</p>
+      <h2 class="heading-lg" id="proceso-title">Cómo trabajamos</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-step"><div class="step-num">01</div><h3 class="step-title">Descubrimiento</h3><p class="step-desc">Entendemos tu proyecto, objetivos y contexto.</p></div>
+      <div class="process-step"><div class="step-num">02</div><h3 class="step-title">Estrategia</h3><p class="step-desc">Definimos la solución más adecuada y el plan.</p></div>
+      <div class="process-step"><div class="step-num">03</div><h3 class="step-title">Desarrollo</h3><p class="step-desc">Construimos con calidad y atención al detalle.</p></div>
+      <div class="process-step"><div class="step-num">04</div><h3 class="step-title">Lanzamiento</h3><p class="step-desc">Publicamos y verificamos que todo funciona.</p></div>
+      <div class="process-step"><div class="step-num">05</div><h3 class="step-title">Soporte</h3><p class="step-desc">Acompañamiento continuo después del lanzamiento.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/"><img src="/assets/og-image.png" alt="VictorH4K" width="120" height="48" loading="lazy"/></a><p>Tecnología, música y soluciones digitales. Colombia.</p></div>
+      <div class="footer-col"><h5>Marca</h5><ul><li><a href="/music/">Music</a></li><li><a href="/digital/">Digital</a></li><li><a href="/nosotros/">Nosotros</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5>Proyectos</h5><ul><li><a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener">Royalties</a></li><li><a href="https://www.odiekc.shop/" target="_blank" rel="noopener">ODIEKC</a></li><li><a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener">FinanzApp</a></li><li><a href="https://flowindependiente.com/" target="_blank" rel="noopener">Flow Independiente</a></li></ul></div>
+      <div class="footer-col"><h5>Contacto</h5><ul><li><a href="https://wa.me/573026021232" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 VictorH4K · Colombia · Todos los derechos reservados.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/573026021232" target="_blank" rel="noopener" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/shared.js"></script>
+</body>
+</html>

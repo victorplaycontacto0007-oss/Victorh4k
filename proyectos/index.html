@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Proyectos — VictorH4K</title>
+<meta name="description" content="Portafolio de VictorH4K — Royalties Music Pro, ODIEKC, FinanzApp, Flow Independiente, Claudia Agudelo Beauty y más proyectos reales."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#050505"/>
+<link rel="canonical" href="https://victorh4k.com/proyectos/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:site_name" content="VictorH4K"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/proyectos/"/>
+<meta property="og:title" content="Proyectos — VictorH4K"/>
+<meta property="og:description" content="Portafolio de VictorH4K — proyectos reales de música, tecnología y soluciones digitales."/>
+<meta property="og:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+<meta property="og:locale" content="es_CO"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+.filter-bar { display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px; }
+.filter-btn { padding:8px 18px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--gray-2);cursor:pointer;transition:all var(--dur-fast); }
+.filter-btn:hover,.filter-btn.active { background:var(--red);border-color:var(--red);color:var(--white); }
+.projects-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px; }
+.project-card { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:border-color var(--dur-mid),transform var(--dur-mid);display:flex;flex-direction:column; }
+.project-card:hover { border-color:rgba(255,255,255,0.16);transform:translateY(-4px); }
+.project-card.hidden { display:none; }
+.project-tag { font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:12px; }
+.project-name { font-family:var(--font-display);font-size:clamp(20px,2.5vw,26px);font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:12px; }
+.project-desc { font-size:14px;color:var(--gray-2);line-height:1.7;margin-bottom:24px;flex:1; }
+.project-footer { display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border); }
+.project-tech { display:flex;gap:6px;flex-wrap:wrap; }
+.tech-tag { font-size:10px;padding:3px 8px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:4px;color:var(--gray-2); }
+.project-status { font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px; }
+.status-live { background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.3); }
+@media (max-width:600px) { .projects-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+</div>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio"><img src="/assets/og-image.png" alt="VictorH4K" width="160" height="80" loading="eager"/></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/music/">Music</a></li>
+    <li><a href="/digital/">Digital</a></li>
+    <li><a href="/proyectos/" class="active">Proyectos</a></li>
+    <li><a href="/nosotros/">Nosotros</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573026021232?text=Hola%2C+vi+los+proyectos+de+VictorH4K" target="_blank" rel="noopener" class="nav-cta">Hablemos</a>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+</nav>
+<nav id="mobile-menu" aria-label="Menú móvil">
+  <a href="/" onclick="closeMobileMenu()">Inicio</a>
+  <a href="/music/" onclick="closeMobileMenu()">Music</a>
+  <a href="/digital/" onclick="closeMobileMenu()">Digital</a>
+  <a href="/proyectos/" onclick="closeMobileMenu()">Proyectos</a>
+  <a href="/nosotros/" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="/contacto/" onclick="closeMobileMenu()">Contacto</a>
+  <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Hablemos</a>
+</nav>
+
+<main>
+<section class="page-hero" aria-labelledby="proyectos-title">
+  <div class="page-hero-bg"></div><div class="page-hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <p class="label">Portafolio</p>
+    <h1 class="heading-xl" id="proyectos-title" style="margin-bottom:20px">Proyectos</h1>
+    <div class="divider"></div>
+    <p class="body-lg" style="max-width:520px">Soluciones reales construidas para clientes reales. Proyectos de música, tecnología y soluciones digitales.</p>
+  </div>
+</section>
+
+<section class="section-py" aria-labelledby="portfolio-title">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:40px">
+      <h2 class="heading-lg" id="portfolio-title" style="margin-bottom:24px">Todos los proyectos</h2>
+      <div class="filter-bar" role="group" aria-label="Filtrar proyectos">
+        <button class="filter-btn active" onclick="filterProjects('all',this)">Todos</button>
+        <button class="filter-btn" onclick="filterProjects('musica',this)">Música</button>
+        <button class="filter-btn" onclick="filterProjects('digital',this)">Digital</button>
+      </div>
+    </div>
+    <div class="projects-grid" id="projects-grid">
+      <article class="project-card reveal" data-cat="musica">
+        <p class="project-tag">Música · Plataforma Web</p>
+        <h3 class="project-name">Royalties Music Pro</h3>
+        <p class="project-desc">Plataforma para analizar reportes musicales de múltiples distribuidoras. Analytics por país, plataforma y artista con datos en tiempo real.</p>
+        <div class="project-footer">
+          <div class="project-tech"><span class="tech-tag">Web App</span><span class="tech-tag">Analytics</span><span class="tech-tag">Música</span></div>
+          <a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Ver <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="project-card reveal reveal-delay-1" data-cat="digital">
+        <p class="project-tag">E-commerce · Panel Admin</p>
+        <h3 class="project-name">ODIEKC</h3>
+        <p class="project-desc">Plataforma web con panel administrativo completo para gestión de servicios y herramientas digitales. Dashboard avanzado e integración de usuarios.</p>
+        <div class="project-footer">
+          <div class="project-tech"><span class="tech-tag">Dashboard</span><span class="tech-tag">Admin</span></div>
+          <a href="https://www.odiekc.shop" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Ver <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="project-card reveal reveal-delay-2" data-cat="digital">
+        <p class="project-tag">Beauty · Sitio Web</p>
+        <h3 class="project-name">Claudia Agudelo Beauty</h3>
+        <p class="project-desc">Sitio web profesional para estudio de belleza con catálogo de servicios, galería y reservas directas por WhatsApp. Diseño elegante y mobile-first.</p>
+        <div class="project-footer">
+          <div class="project-tech"><span class="tech-tag">Diseño Web</span><span class="tech-tag">Mobile</span></div>
+          <a href="https://www.claudiaagudelobeauty.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Ver <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="project-card reveal reveal-delay-1" data-cat="digital">
+        <p class="project-tag">Finanzas · Web App</p>
+        <h3 class="project-name">FinanzApp</h3>
+        <p class="project-desc">Plataforma de finanzas personales con autenticación segura, registro de ingresos y gastos, historial de movimientos y dashboard de control financiero.</p>
+        <div class="project-footer">
+          <div class="project-tech"><span class="tech-tag">Web App</span><span class="tech-tag">Auth</span></div>
+          <a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Ver <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="project-card reveal reveal-delay-2" data-cat="musica">
+        <p class="project-tag">Música · Plataforma</p>
+        <h3 class="project-name">Flow Independiente</h3>
+        <p class="project-desc">Recursos, guías y herramientas para artistas independientes. Distribución musical, gestión de derechos y crecimiento sin sello discográfico.</p>
+        <div class="project-footer">
+          <div class="project-tech"><span class="tech-tag">Indie</span><span class="tech-tag">Distribución</span></div>
+          <a href="https://flowindependiente.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Ver <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/"><img src="/assets/og-image.png" alt="VictorH4K" width="120" height="48" loading="lazy"/></a><p>Tecnología, música y soluciones digitales. Colombia.</p></div>
+      <div class="footer-col"><h5>Marca</h5><ul><li><a href="/music/">Music</a></li><li><a href="/digital/">Digital</a></li><li><a href="/nosotros/">Nosotros</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5>Proyectos</h5><ul><li><a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener">Royalties</a></li><li><a href="https://www.odiekc.shop/" target="_blank" rel="noopener">ODIEKC</a></li><li><a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener">FinanzApp</a></li><li><a href="https://flowindependiente.com/" target="_blank" rel="noopener">Flow Independiente</a></li></ul></div>
+      <div class="footer-col"><h5>Contacto</h5><ul><li><a href="https://wa.me/573026021232" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 VictorH4K · Colombia · Todos los derechos reservados.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/573026021232" target="_blank" rel="noopener" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/shared.js"></script>
+<script>
+function filterProjects(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) card.classList.remove('hidden');
+    else card.classList.add('hidden');
+  });
+}
+</script>
+</body>
+</html>

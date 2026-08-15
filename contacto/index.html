@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contacto — VictorH4K</title>
+<meta name="description" content="Contacta a VictorH4K — WhatsApp, Instagram y formulario de contacto directo. Respondemos en menos de 2 horas."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#050505"/>
+<link rel="canonical" href="https://victorh4k.com/contacto/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:site_name" content="VictorH4K"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/contacto/"/>
+<meta property="og:title" content="Contacto — VictorH4K"/>
+<meta property="og:description" content="Contacta a VictorH4K. Respondemos en menos de 2 horas."/>
+<meta property="og:image" content="https://victorh4k.com/images/logo-victorh4k.png"/>
+<meta property="og:locale" content="es_CO"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+.contact-layout { display:grid;grid-template-columns:1fr 1.3fr;gap:64px;align-items:start; }
+.contact-channels { display:flex;flex-direction:column;gap:12px;margin-top:32px; }
+.contact-link { display:flex;align-items:center;gap:16px;padding:20px;background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-md);color:var(--white);font-size:15px;font-weight:600;transition:border-color var(--dur-mid),transform var(--dur-mid); }
+.contact-link:hover { border-color:rgba(255,255,255,0.2);transform:translateX(4px); }
+.contact-link.wa:hover { border-color:rgba(37,211,102,0.4);color:var(--wa); }
+.contact-link.ig:hover { border-color:rgba(225,48,108,0.4);color:#e1306c; }
+.contact-link-icon { font-size:22px;width:26px;text-align:center;flex-shrink:0; }
+.contact-link-sub { font-size:12px;font-weight:400;color:var(--gray-3);margin-top:2px; }
+.contact-form-wrap { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(24px,4vw,44px); }
+.form-title { font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);margin-bottom:24px; }
+select.form-input { appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center; }
+/* Reviews section */
+.reviews-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:48px; }
+.review-card { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px; }
+.review-stars { color:#F0BC5A;font-size:13px;letter-spacing:2px; }
+.review-text { font-size:14px;color:var(--gray-2);line-height:1.75;flex:1; }
+.review-author { padding-top:14px;border-top:1px solid var(--border); }
+.review-name { font-size:13px;font-weight:700;color:var(--white); }
+.review-role { font-size:11px;color:var(--gray-3);margin-top:2px; }
+.review-form-wrap { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(24px,4vw,40px);max-width:600px;margin:0 auto; }
+.star-row { display:flex;gap:6px; }
+.star { font-size:28px;cursor:pointer;color:var(--gray-3);transition:color var(--dur-fast),transform var(--dur-fast); }
+.star:hover,.star.active { color:#F0BC5A;transform:scale(1.15); }
+.form-notice { font-size:12px;color:var(--gray-3);margin-bottom:16px; }
+.char-count { font-size:10px;color:var(--gray-3);text-align:right;margin-top:4px; }
+/* Admin */
+.adm-item { background:var(--black-soft);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px; }
+.adm-item-name { font-size:13px;font-weight:700;color:var(--white); }
+.adm-item-stars { color:#F0BC5A;font-size:12px;margin:4px 0; }
+.adm-item-text { font-size:12px;color:var(--gray-2);line-height:1.5; }
+.adm-item-date { font-size:10px;color:var(--gray-3);margin-top:4px; }
+.adm-actions { display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap; }
+.ab { padding:5px 12px;border-radius:var(--radius-sm);font-size:11px;font-weight:700;cursor:pointer;border:1px solid;transition:all var(--dur-fast); }
+.ab-ok { border-color:rgba(74,222,128,.3);color:#4ade80;background:rgba(74,222,128,.06); }
+.ab-ok:hover { background:rgba(74,222,128,.15); }
+.ab-no { border-color:rgba(196,0,0,.3);color:var(--red);background:rgba(196,0,0,.06); }
+.ab-no:hover { background:rgba(196,0,0,.15); }
+.ab-dl { border-color:rgba(196,0,0,.2);color:var(--red);background:transparent; }
+.ab-dl:hover { background:rgba(196,0,0,.1); }
+.adm-empty { text-align:center;padding:32px;color:var(--gray-3);font-size:13px; }
+.adm-tabs { display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap; }
+.adm-tab { padding:7px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--gray-3);font-size:12px;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:all var(--dur-fast); }
+.adm-tab.active { background:var(--red);border-color:var(--red);color:var(--white); }
+.adm-box { background:var(--graphite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;width:100%;max-width:800px;max-height:85vh;overflow-y:auto;position:relative; }
+.adm-close { position:absolute;top:16px;right:16px;font-size:18px;color:var(--gray-3);cursor:pointer;transition:color var(--dur-fast); }
+.adm-close:hover { color:var(--white); }
+#adm-modal { display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px; }
+#adm-modal.open { display:flex; }
+@media (max-width:900px) { .contact-layout{grid-template-columns:1fr;gap:40px;} }
+@media (max-width:768px) { .reviews-grid{grid-template-columns:1fr;} }
+@media (min-width:481px) and (max-width:768px) { .reviews-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+</div>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio"><img src="/assets/og-image.png" alt="VictorH4K" width="160" height="80" loading="eager"/></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/music/">Music</a></li>
+    <li><a href="/digital/">Digital</a></li>
+    <li><a href="/proyectos/">Proyectos</a></li>
+    <li><a href="/nosotros/">Nosotros</a></li>
+    <li><a href="/contacto/" class="active">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573026021232?text=Hola%2C+quiero+contactar+a+VictorH4K" target="_blank" rel="noopener" class="nav-cta">Hablemos</a>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+</nav>
+<nav id="mobile-menu" aria-label="Menú móvil">
+  <a href="/" onclick="closeMobileMenu()">Inicio</a>
+  <a href="/music/" onclick="closeMobileMenu()">Music</a>
+  <a href="/digital/" onclick="closeMobileMenu()">Digital</a>
+  <a href="/proyectos/" onclick="closeMobileMenu()">Proyectos</a>
+  <a href="/nosotros/" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="/contacto/" onclick="closeMobileMenu()">Contacto</a>
+  <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Hablemos</a>
+</nav>
+
+<main>
+<section class="page-hero" aria-labelledby="contacto-title">
+  <div class="page-hero-bg"></div><div class="page-hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <p class="label">Contacto</p>
+    <h1 class="heading-xl" id="contacto-title" style="margin-bottom:20px">¿Tienes un proyecto?</h1>
+    <div class="divider"></div>
+    <p class="body-lg" style="max-width:520px">Cuéntanos sobre tu proyecto. Respondemos en menos de 2 horas, de lunes a domingo.</p>
+  </div>
+</section>
+
+<section class="section-py" aria-labelledby="form-title">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="reveal">
+        <p class="label">Canales directos</p>
+        <h2 class="heading-md" id="form-title" style="margin-bottom:12px">Escríbenos directo</h2>
+        <p class="body-md">Disponible lunes a domingo.</p>
+        <div class="contact-channels">
+          <a href="https://wa.me/573026021232?text=Hola%2C+vi+victorh4k.com+y+me+gustaría+más+información" target="_blank" rel="noopener" class="contact-link wa">
+            <span class="contact-link-icon"><i class="fab fa-whatsapp"></i></span>
+            <div><div>WhatsApp</div><div class="contact-link-sub">+57 302 602 1232 · Respuesta inmediata</div></div>
+          </a>
+          <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="contact-link ig">
+            <span class="contact-link-icon"><i class="fab fa-instagram"></i></span>
+            <div><div>Instagram</div><div class="contact-link-sub">@victorh4k · DM abierto</div></div>
+          </a>
+          <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon"><i class="fab fa-youtube"></i></span>
+            <div><div>YouTube</div><div class="contact-link-sub">@VictorH4K</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <h3 class="form-title">Enviar mensaje</h3>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="ct-name">Nombre</label><input type="text" class="form-input" id="ct-name" placeholder="Tu nombre" autocomplete="name"/></div>
+          <div class="form-group"><label class="form-label" for="ct-phone">WhatsApp</label><input type="tel" class="form-input" id="ct-phone" placeholder="+57 300 000 0000" autocomplete="tel"/></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="ct-email">Email</label><input type="email" class="form-input" id="ct-email" placeholder="tu@email.com" autocomplete="email"/></div>
+        <div class="form-group">
+          <label class="form-label" for="ct-motivo">Motivo de contacto</label>
+          <select class="form-input" id="ct-motivo">
+            <option value="">Selecciona un motivo...</option>
+            <option value="Desarrollo Web">Desarrollo Web</option>
+            <option value="Automatización WhatsApp">Automatización WhatsApp</option>
+            <option value="Distribución Musical">Distribución Musical</option>
+            <option value="Producción Musical">Producción Musical</option>
+            <option value="Plataformas Streaming">Plataformas Streaming</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label" for="ct-msg">Mensaje</label><textarea class="form-textarea" id="ct-msg" rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea></div>
+        <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center" onclick="submitContact()"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIONES -->
+<section class="section-py" style="background:var(--black-soft)" aria-labelledby="opiniones-title">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:56px">
+      <p class="label" style="justify-content:center">Opiniones</p>
+      <h2 class="heading-lg" id="opiniones-title">Lo que dicen los clientes</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="reviews-grid" id="reviews-container" style="margin-bottom:48px"></div>
+    <div class="reviews-grid" id="reviews-static" style="margin-bottom:48px">
+      <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Victor desarrolló mi sitio en tiempo récord. Diseño impecable, funcional y el soporte es excelente."</p><div class="review-author"><div class="review-name">Carlos M.</div><div class="review-role">Emprendedor · Colombia</div></div></div>
+      <div class="review-card reveal reveal-delay-1"><div class="review-stars">★★★★★</div><p class="review-text">"La plataforma Royalties es increíble. Ahorro horas de trabajo cada mes con los reportes automáticos."</p><div class="review-author"><div class="review-name">María L.</div><div class="review-role">Productora Musical · México</div></div></div>
+      <div class="review-card reveal reveal-delay-2"><div class="review-stars">★★★★★</div><p class="review-text">"El bot de WhatsApp marcó una diferencia real en la atención a mis clientes. Muy recomendado."</p><div class="review-author"><div class="review-name">Luis H.</div><div class="review-role">Empresario · Argentina</div></div></div>
+    </div>
+    <div class="review-form-wrap reveal">
+      <h3 class="form-title" style="font-size:20px;margin-bottom:4px">Deja tu opinión</h3>
+      <p style="font-size:13px;color:var(--gray-3);margin-bottom:24px">Tu experiencia ayuda a otros. Revisada antes de publicarse.</p>
+      <div class="form-group"><label class="form-label" for="rv-name">Nombre</label><input type="text" class="form-input" id="rv-name" placeholder="Tu nombre" maxlength="50" autocomplete="name"/></div>
+      <div class="form-group">
+        <label class="form-label">Calificación</label>
+        <div class="star-row" id="star-row" role="radiogroup" aria-label="Calificación">
+          <span class="star" data-v="1" role="radio" aria-checked="false" tabindex="0" aria-label="1 estrella">★</span>
+          <span class="star" data-v="2" role="radio" aria-checked="false" tabindex="0" aria-label="2 estrellas">★</span>
+          <span class="star" data-v="3" role="radio" aria-checked="false" tabindex="0" aria-label="3 estrellas">★</span>
+          <span class="star" data-v="4" role="radio" aria-checked="false" tabindex="0" aria-label="4 estrellas">★</span>
+          <span class="star" data-v="5" role="radio" aria-checked="false" tabindex="0" aria-label="5 estrellas">★</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="rv-text">Comentario <span id="rv-count" style="color:var(--gray-3)">(0/400)</span></label>
+        <textarea class="form-textarea" id="rv-text" maxlength="400" placeholder="Cuéntanos tu experiencia..."></textarea>
+      </div>
+      <p class="form-notice"><i class="fas fa-shield-halved"></i> Tu opinión será revisada antes de publicarse.</p>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitReview()" id="rv-submit"><i class="fas fa-paper-plane"></i> Enviar opinión</button>
+      <p class="form-msg" id="rv-msg" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/"><img src="/assets/og-image.png" alt="VictorH4K" width="120" height="48" loading="lazy"/></a><p>Tecnología, música y soluciones digitales. Colombia.</p></div>
+      <div class="footer-col"><h5>Marca</h5><ul><li><a href="/music/">Music</a></li><li><a href="/digital/">Digital</a></li><li><a href="/nosotros/">Nosotros</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5>Proyectos</h5><ul><li><a href="https://www.royaltiesmusic.pro/" target="_blank" rel="noopener">Royalties</a></li><li><a href="https://www.odiekc.shop/" target="_blank" rel="noopener">ODIEKC</a></li><li><a href="https://finanzas.victorh4k.com/" target="_blank" rel="noopener">FinanzApp</a></li><li><a href="https://flowindependiente.com/" target="_blank" rel="noopener">Flow Independiente</a></li></ul></div>
+      <div class="footer-col"><h5>Contacto</h5><ul><li><a href="https://wa.me/573026021232" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 VictorH4K · Colombia · Todos los derechos reservados.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/573026021232" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/573026021232" target="_blank" rel="noopener" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+
+<div id="adm-modal" role="dialog" aria-modal="true" aria-label="Panel admin">
+  <div class="adm-box">
+    <button class="adm-close" onclick="document.getElementById('adm-modal').classList.remove('open')" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+    <h2 style="font-size:20px;font-weight:800;color:var(--white);margin-bottom:16px">Panel Admin</h2>
+    <div class="adm-tabs">
+      <button class="adm-tab active" onclick="admTab('pending',this)">Pendientes</button>
+      <button class="adm-tab" onclick="admTab('approved',this)">Aprobadas</button>
+      <button class="adm-tab" onclick="admTab('rejected',this)">Rechazadas</button>
+    </div>
+    <div id="adm-list"><div class="adm-empty">Cargando...</div></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/shared.js"></script>
+<script>
+/* ── STAR RATING ── */
+let selectedStar = 0;
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('mouseenter', () => {
+    const v = +star.dataset.v;
+    document.querySelectorAll('.star').forEach(s => s.classList.toggle('active', +s.dataset.v <= v));
+  });
+  star.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.star').forEach(s => s.classList.toggle('active', +s.dataset.v <= selectedStar));
+  });
+  star.addEventListener('click', () => {
+    selectedStar = +star.dataset.v;
+    document.querySelectorAll('.star').forEach(s => { s.classList.toggle('active', +s.dataset.v <= selectedStar); s.setAttribute('aria-checked', +s.dataset.v === selectedStar ? 'true' : 'false'); });
+  });
+  star.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); star.click(); } });
+});
+const rvText = document.getElementById('rv-text');
+if (rvText) rvText.addEventListener('input', () => { document.getElementById('rv-count').textContent = `(${rvText.value.length}/400)`; });
+
+/* ── LOAD REVIEWS ── */
+async function loadReviews() {
+  if (!sb) return;
+  try {
+    const { data } = await sb.from('reviews').select('*').eq('status','approved').order('created_at',{ascending:false}).limit(6);
+    if (!data || !data.length) return;
+    const container = document.getElementById('reviews-container');
+    const staticGrid = document.getElementById('reviews-static');
+    if (staticGrid) staticGrid.style.display = 'none';
+    data.forEach((r, i) => {
+      const card = document.createElement('div');
+      card.className = 'review-card reveal' + (i>0?' reveal-delay-'+Math.min(i,4):'');
+      card.innerHTML = `<div class="review-stars">${'★'.repeat(r.rating||5)}</div><p class="review-text">"${esc(r.text||r.comment||'')}"</p><div class="review-author"><div class="review-name">${esc(r.name)}</div><div class="review-role">${new Date(r.created_at).toLocaleDateString('es',{year:'numeric',month:'long'})}</div></div>`;
+      container.appendChild(card);
+      revealObs.observe(card);
+    });
+  } catch(e) {}
+}
+loadReviews();
+
+/* ── SUBMIT REVIEW ── */
+async function submitReview() {
+  const name = document.getElementById('rv-name').value.trim();
+  const text = document.getElementById('rv-text').value.trim();
+  const msg  = document.getElementById('rv-msg');
+  if (!name) { showMsg(msg,'err','Ingresa tu nombre.'); return; }
+  if (!selectedStar) { showMsg(msg,'err','Selecciona una calificación.'); return; }
+  if (text.length < 10) { showMsg(msg,'err','Escribe al menos 10 caracteres.'); return; }
+  const btn = document.getElementById('rv-submit');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+  try { if (sb) await sb.from('reviews').insert([{name,rating:selectedStar,text,status:'pending',featured:false,created_at:new Date().toISOString()}]); } catch(e) {}
+  showMsg(msg,'ok','✓ Gracias. Tu opinión será revisada y publicada pronto.');
+  document.getElementById('rv-name').value = '';
+  document.getElementById('rv-text').value = '';
+  document.getElementById('rv-count').textContent = '(0/400)';
+  selectedStar = 0;
+  document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar opinión';
+}
+</script>
+</body>
+</html>
