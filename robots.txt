@@ -10,4 +10,4 @@ Allow: /favicon-48x48.png
 Allow: /apple-touch-icon.png
 Allow: /sitemap.xml
 
-Sitemap: https://victorh4k.com/sitemap.xml
+Sitemap: https://www.victorh4k.com/sitemap.xml
