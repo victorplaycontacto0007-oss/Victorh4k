@@ -3,8 +3,8 @@
   "trailingSlash": true,
   "rewrites": [
     {
-      "source": "/radar-musical/:slug/",
-      "destination": "/radar-musical/articulo/index.html"
+      "source": "/radar-musical/:slug((?!articulo|categoria|index).*)/",
+      "destination": "/radar-musical/articulo/"
     }
   ],
   "redirects": [

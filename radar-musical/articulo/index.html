@@ -158,10 +158,16 @@ function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&
 
 // Obtener slug de la URL: /radar-musical/SLUG/ o ?slug=SLUG
 function getSlug() {
+  // Primero intentar query param (fallback)
+  const qs = new URLSearchParams(location.search).get('slug');
+  if (qs) return qs;
+  // Luego el pathname: /radar-musical/SLUG/
   const p = location.pathname.split('/').filter(Boolean);
-  // Formato: /radar-musical/SLUG/
-  if (p.length >= 2 && p[0] === 'radar-musical') return p[1];
-  return new URLSearchParams(location.search).get('slug');
+  // p[0] = 'radar-musical', p[1] = slug (si no es 'articulo' ni 'categoria')
+  if (p.length >= 2 && p[0] === 'radar-musical' && p[1] !== 'articulo' && p[1] !== 'categoria') {
+    return p[1];
+  }
+  return null;
 }
 
 async function loadArticle() {
