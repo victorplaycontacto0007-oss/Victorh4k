@@ -151,14 +151,16 @@ const MIME = {
 
 /* ─── Redirecciones 301 ───────────────────────────────────────────────── */
 const REDIRECTS = {
-  '/music/':      '/artistas/',
-  '/music':       '/artistas/',
-  '/digital/':    '/',
-  '/digital':     '/',
-  '/proyectos/':  '/lanzamientos/',
-  '/proyectos':   '/lanzamientos/',
-  '/nosotros/':   '/el-sello/',
-  '/nosotros':    '/el-sello/',
+  '/music/':        '/artistas/',
+  '/music':         '/artistas/',
+  '/digital/':      '/',
+  '/digital':       '/',
+  '/proyectos/':    '/artistas/',
+  '/proyectos':     '/artistas/',
+  '/lanzamientos/': '/artistas/',
+  '/lanzamientos':  '/artistas/',
+  '/nosotros/':     '/el-sello/',
+  '/nosotros':      '/el-sello/',
 };
 
 /* ─── Cabeceras de seguridad ─────────────────────────────────────────── */

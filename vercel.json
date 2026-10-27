@@ -3,14 +3,16 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
-    { "source": "/music",      "destination": "/artistas/",     "statusCode": 301 },
-    { "source": "/music/",     "destination": "/artistas/",     "statusCode": 301 },
-    { "source": "/digital",    "destination": "/",              "statusCode": 301 },
-    { "source": "/digital/",   "destination": "/",              "statusCode": 301 },
-    { "source": "/proyectos",  "destination": "/lanzamientos/", "statusCode": 301 },
-    { "source": "/proyectos/", "destination": "/lanzamientos/", "statusCode": 301 },
-    { "source": "/nosotros",   "destination": "/el-sello/",     "statusCode": 301 },
-    { "source": "/nosotros/",  "destination": "/el-sello/",     "statusCode": 301 }
+    { "source": "/music",        "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/music/",       "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/digital",      "destination": "/",            "statusCode": 301 },
+    { "source": "/digital/",     "destination": "/",            "statusCode": 301 },
+    { "source": "/proyectos",    "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/proyectos/",   "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/lanzamientos", "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/lanzamientos/","destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/nosotros",     "destination": "/el-sello/",   "statusCode": 301 },
+    { "source": "/nosotros/",    "destination": "/el-sello/",   "statusCode": 301 }
   ],
   "headers": [
     {
