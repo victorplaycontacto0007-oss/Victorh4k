@@ -236,116 +236,249 @@
 </div>
 
 <!-- SECCIÓN DISTRIBUCIÓN / PLATAFORMAS -->
-<section class="section-py" aria-labelledby="dist-h2" style="background:var(--white)">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+<section id="distribucion" aria-labelledby="dist-h2" style="background:var(--white);padding:clamp(64px,8vw,112px) 0;overflow:hidden;position:relative">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="dist-layout">
 
-      <!-- TEXTO IZQUIERDO -->
-      <div class="reveal">
-        <p class="label">Distribución global</p>
-        <h2 class="heading-lg" id="dist-h2" style="margin-bottom:16px">
-          Tu música,<br/>en todas partes.
-        </h2>
-        <div class="divider"></div>
-        <p class="body-lg" style="margin-bottom:16px">
-          Distribuimos tu música a Spotify, Apple Music, Amazon Music, TIDAL, Deezer, YouTube Music y más de 150 plataformas y tiendas digitales en todo el mundo.
-        </p>
-        <p class="body-md">
-          A través de la infraestructura del sello, tus lanzamientos llegan a oyentes en todos los continentes desde el primer día de publicación.
-        </p>
+      <!-- IZQUIERDA: texto + globo fondo -->
+      <div class="dist-left reveal">
+        <!-- Globo terráqueo animado SVG de puntos (fondo) -->
+        <div class="globe-wrap" aria-hidden="true">
+          <canvas id="globe-canvas" width="420" height="420"></canvas>
+        </div>
+        <div class="dist-text">
+          <p class="label">— Distribución global</p>
+          <h2 id="dist-h2" class="dist-title">
+            Tu música,<br/>en todas<br/>partes.
+          </h2>
+          <div class="divider" style="margin:20px 0"></div>
+          <p style="font-size:15px;color:#444;line-height:1.75;margin-bottom:14px">
+            Distribuimos tu música a Spotify, Apple Music, Amazon Music, TIDAL, Deezer, YouTube Music y más de 150 plataformas y tiendas digitales en todo el mundo.
+          </p>
+          <p style="font-size:13px;color:#888;line-height:1.7">
+            A través de la infraestructura del sello, tus lanzamientos llegan a oyentes en todos los continentes desde el primer día de publicación.
+          </p>
+        </div>
       </div>
 
-      <!-- GRID DE LOGOS DERECHO -->
-      <div class="reveal reveal-delay-2">
-        <div class="plat-logos-grid" aria-label="Plataformas de distribución">
+      <!-- DERECHA: grid de logos -->
+      <div class="dist-right">
+        <p class="label" style="justify-content:flex-end;margin-bottom:16px;color:#888;font-size:10px">— Música en las principales plataformas</p>
+        <div class="plat-grid" id="plat-grid">
 
-          <!-- Fila 1 -->
-          <a href="https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Spotify" style="background:#000">
-            <i class="fab fa-spotify" style="color:#1DB954;font-size:28px"></i>
-          </a>
-          <a href="https://music.apple.com/us/artist/jack-holy/1498767978" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Apple Music" style="background:linear-gradient(135deg,#fb5c74,#fc3c44)">
-            <i class="fab fa-apple" style="color:#fff;font-size:28px"></i>
-          </a>
-          <a href="https://www.tiktok.com/music" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en TikTok" style="background:#000">
-            <i class="fab fa-tiktok" style="color:#fff;font-size:24px"></i>
+          <!-- Spotify -->
+          <a href="https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="Escuchar en Spotify" style="background:#000;animation-delay:0s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            <span class="ptile-name">Spotify</span>
           </a>
 
-          <!-- Fila 2 -->
-          <a href="https://www.pandora.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Pandora" style="background:#3668ff">
-            <span style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-.02em">pandora</span>
-          </a>
-          <a href="https://music.amazon.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Amazon Music" style="background:#1a9cd8">
-            <i class="fab fa-amazon" style="color:#fff;font-size:24px"></i>
-          </a>
-          <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="VictorH4K en Instagram" style="background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4)">
-            <i class="fab fa-instagram" style="color:#fff;font-size:26px"></i>
-          </a>
-          <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="VictorH4K en YouTube" style="background:#fff;border:1px solid #e5e5e5">
-            <i class="fab fa-youtube" style="color:#FF0000;font-size:28px"></i>
+          <!-- Apple Music -->
+          <a href="https://music.apple.com" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="Apple Music" style="background:linear-gradient(135deg,#fc5c7d,#fc3c44);animation-delay:.12s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#fff"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.048-2.31-2.18-3.043a6.303 6.303 0 00-1.862-.87c-.43-.119-.87-.197-1.308-.237-.07-.007-.14-.014-.209-.015H5.765c-.102.007-.205.01-.307.023C4.539.911 3.553 1.44 2.86 2.372a6.116 6.116 0 00-1.025 2.413c-.113.516-.136 1.04-.144 1.566-.004.18-.004 18.162-.004 18.162l3.562-3.567V6.3c0-.57.1-1.11.326-1.63.284-.663.77-1.08 1.488-1.208.165-.03.333-.04.5-.04h10.855c.166 0 .333.01.5.04.717.128 1.204.545 1.488 1.208.225.52.327 1.06.327 1.63v12.56c0 .57-.102 1.108-.327 1.63-.284.663-.77 1.08-1.488 1.207-.166.03-.334.04-.5.04H9.137l-3.56 3.567h12.17c.068 0 .138-.007.207-.014.438-.04.878-.118 1.308-.237a6.306 6.306 0 001.862-.87c1.132-.734 1.862-1.733 2.18-3.043a9.23 9.23 0 00.24-2.19c.007-.075.01-.15.01-.226V6.35c0-.076-.003-.15-.01-.226zM9.365 16.6l1.79-1.79 1.79 1.79-1.79 1.79-1.79-1.79z"/></svg>
+            <span class="ptile-name">Apple Music</span>
           </a>
 
-          <!-- Fila 3 -->
-          <a href="https://tidal.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="TIDAL" style="background:#000">
-            <span style="font-size:13px;font-weight:800;color:#fff;letter-spacing:.04em">TIDAL</span>
-          </a>
-          <a href="https://www.iheart.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="iHeartRadio" style="background:#C6002B">
-            <i class="fas fa-heart" style="color:#fff;font-size:22px"></i>
-          </a>
-          <a href="https://www.deezer.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Deezer" style="background:#A238FF">
-            <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:.02em">deezer</span>
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="TikTok" style="background:#000;animation-delay:.24s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#fff"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.79 1.53V6.79a4.84 4.84 0 01-1.02-.1z"/></svg>
+            <span class="ptile-name">TikTok</span>
           </a>
 
-          <!-- +otras -->
-          <div class="plat-logo-tile plat-mas" style="border:1.5px dashed var(--gray-border);background:transparent;color:var(--gray-dark)">
-            <span style="font-size:12px;font-weight:700">+ otras</span>
+          <!-- Pandora -->
+          <a href="https://www.pandora.com" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="Pandora" style="background:#3668FF;animation-delay:.06s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#fff"><path d="M14.916.012C9.266-.222 4.178 4.005 3.92 9.656l-.004.202v14.142h4.071v-5.567c.754.299 1.572.462 2.428.462 4.157 0 7.52-3.366 7.52-7.52C17.934 8.059 17.934.246 14.916.012zm-4.5 13.294c-1.96 0-3.55-1.589-3.55-3.55 0-1.96 1.59-3.549 3.55-3.549 1.961 0 3.55 1.59 3.55 3.55 0 1.96-1.589 3.549-3.55 3.549z"/></svg>
+            <span class="ptile-name">pandora</span>
+          </a>
+
+          <!-- Amazon Music -->
+          <a href="https://music.amazon.com" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="Amazon Music" style="background:#00A8E0;animation-delay:.18s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#fff"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.699-3.182v.685zm3.186 7.705a.66.66 0 01-.76.074c-1.067-.886-1.258-1.299-1.838-2.146-1.759 1.793-3.002 2.329-5.283 2.329-2.697 0-4.801-1.665-4.801-4.997 0-2.604 1.41-4.373 3.419-5.238 1.74-.764 4.166-.9 6.025-1.11v-.412c0-.756.059-1.649-.387-2.304-.385-.583-1.127-.825-1.778-.825-1.208 0-2.282.62-2.545 1.904-.054.285-.261.567-.549.58l-3.077-.332c-.26-.059-.547-.267-.473-.663C5.857 2.016 8.867 1 11.567 1c1.387 0 3.199.369 4.294 1.42 1.388 1.296 1.255 3.023 1.255 4.904v4.445c0 1.336.556 1.922 1.078 2.644.185.259.225.571-.009.764l-1.041.618z M20.516 18.33c.22.165.254.446.066.638-.432.384-1.199.874-1.771 1.195-1.553.906-3.428 1.449-4.93 1.449-2.61 0-5.159-.969-7.024-2.54-.187-.175-.063-.403.197-.327 2.1.699 4.309 1.032 6.41 1.032 2.093 0 4.414-.438 6.438-1.33.137-.063.257-.162.4-.064l.214-.053z"/></svg>
+            <span class="ptile-name">amazon music</span>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="Instagram" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);animation-delay:.30s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span class="ptile-name">Instagram</span>
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="YouTube" style="background:#fff;border:1px solid #e5e5e5;animation-delay:.09s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#FF0000"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            <span class="ptile-name">YouTube</span>
+          </a>
+
+          <!-- TIDAL -->
+          <a href="https://tidal.com" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="TIDAL" style="background:#000;animation-delay:.21s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#fff"><path d="M12.012 3.992L8.008 7.996 4.004 3.992 0 7.996l4.004 4.004 4.004-4.004 4.004 4.004 4.004-4.004zM8.008 16.004l4.004-4.004 4.004 4.004L20.02 12l-4.004-4.004-4.004 4.004L8.008 7.996 4.004 12z"/></svg>
+            <span class="ptile-name">TIDAL</span>
+          </a>
+
+          <!-- Deezer -->
+          <a href="https://www.deezer.com" target="_blank" rel="noopener noreferrer" class="ptile ptile-float" aria-label="Deezer" style="background:#A238FF;animation-delay:.33s">
+            <svg viewBox="0 0 24 24" class="ptile-svg" fill="#fff"><path d="M18.81 4.16v3.03H24V4.16h-5.19zM6.27 8.38v3.03h5.19V8.38H6.27zm6.27 0v3.03h5.19V8.38h-5.19zm6.27 0v3.03H24V8.38h-5.19zM6.27 12.6v3.04h5.19V12.6H6.27zm6.27 0v3.04h5.19V12.6h-5.19zm6.27 0v3.04H24V12.6h-5.19zM0 16.81v3.03h5.19v-3.03H0zm6.27 0v3.03h5.19v-3.03H6.27zm6.27 0v3.03h5.19v-3.03h-5.19zm6.27 0v3.03H24v-3.03h-5.19z"/></svg>
+            <span class="ptile-name">DEEZER</span>
+          </a>
+
+          <!-- +150 -->
+          <div class="ptile ptile-mas ptile-float" style="animation-delay:.15s">
+            <span class="ptile-plus">+</span>
+            <span class="ptile-num">150</span>
+            <span class="ptile-sub">plataformas</span>
           </div>
 
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <style>
-.plat-logos-grid {
+/* ── DISTRIBUCIÓN LAYOUT ── */
+.dist-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 48px;
+  align-items: center;
+}
+.dist-left { position: relative; }
+
+/* ── GLOBO ── */
+.globe-wrap {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-60%, -50%);
+  width: 420px; height: 420px;
+  opacity: 0.13;
+  pointer-events: none;
+  z-index: 0;
+}
+#globe-canvas { display: block; }
+.dist-text { position: relative; z-index: 1; }
+.dist-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 0;
+}
+
+/* ── GRID LOGOS ── */
+.plat-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-.plat-logo-tile {
+.ptile {
   aspect-ratio: 1;
-  border-radius: 16px;
+  border-radius: 18px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   text-decoration: none;
-  transition: transform .18s, box-shadow .18s;
+  position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
-.plat-logo-tile:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+.ptile-svg { width: 36px; height: 36px; flex-shrink: 0; }
+.ptile-name {
+  font-size: 10px; font-weight: 700;
+  color: #fff; letter-spacing: .04em;
+  text-transform: uppercase; line-height: 1;
 }
-.plat-mas {
+/* YouTube tiene fondo blanco → texto oscuro */
+a[aria-label="YouTube"] .ptile-name { color: #111; }
+
+/* Animación float suave */
+@keyframes floatTile {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+.ptile-float {
+  animation: floatTile 4s ease-in-out infinite;
+}
+.ptile-float:hover {
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+/* Tile +150 */
+.ptile-mas {
+  background: var(--white);
+  border: 1.5px solid var(--gray-border);
   cursor: default;
-  border-radius: 16px !important;
+  flex-direction: column;
 }
-.plat-mas:hover { transform: none; box-shadow: none; }
+.ptile-mas:hover { box-shadow: none; transform: none; }
+.ptile-plus { font-size: 20px; font-weight: 800; color: var(--red); line-height: 1; }
+.ptile-num  { font-size: 28px; font-weight: 800; color: var(--black); line-height: 1; }
+.ptile-sub  { font-size: 10px; color: var(--gray-dark); font-weight: 600; }
 
 @media (max-width: 860px) {
-  #dist-h2 ~ * .plat-logos-grid,
-  .plat-logos-grid { grid-template-columns: repeat(4,1fr); }
-  #dist-h2 { font-size: clamp(24px,4vw,40px); }
+  .dist-layout { grid-template-columns: 1fr; gap: 36px; }
+  .globe-wrap { width: 300px; height: 300px; opacity: 0.08; transform: translate(-50%, -50%); }
+  .plat-grid { grid-template-columns: repeat(4, 1fr); }
 }
-@media (max-width: 680px) {
-  .section-py > .container > div[style*="grid"] {
-    grid-template-columns: 1fr !important;
-    gap: 36px !important;
-  }
-  .plat-logos-grid { grid-template-columns: repeat(4,1fr); }
+@media (max-width: 480px) {
+  .plat-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ptile-svg { width: 28px; height: 28px; }
+  .ptile-name { font-size: 8px; }
 }
 </style>
+
+<!-- Globo de puntos animado con canvas -->
+<script>
+(function() {
+  const canvas = document.getElementById('globe-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = 420, H = 420, R = 180;
+  let angle = 0;
+
+  function dot(lat, lon, a) {
+    const phi = (90 - lat) * Math.PI / 180;
+    const theta = (lon + angle) * Math.PI / 180;
+    const x = R * Math.sin(phi) * Math.cos(theta);
+    const y = R * Math.cos(phi);
+    const z = R * Math.sin(phi) * Math.sin(theta);
+    if (z < 0) return; // solo cara visible
+    const opacity = 0.3 + (z / R) * 0.7;
+    const size = 1.2 + (z / R) * 1.2;
+    ctx.beginPath();
+    ctx.arc(W/2 + x, H/2 - y, size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(213,43,53,${opacity * a})`;
+    ctx.fill();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let lat = -80; lat <= 80; lat += 12) {
+      for (let lon = -180; lon < 180; lon += 12) {
+        dot(lat, lon, 1);
+      }
+    }
+    angle += 0.18;
+    requestAnimationFrame(draw);
+  }
+
+  // Pausa si no está visible
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) draw();
+  }, { threshold: 0.1 });
+  obs.observe(canvas);
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Renderizar estático
+    draw();
+    return;
+  }
+})();
+</script>
 
 <!-- CTA FINAL -->
 <section class="cta-section" aria-labelledby="cta-h2">
