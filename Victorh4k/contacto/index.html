@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contacto | VictorH4K</title>
+<meta name="description" content="Contacta al subsello musical VictorH4K. Consultas sobre distribución, colaboraciones y lanzamientos. Respondemos en menos de 2 horas."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://victorh4k.com/contacto/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/contacto/"/>
+<meta property="og:title" content="Contacto | VictorH4K"/>
+<meta property="og:image" content="https://victorh4k.com/images/og-image.png"/>
+<meta property="og:locale" content="es_CO"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://victorh4k.com/images/og-image.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+.contact-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:56px; align-items:start; }
+.contact-channels { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.contact-link {
+  display:flex; align-items:center; gap:14px; padding:16px 18px;
+  background:var(--white); border:1px solid var(--gray-border); border-radius:var(--r-md);
+  color:var(--black); font-size:14px; font-weight:600;
+  box-shadow: var(--shadow-sm);
+  transition:border-color var(--dur-mid), transform var(--dur-mid), box-shadow var(--dur-mid);
+}
+.contact-link:hover { border-color:var(--gray-dark); transform:translateX(4px); box-shadow:var(--shadow-md); }
+.contact-link.wa:hover { border-color:#25D366; color:#15803d; }
+.contact-link.ig:hover { border-color:#e1306c; color:#e1306c; }
+.contact-link-icon { font-size:20px; width:22px; text-align:center; flex-shrink:0; }
+.contact-link-sub { font-size:11px; font-weight:400; color:#aaa; margin-top:2px; }
+.contact-form-wrap {
+  background:var(--white); border:1px solid var(--gray-border);
+  border-radius:var(--r-lg); padding:clamp(24px,4vw,40px);
+  box-shadow:var(--shadow-md);
+}
+.form-title { font-family:var(--font-display); font-size:20px; font-weight:800; color:var(--black); margin-bottom:20px; }
+.reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:40px; }
+.review-form-wrap {
+  background:var(--white); border:1px solid var(--gray-border);
+  border-radius:var(--r-lg); padding:clamp(24px,4vw,36px);
+  max-width:540px; margin:0 auto; box-shadow:var(--shadow-sm);
+}
+.star-row { display:flex; gap:6px; }
+.star { font-size:26px; cursor:pointer; color:#ddd; transition:color var(--dur-fast),transform var(--dur-fast); }
+.star:hover, .star.active { color:#D97706; transform:scale(1.15); }
+.form-notice { font-size:12px; color:#aaa; margin-bottom:12px; }
+@media (max-width:900px) { .contact-layout{grid-template-columns:1fr;gap:36px;} }
+@media (max-width:700px) { .reviews-grid{grid-template-columns:1fr;} }
+@media (min-width:481px) and (max-width:700px) { .reviews-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio">
+    <img src="/images/logo-victorh4k.png" alt="VictorH4K" width="104" height="52" loading="eager"/>
+  </a>
+  <a href="/admin/" class="nav-cta">Iniciar</a>
+</nav>
+
+<main>
+<section class="page-hero" aria-labelledby="contacto-h1">
+  <div class="page-hero-img" style="background-image:url('/images/studio/audio-cables.webp')" aria-hidden="true"></div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    <p class="label">Contacto</p>
+    <h1 class="heading-xl" id="contacto-h1" style="margin-bottom:16px">¿Hablamos?</h1>
+    <div class="divider"></div>
+    <p class="body-lg" style="max-width:480px">
+      Consultas sobre distribución, colaboraciones y lanzamientos. Respondemos en menos de 2 horas.
+    </p>
+  </div>
+</section>
+
+<section class="section-py" aria-labelledby="form-h2">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="reveal">
+        <p class="label">Canales directos</p>
+        <h2 class="heading-md" id="form-h2" style="margin-bottom:10px">Escríbenos directo</h2>
+        <p class="body-md">Disponible lunes a domingo.</p>
+        <div class="contact-channels">
+          <a href="https://wa.me/573026021232?text=Hola%2C+vi+victorh4k.com" target="_blank" rel="noopener noreferrer" class="contact-link wa">
+            <span class="contact-link-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
+            <div><div>WhatsApp</div><div class="contact-link-sub">+57 302 602 1232 · Respuesta inmediata</div></div>
+          </a>
+          <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener noreferrer" class="contact-link ig">
+            <span class="contact-link-icon"><i class="fab fa-instagram" aria-hidden="true"></i></span>
+            <div><div>Instagram</div><div class="contact-link-sub">@victorh4k · DM abierto</div></div>
+          </a>
+          <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-link-icon"><i class="fab fa-youtube" aria-hidden="true"></i></span>
+            <div><div>YouTube</div><div class="contact-link-sub">@VictorH4K</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <h3 class="form-title">Enviar mensaje</h3>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="ct-name">Nombre</label><input type="text" class="form-input" id="ct-name" placeholder="Tu nombre" autocomplete="name"/></div>
+          <div class="form-group"><label class="form-label" for="ct-phone">WhatsApp</label><input type="tel" class="form-input" id="ct-phone" placeholder="+57 300 000 0000" autocomplete="tel"/></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="ct-email">Email</label><input type="email" class="form-input" id="ct-email" placeholder="tu@email.com" autocomplete="email"/></div>
+        <div class="form-group">
+          <label class="form-label" for="ct-motivo">Motivo</label>
+          <select class="form-input" id="ct-motivo">
+            <option value="">Selecciona...</option>
+            <option value="Distribución Musical">Distribución Musical</option>
+            <option value="Producción Musical">Producción Musical</option>
+            <option value="Colaboración">Colaboración</option>
+            <option value="Prensa / Media">Prensa / Media</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label" for="ct-msg">Mensaje</label><textarea class="form-textarea" id="ct-msg" rows="4" placeholder="Cuéntanos sobre tu proyecto musical..."></textarea></div>
+        <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center" onclick="submitContact()"><i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-py section-bg" aria-labelledby="opiniones-h2">
+  <div class="container">
+    <div class="reveal text-center" style="margin-bottom:44px">
+      <p class="label" style="justify-content:center">Opiniones</p>
+      <h2 class="heading-lg" id="opiniones-h2">Lo que dicen los clientes</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="reviews-grid" id="reviews-container" style="margin-bottom:40px"></div>
+    <div class="reviews-grid" id="reviews-static" style="margin-bottom:40px">
+      <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">"Victor desarrolló mi lanzamiento con un nivel de detalle que no esperaba. El resultado sonó increíble en todas las plataformas."</p><div class="review-author"><div class="review-name">Carlos M.</div><div class="review-role">Artista · Colombia</div></div></div>
+      <div class="review-card reveal reveal-delay-1"><div class="review-stars">★★★★★</div><p class="review-text">"La distribución llegó a tiempo a todas las plataformas. Analytics claros y gestión transparente de royalties."</p><div class="review-author"><div class="review-name">María L.</div><div class="review-role">Productora Musical · México</div></div></div>
+      <div class="review-card reveal reveal-delay-2"><div class="review-stars">★★★★★</div><p class="review-text">"El acompañamiento artístico marcó la diferencia. Mi música llegó a más oyentes que nunca."</p><div class="review-author"><div class="review-name">Luis H.</div><div class="review-role">Artista · Argentina</div></div></div>
+    </div>
+    <div class="review-form-wrap reveal">
+      <h3 class="form-title" style="font-size:18px;margin-bottom:4px">Deja tu opinión</h3>
+      <p style="font-size:13px;color:#aaa;margin-bottom:20px">Tu experiencia ayuda a otros. Revisada antes de publicarse.</p>
+      <div class="form-group"><label class="form-label" for="rv-name">Nombre</label><input type="text" class="form-input" id="rv-name" placeholder="Tu nombre" maxlength="50" autocomplete="name"/></div>
+      <div class="form-group">
+        <label class="form-label">Calificación</label>
+        <div class="star-row" id="star-row" role="radiogroup" aria-label="Calificación">
+          <span class="star" data-v="1" role="radio" aria-checked="false" tabindex="0" aria-label="1 estrella">★</span>
+          <span class="star" data-v="2" role="radio" aria-checked="false" tabindex="0" aria-label="2 estrellas">★</span>
+          <span class="star" data-v="3" role="radio" aria-checked="false" tabindex="0" aria-label="3 estrellas">★</span>
+          <span class="star" data-v="4" role="radio" aria-checked="false" tabindex="0" aria-label="4 estrellas">★</span>
+          <span class="star" data-v="5" role="radio" aria-checked="false" tabindex="0" aria-label="5 estrellas">★</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="rv-text">Comentario <span id="rv-count" style="color:#aaa">(0/400)</span></label>
+        <textarea class="form-textarea" id="rv-text" maxlength="400" placeholder="Cuéntanos tu experiencia..."></textarea>
+      </div>
+      <p class="form-notice"><i class="fas fa-shield-halved" aria-hidden="true"></i> Tu opinión será revisada antes de publicarse.</p>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitReview()" id="rv-submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar opinión</button>
+      <p class="form-msg" id="rv-msg" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-legal">
+    <a href="/politica-de-privacidad/">Política de privacidad</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/politica-de-cookies/">Política de cookies</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/terminos/">Términos y condiciones de uso</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/acuerdo-de-distribucion/">Acuerdo de distribución</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/mapa-del-sitio/">Mapa del sitio</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/573026021232" target="_blank" rel="noopener noreferrer" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+
+<div id="adm-modal" role="dialog" aria-modal="true" aria-label="Panel admin">
+  <div class="adm-box">
+    <button class="adm-close" onclick="document.getElementById('adm-modal').classList.remove('open')" aria-label="Cerrar"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <h2 style="font-size:18px;font-weight:800;color:var(--black);margin-bottom:14px">Panel Admin</h2>
+    <div class="adm-tabs">
+      <button class="adm-tab active" onclick="admTab('pending',this)">Pendientes</button>
+      <button class="adm-tab" onclick="admTab('approved',this)">Aprobadas</button>
+      <button class="adm-tab" onclick="admTab('rejected',this)">Rechazadas</button>
+    </div>
+    <div id="adm-list"><div class="adm-empty">Cargando...</div></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/shared.js"></script>
+<script>
+let selectedStar = 0;
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('mouseenter', () => {
+    const v = +star.dataset.v;
+    document.querySelectorAll('.star').forEach(s => s.classList.toggle('active', +s.dataset.v <= v));
+  });
+  star.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.star').forEach(s => s.classList.toggle('active', +s.dataset.v <= selectedStar));
+  });
+  star.addEventListener('click', () => {
+    selectedStar = +star.dataset.v;
+    document.querySelectorAll('.star').forEach(s => {
+      s.classList.toggle('active', +s.dataset.v <= selectedStar);
+      s.setAttribute('aria-checked', +s.dataset.v === selectedStar ? 'true' : 'false');
+    });
+  });
+  star.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); star.click(); } });
+});
+const rvText = document.getElementById('rv-text');
+if (rvText) rvText.addEventListener('input', () => { document.getElementById('rv-count').textContent = `(${rvText.value.length}/400)`; });
+async function loadReviews() {
+  if (!sb) return;
+  try {
+    const { data } = await sb.from('reviews').select('*').eq('status','approved').order('created_at',{ascending:false}).limit(6);
+    if (!data || !data.length) return;
+    const container = document.getElementById('reviews-container');
+    const staticGrid = document.getElementById('reviews-static');
+    if (staticGrid) staticGrid.style.display = 'none';
+    data.forEach((r,i) => {
+      const card = document.createElement('div');
+      card.className = 'review-card reveal'+(i>0?' reveal-delay-'+Math.min(i,4):'');
+      card.innerHTML = `<div class="review-stars">${'★'.repeat(Math.min(r.rating||5,5))}</div><p class="review-text">"${esc(r.text||r.comment||'')}"</p><div class="review-author"><div class="review-name">${esc(r.name)}</div><div class="review-role">${new Date(r.created_at).toLocaleDateString('es',{year:'numeric',month:'long'})}</div></div>`;
+      container.appendChild(card); revealObs.observe(card);
+    });
+  } catch(e){}
+}
+loadReviews();
+async function submitReview() {
+  const name = document.getElementById('rv-name').value.trim();
+  const text = document.getElementById('rv-text').value.trim();
+  const msg  = document.getElementById('rv-msg');
+  if (!name) { showMsg(msg,'err','Ingresa tu nombre.'); return; }
+  if (!selectedStar) { showMsg(msg,'err','Selecciona una calificación.'); return; }
+  if (text.length < 10) { showMsg(msg,'err','Escribe al menos 10 caracteres.'); return; }
+  const btn = document.getElementById('rv-submit');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+  try { if (sb) await sb.from('reviews').insert([{name,rating:selectedStar,text,status:'pending',featured:false,created_at:new Date().toISOString()}]); } catch(e){}
+  showMsg(msg,'ok','✓ Gracias. Tu opinión será revisada y publicada pronto.');
+  document.getElementById('rv-name').value='';
+  document.getElementById('rv-text').value='';
+  document.getElementById('rv-count').textContent='(0/400)';
+  selectedStar=0; document.querySelectorAll('.star').forEach(s=>s.classList.remove('active'));
+  btn.disabled=false; btn.innerHTML='<i class="fas fa-paper-plane"></i> Enviar opinión';
+}
+</script>
+</body>
+</html>

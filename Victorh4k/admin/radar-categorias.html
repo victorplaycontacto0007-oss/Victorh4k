@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Categorías Radar — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title">Categorías Radar Musical</span>
+      </div>
+    </header>
+    <main class="a-content">
+      <div id="a-toast"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div class="a-card">
+          <div class="a-card-title"><span><i class="fas fa-tag"></i> Categorías existentes</span></div>
+          <div id="cats-list"><div class="a-empty"><span class="a-spinner"></span></div></div>
+        </div>
+        <div class="a-card">
+          <div class="a-card-title"><span><i class="fas fa-plus"></i> <span id="cat-form-title">Nueva categoría</span></span></div>
+          <div class="a-form-group"><label class="a-form-label" for="cat-name">Nombre</label><input type="text" class="a-input" id="cat-name" placeholder="Nombre de la categoría"/></div>
+          <div class="a-form-group"><label class="a-form-label" for="cat-slug">Slug</label><input type="text" class="a-input" id="cat-slug" placeholder="nombre-categoria"/></div>
+          <div class="a-form-group"><label class="a-form-label" for="cat-desc">Descripción</label><textarea class="a-textarea" id="cat-desc" rows="2"></textarea></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn-a btn-a-primary" id="cat-save-btn" onclick="saveCat()"><i class="fas fa-save"></i> Guardar</button>
+            <button class="btn-a btn-a-secondary" id="cat-cancel-btn" onclick="resetCatForm()" style="display:none">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+let editCatId = null;
+(async () => {
+  const auth = await requireAuth(); if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('categorias');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+  document.getElementById('cat-name').addEventListener('input', function() {
+    if (!editCatId) document.getElementById('cat-slug').value = makeSlug(this.value);
+  });
+  loadCats();
+})();
+
+async function loadCats() {
+  const { data } = await sb.from('radar_categories').select('*, radar_articles(id)').order('sort_order');
+  const list = document.getElementById('cats-list');
+  if (!data?.length) { list.innerHTML = '<div class="a-empty">Sin categorías</div>'; return; }
+  list.innerHTML = data.map(c => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e5e5e5">
+      <div>
+        <strong style="font-size:13px">${escHtml(c.name)}</strong>
+        <div style="font-size:11px;color:#aaa">/radar-musical/categoria/${escHtml(c.slug)} · ${c.radar_articles?.length||0} artículos</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn-a btn-a-secondary btn-a-sm" onclick='editCat(${JSON.stringify(c)})'>Editar</button>
+        <button class="btn-a btn-a-danger btn-a-sm" onclick="deleteCat('${escHtml(c.id)}')"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+window.editCat = function(c) {
+  editCatId = c.id;
+  document.getElementById('cat-name').value = c.name || '';
+  document.getElementById('cat-slug').value = c.slug || '';
+  document.getElementById('cat-desc').value = c.description || '';
+  document.getElementById('cat-form-title').textContent = 'Editar categoría';
+  document.getElementById('cat-cancel-btn').style.display = 'inline-flex';
+};
+
+function resetCatForm() {
+  editCatId = null;
+  document.getElementById('cat-name').value = '';
+  document.getElementById('cat-slug').value = '';
+  document.getElementById('cat-desc').value = '';
+  document.getElementById('cat-form-title').textContent = 'Nueva categoría';
+  document.getElementById('cat-cancel-btn').style.display = 'none';
+}
+
+async function saveCat() {
+  const name = document.getElementById('cat-name').value.trim();
+  if (!name) { toast('El nombre es obligatorio', 'error'); return; }
+  const payload = { name, slug: document.getElementById('cat-slug').value.trim() || makeSlug(name), description: document.getElementById('cat-desc').value.trim() || null };
+  const { error } = editCatId
+    ? await sb.from('radar_categories').update(payload).eq('id', editCatId)
+    : await sb.from('radar_categories').insert(payload);
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  toast(editCatId ? 'Categoría actualizada' : 'Categoría creada');
+  resetCatForm(); loadCats();
+}
+
+async function deleteCat(id) {
+  if (!confirm('¿Eliminar esta categoría?')) return;
+  const { error } = await sb.from('radar_categories').delete().eq('id', id);
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  toast('Categoría eliminada'); loadCats();
+}
+window.saveCat = saveCat; window.deleteCat = deleteCat;
+</script>
+</body>
+</html>

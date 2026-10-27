@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Artistas — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title" id="page-title">Artistas</span>
+      </div>
+      <div class="a-topbar-right">
+        <button class="btn-a btn-a-primary" id="btn-new"><i class="fas fa-plus"></i> Nuevo artista</button>
+      </div>
+    </header>
+
+    <main class="a-content">
+      <div id="a-toast"></div>
+
+      <!-- Lista de artistas -->
+      <div id="view-list">
+        <div class="a-card">
+          <div class="a-table-wrap">
+            <table class="a-table">
+              <thead><tr><th>Foto</th><th>Nombre</th><th>Géneros</th><th>Spotify</th><th>Estado</th><th>Orden</th><th></th></tr></thead>
+              <tbody id="artists-tbody">
+                <tr><td colspan="7" class="a-empty"><span class="a-spinner"></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario crear/editar -->
+      <div id="view-form" style="display:none">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <button class="btn-a btn-a-secondary" id="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+          <h2 style="font-size:16px;font-weight:700" id="form-heading">Nuevo artista</h2>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:20px">
+          <!-- Columna izquierda -->
+          <div>
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-card-title"><span><i class="fas fa-user"></i> Información básica</span></div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-name">Nombre artístico *</label>
+                <input type="text" class="a-input" id="f-name" placeholder="Nombre del artista"/>
+              </div>
+              <div class="a-form-row">
+                <div class="a-form-group">
+                  <label class="a-form-label" for="f-slug">Slug (URL)</label>
+                  <input type="text" class="a-input" id="f-slug" placeholder="nombre-artista"/>
+                  <div class="a-form-hint">Se genera automáticamente del nombre</div>
+                </div>
+                <div class="a-form-group">
+                  <label class="a-form-label" for="f-order">Orden de aparición</label>
+                  <input type="number" class="a-input" id="f-order" value="0" min="0"/>
+                </div>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-bio">Biografía</label>
+                <textarea class="a-textarea" id="f-bio" rows="4" placeholder="Descripción del artista..."></textarea>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-genres">Géneros (separados por coma)</label>
+                <input type="text" class="a-input" id="f-genres" placeholder="Pop, Trap, R&B"/>
+              </div>
+            </div>
+
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-card-title"><span><i class="fas fa-link"></i> Plataformas</span></div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-spotify">Spotify URL</label>
+                <input type="url" class="a-input" id="f-spotify" placeholder="https://open.spotify.com/artist/..."/>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-spotify-id">Spotify Artist ID</label>
+                <input type="text" class="a-input" id="f-spotify-id" placeholder="6DJGyCs8tE5gBsnz9QMjns"/>
+                <div class="a-form-hint">Se extrae automáticamente de la URL de Spotify</div>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-apple">Apple Music URL</label>
+                <input type="url" class="a-input" id="f-apple" placeholder="https://music.apple.com/..."/>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-youtube">YouTube URL</label>
+                <input type="url" class="a-input" id="f-youtube" placeholder="https://youtube.com/..."/>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-instagram">Instagram URL</label>
+                <input type="url" class="a-input" id="f-instagram" placeholder="https://instagram.com/..."/>
+              </div>
+            </div>
+
+            <div class="a-card">
+              <div class="a-card-title"><span><i class="fas fa-search"></i> SEO</span></div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-seo-title">Título SEO</label>
+                <input type="text" class="a-input" id="f-seo-title" placeholder="Nombre Artista | VictorH4K" maxlength="70"/>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-seo-desc">Meta descripción</label>
+                <textarea class="a-textarea" id="f-seo-desc" rows="2" maxlength="160" placeholder="Descripción para buscadores..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna derecha -->
+          <div>
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-card-title"><span><i class="fas fa-image"></i> Foto de perfil</span></div>
+              <label class="a-image-upload" id="photo-upload-area" for="photo-file">
+                <input type="file" id="photo-file" accept="image/jpeg,image/png,image/webp"/>
+                <div id="photo-placeholder">
+                  <i class="fas fa-cloud-upload-alt" style="font-size:24px;color:#aaa;margin-bottom:8px;display:block"></i>
+                  <div style="font-size:13px;color:#aaa">Haz clic para subir foto</div>
+                </div>
+                <img id="photo-preview" src="" alt="" style="display:none;width:100%;height:200px;object-fit:cover;border-radius:6px"/>
+              </label>
+              <div class="a-form-hint" style="margin-top:8px">JPG, PNG o WebP. Máx 5 MB</div>
+              <div class="a-form-group" style="margin-top:12px">
+                <label class="a-form-label" for="f-photo-url">O URL de imagen externa</label>
+                <input type="url" class="a-input" id="f-photo-url" placeholder="https://..."/>
+              </div>
+            </div>
+
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-card-title"><span><i class="fas fa-toggle-on"></i> Publicación</span></div>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px">
+                <input type="checkbox" id="f-published" style="width:16px;height:16px;accent-color:#D52B35"/>
+                Publicar en el sitio
+              </label>
+            </div>
+
+            <div style="display:flex;gap:10px">
+              <button class="btn-a btn-a-primary" id="btn-save" style="flex:1;justify-content:center">
+                <i class="fas fa-save"></i> Guardar
+              </button>
+              <button class="btn-a btn-a-danger" id="btn-delete" style="display:none">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+let currentId = null;
+
+(async () => {
+  const auth = await requireAuth();
+  if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('artistas');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+
+  // Extraer Spotify ID de URL automáticamente
+  document.getElementById('f-spotify').addEventListener('input', function() {
+    const m = this.value.match(/spotify\.com\/artist\/([A-Za-z0-9]+)/);
+    if (m) document.getElementById('f-spotify-id').value = m[1];
+  });
+  // Auto-slug desde nombre
+  document.getElementById('f-name').addEventListener('input', function() {
+    if (!currentId) document.getElementById('f-slug').value = makeSlug(this.value);
+  });
+
+  // Preview de foto
+  document.getElementById('photo-file').addEventListener('change', function() {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('photo-preview').src = e.target.result;
+      document.getElementById('photo-preview').style.display = 'block';
+      document.getElementById('photo-placeholder').style.display = 'none';
+      document.getElementById('photo-upload-area').classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('action') === 'new') showForm(null);
+  else loadList();
+
+  document.getElementById('btn-new').addEventListener('click', () => showForm(null));
+  document.getElementById('btn-back').addEventListener('click', () => { showList(); loadList(); });
+  document.getElementById('btn-save').addEventListener('click', save);
+  document.getElementById('btn-delete').addEventListener('click', remove);
+})();
+
+async function loadList() {
+  const { data, error } = await sb.from('artists')
+    .select('*').order('sort_order').order('name');
+  const tbody = document.getElementById('artists-tbody');
+  if (error || !data?.length) {
+    tbody.innerHTML = `<tr><td colspan="7" class="a-empty"><i class="fas fa-users"></i> Sin artistas. <a href="#" onclick="showForm(null)">Crear el primero</a></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = data.map(a => `
+    <tr>
+      <td>${a.photo_url ? `<img src="${escHtml(a.photo_url)}" style="width:36px;height:36px;border-radius:50%;object-fit:cover" loading="lazy" alt=""/>` : `<div style="width:36px;height:36px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px">${escHtml(a.name[0])}</div>`}</td>
+      <td><strong>${escHtml(a.name)}</strong><div style="font-size:11px;color:#888">/artistas/${escHtml(a.slug)}</div></td>
+      <td>${(a.genres||[]).map(g=>`<span class="a-badge a-badge-gray">${escHtml(g)}</span>`).join(' ')}</td>
+      <td>${a.spotify_id ? `<a href="${escHtml(a.spotify_url||'')}" target="_blank" style="color:#1DB954"><i class="fab fa-spotify"></i></a>` : '—'}</td>
+      <td>${a.is_published ? '<span class="a-badge a-badge-green">Publicado</span>' : '<span class="a-badge a-badge-gray">Borrador</span>'}</td>
+      <td>${a.sort_order}</td>
+      <td><button class="btn-a btn-a-secondary btn-a-sm" onclick='editArtist(${JSON.stringify(a)})'>Editar</button></td>
+    </tr>`).join('');
+}
+
+function showList() {
+  document.getElementById('view-list').style.display = '';
+  document.getElementById('view-form').style.display = 'none';
+  document.getElementById('page-title').textContent = 'Artistas';
+  currentId = null;
+}
+function showForm(artist) {
+  document.getElementById('view-list').style.display = 'none';
+  document.getElementById('view-form').style.display = '';
+  document.getElementById('page-title').textContent = artist ? 'Editar artista' : 'Nuevo artista';
+  document.getElementById('form-heading').textContent = artist ? 'Editar artista' : 'Nuevo artista';
+  document.getElementById('btn-delete').style.display = artist ? 'inline-flex' : 'none';
+  currentId = artist?.id || null;
+
+  // Rellenar formulario
+  document.getElementById('f-name').value        = artist?.name || '';
+  document.getElementById('f-slug').value        = artist?.slug || '';
+  document.getElementById('f-bio').value         = artist?.bio || '';
+  document.getElementById('f-order').value       = artist?.sort_order ?? 0;
+  document.getElementById('f-genres').value      = (artist?.genres||[]).join(', ');
+  document.getElementById('f-spotify').value     = artist?.spotify_url || '';
+  document.getElementById('f-spotify-id').value  = artist?.spotify_id || '';
+  document.getElementById('f-apple').value       = artist?.apple_music_url || '';
+  document.getElementById('f-youtube').value     = artist?.youtube_url || '';
+  document.getElementById('f-instagram').value   = artist?.instagram_url || '';
+  document.getElementById('f-photo-url').value   = artist?.photo_url || '';
+  document.getElementById('f-seo-title').value   = artist?.seo_title || '';
+  document.getElementById('f-seo-desc').value    = artist?.seo_description || '';
+  document.getElementById('f-published').checked = artist?.is_published || false;
+
+  // Foto preview
+  const prev = document.getElementById('photo-preview');
+  const ph   = document.getElementById('photo-placeholder');
+  const area = document.getElementById('photo-upload-area');
+  if (artist?.photo_url) {
+    prev.src = artist.photo_url; prev.style.display = 'block';
+    ph.style.display = 'none'; area.classList.add('has-image');
+  } else {
+    prev.src = ''; prev.style.display = 'none';
+    ph.style.display = 'block'; area.classList.remove('has-image');
+  }
+}
+window.editArtist = (a) => showForm(a);
+
+async function save() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { toast('El nombre es obligatorio', 'error'); return; }
+
+  const btn = document.getElementById('btn-save');
+  btn.disabled = true; btn.innerHTML = '<span class="a-spinner"></span> Guardando...';
+
+  // Subir imagen si se seleccionó
+  let photoUrl = document.getElementById('f-photo-url').value.trim() || null;
+  const photoFile = document.getElementById('photo-file').files[0];
+  if (photoFile) {
+    const uploaded = await uploadImage(photoFile, 'artists', 'profiles');
+    if (uploaded) photoUrl = uploaded;
+  }
+
+  const payload = {
+    name,
+    slug:            document.getElementById('f-slug').value.trim() || makeSlug(name),
+    bio:             document.getElementById('f-bio').value.trim() || null,
+    sort_order:      parseInt(document.getElementById('f-order').value) || 0,
+    genres:          document.getElementById('f-genres').value.split(',').map(g=>g.trim()).filter(Boolean),
+    spotify_url:     document.getElementById('f-spotify').value.trim() || null,
+    spotify_id:      document.getElementById('f-spotify-id').value.trim() || null,
+    apple_music_url: document.getElementById('f-apple').value.trim() || null,
+    youtube_url:     document.getElementById('f-youtube').value.trim() || null,
+    instagram_url:   document.getElementById('f-instagram').value.trim() || null,
+    photo_url:       photoUrl,
+    seo_title:       document.getElementById('f-seo-title').value.trim() || null,
+    seo_description: document.getElementById('f-seo-desc').value.trim() || null,
+    is_published:    document.getElementById('f-published').checked,
+  };
+
+  const { error } = currentId
+    ? await sb.from('artists').update(payload).eq('id', currentId)
+    : await sb.from('artists').insert(payload);
+
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-save"></i> Guardar';
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  toast(currentId ? 'Artista actualizado' : 'Artista creado');
+  showList(); loadList();
+}
+
+async function remove() {
+  if (!currentId) return;
+  if (!confirm('¿Eliminar este artista? Esta acción no se puede deshacer.')) return;
+  const { error } = await sb.from('artists').delete().eq('id', currentId);
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  toast('Artista eliminado');
+  showList(); loadList();
+}
+</script>
+</body>
+</html>

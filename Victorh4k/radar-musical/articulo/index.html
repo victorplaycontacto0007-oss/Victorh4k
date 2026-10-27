@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title id="meta-title">Cargando... — Radar Musical</title>
+<meta name="description" id="meta-desc" content=""/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" id="meta-canonical" href=""/>
+<link rel="icon" href="/favicon.ico"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Radar Musical · VictorH4K"/>
+<meta property="og:title" id="og-title" content=""/>
+<meta property="og:description" id="og-desc" content=""/>
+<meta property="og:image" id="og-image" content="https://victorh4k.com/images/og-image.png"/>
+<meta property="og:locale" content="es_CO"/>
+<link id="article-json-ld" rel="preload" as="fetch"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+.article-layout { display:grid; grid-template-columns:1fr 300px; gap:40px; padding:48px 0; align-items:start; }
+.article-main {}
+.article-sidebar { position:sticky; top:calc(var(--nav-h) + 20px); }
+.article-header { margin-bottom:32px; }
+.article-cat { font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:#D52B35; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.article-cat::before { content:''; width:16px; height:1px; background:#D52B35; }
+.article-h1 { font-family:var(--font-display); font-size:clamp(26px,4vw,44px); font-weight:800; line-height:1.12; letter-spacing:-0.025em; color:#111; margin-bottom:16px; }
+.article-meta-row { display:flex; align-items:center; gap:16px; font-size:12px; color:#aaa; flex-wrap:wrap; margin-bottom:20px; }
+.article-excerpt-lead { font-size:17px; color:#444; line-height:1.75; border-left:3px solid #D52B35; padding-left:16px; margin-bottom:28px; }
+.article-featured-img { width:100%; border-radius:12px; margin-bottom:32px; max-height:420px; object-fit:cover; }
+.article-content { font-size:15px; line-height:1.8; color:#222; }
+.article-content h2 { font-family:var(--font-display); font-size:22px; font-weight:800; color:#111; margin:32px 0 12px; letter-spacing:-0.02em; }
+.article-content h3 { font-size:17px; font-weight:700; color:#111; margin:24px 0 8px; }
+.article-content p { margin-bottom:16px; }
+.article-content ul, .article-content ol { padding-left:22px; margin-bottom:16px; }
+.article-content li { margin-bottom:6px; }
+.article-content blockquote { border-left:3px solid #D52B35; padding:12px 18px; background:#f5f5f5; border-radius:0 8px 8px 0; margin:20px 0; font-style:italic; color:#444; }
+.article-content table { width:100%; border-collapse:collapse; margin:20px 0; font-size:14px; }
+.article-content th, .article-content td { border:1px solid #e5e5e5; padding:10px 12px; }
+.article-content th { background:#f5f5f5; font-weight:700; }
+.article-content a { color:#D52B35; }
+.article-content img { max-width:100%; border-radius:8px; margin:16px 0; }
+.sources-box { background:#f9f9f9; border:1px solid #e5e5e5; border-radius:10px; padding:20px; margin-top:40px; }
+.sources-box h4 { font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#888; margin-bottom:12px; }
+.sources-box ul { list-style:none; padding:0; }
+.sources-box li { font-size:13px; margin-bottom:6px; }
+.sources-box a { color:#D52B35; }
+.sidebar-card { background:#f9f9f9; border:1px solid #e5e5e5; border-radius:10px; padding:18px; margin-bottom:16px; }
+.sidebar-card h4 { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#888; margin-bottom:12px; }
+.related-link { display:block; font-size:13px; font-weight:600; color:#111; margin-bottom:10px; line-height:1.4; }
+.related-link:hover { color:#D52B35; }
+.share-btn { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:6px; font-size:12px; font-weight:700; border:1.5px solid #e5e5e5; background:#fff; cursor:pointer; color:#444; width:100%; margin-bottom:6px; transition:all .15s; }
+.share-btn:hover { background:#D52B35; color:#fff; border-color:#D52B35; }
+#article-loading { text-align:center; padding:80px; color:#aaa; }
+#article-error { text-align:center; padding:80px; }
+@media (max-width:900px) { .article-layout{grid-template-columns:1fr;} .article-sidebar{position:static;} }
+</style>
+</head>
+<body>
+<nav id="nav" aria-label="Navegación">
+  <a href="/" class="nav-logo"><img src="/images/logo-victorh4k.png" alt="VictorH4K" width="104" height="52" loading="eager"/></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/radar-musical/" class="active">Radar Musical</a></li>
+    <li><a href="/">VictorH4K</a></li>
+    <li><a href="/artistas/">Artistas</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+</nav>
+<nav id="mobile-menu" aria-label="Menú móvil">
+  <a href="/radar-musical/" onclick="closeMobileMenu()">Radar Musical</a>
+  <a href="/" onclick="closeMobileMenu()">VictorH4K</a>
+  <a href="/artistas/" onclick="closeMobileMenu()">Artistas</a>
+  <a href="/contacto/" onclick="closeMobileMenu()">Contacto</a>
+</nav>
+
+<div id="article-loading" class="container">
+  <i class="fas fa-spinner fa-spin" style="font-size:28px;margin-bottom:16px;display:block"></i>Cargando artículo...
+</div>
+<div id="article-error" class="container" style="display:none">
+  <i class="fas fa-exclamation-triangle" style="font-size:32px;color:#D52B35;margin-bottom:16px;display:block"></i>
+  <h1 style="font-size:24px;font-weight:800;margin-bottom:8px">Artículo no encontrado</h1>
+  <p style="color:#666;margin-bottom:20px">El artículo que buscas no existe o ha sido movido.</p>
+  <a href="/radar-musical/" class="btn btn-primary">Volver a Radar Musical</a>
+</div>
+<div id="article-wrap" style="display:none">
+  <div class="container">
+    <nav aria-label="Migas de pan" style="padding:20px 0 0;font-size:12px;color:#aaa">
+      <a href="/" style="color:#aaa">VictorH4K</a> /
+      <a href="/radar-musical/" style="color:#aaa">Radar Musical</a> /
+      <span id="breadcrumb-cat"></span>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="article-layout">
+      <main class="article-main">
+        <header class="article-header">
+          <div class="article-cat" id="art-cat"></div>
+          <h1 class="article-h1" id="art-title"></h1>
+          <div class="article-meta-row">
+            <span id="art-author"></span>
+            <span id="art-date"></span>
+            <span id="art-reading"></span>
+          </div>
+        </header>
+        <img id="art-img" class="article-featured-img" src="" alt="" style="display:none" loading="eager"/>
+        <p id="art-excerpt" class="article-excerpt-lead" style="display:none"></p>
+        <div id="art-content" class="article-content"></div>
+        <div id="art-sources" class="sources-box" style="display:none">
+          <h4><i class="fas fa-book-open"></i> Fuentes</h4>
+          <ul id="sources-list"></ul>
+        </div>
+      </main>
+      <aside class="article-sidebar">
+        <div class="sidebar-card">
+          <h4>Compartir</h4>
+          <button class="share-btn" onclick="shareArticle('twitter')"><i class="fab fa-twitter"></i> Twitter / X</button>
+          <button class="share-btn" onclick="shareArticle('whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+          <button class="share-btn" onclick="shareArticle('copy')"><i class="fas fa-link"></i> Copiar enlace</button>
+        </div>
+        <div class="sidebar-card" id="related-box" style="display:none">
+          <h4>Artículos relacionados</h4>
+          <div id="related-list"></div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Radar Musical</h4>
+          <p style="font-size:13px;color:#666;margin-bottom:12px">Portal informativo sobre la industria musical.</p>
+          <a href="/radar-musical/" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Ver todos los artículos</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/"><img src="/assets/og-image.png" alt="VictorH4K" width="88" height="44" loading="lazy"/></a><p>Radar Musical · VictorH4K · Colombia</p></div>
+      <div class="footer-col"><h5>Radar Musical</h5><ul><li><a href="/radar-musical/">Inicio</a></li><li><a href="/radar-musical/categoria/regalias-y-pagos/">Regalías y pagos</a></li><li><a href="/radar-musical/categoria/comparativas-plataformas/">Comparativas</a></li></ul></div>
+      <div class="footer-col"><h5>VictorH4K</h5><ul><li><a href="/">Inicio</a></li><li><a href="/artistas/">Artistas</a></li><li><a href="/lanzamientos/">Lanzamientos</a></li></ul></div>
+      <div class="footer-col"><h5>Redes</h5><ul><li><a href="https://wa.me/573026021232" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Radar Musical · VictorH4K · Colombia</p></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/shared.js"></script>
+<script>
+const SB_URL_R = 'https://wmxmfserrqbxvnvghvnp.supabase.co';
+const SB_KEY_R = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndteG1mc2VycnFieHZudmdodm5wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4MTkyNjIsImV4cCI6MjEwODM5NTI2Mn0.vs4x3wDM_oIV3UPm7T4NRCVwLjKVPO_d99Vue42KhP4';
+const sbr = supabase.createClient(SB_URL_R, SB_KEY_R);
+
+function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// Obtener slug de la URL: /radar-musical/SLUG/ o ?slug=SLUG
+function getSlug() {
+  const p = location.pathname.split('/').filter(Boolean);
+  // Formato: /radar-musical/SLUG/
+  if (p.length >= 2 && p[0] === 'radar-musical') return p[1];
+  return new URLSearchParams(location.search).get('slug');
+}
+
+async function loadArticle() {
+  const slug = getSlug();
+  if (!slug || slug === 'articulo') {
+    document.getElementById('article-loading').style.display = 'none';
+    document.getElementById('article-error').style.display = 'block';
+    return;
+  }
+
+  const { data, error } = await sbr.from('radar_articles')
+    .select('*, radar_categories(name,slug), radar_related_articles(related_id)')
+    .eq('slug', slug).eq('status', 'published').single();
+
+  document.getElementById('article-loading').style.display = 'none';
+
+  if (error || !data) { document.getElementById('article-error').style.display = 'block'; return; }
+
+  // Actualizar SEO
+  const seoTitle = data.seo_title || (data.title + ' — Radar Musical');
+  const seoDesc  = data.seo_description || data.excerpt || '';
+  document.title = seoTitle;
+  document.getElementById('meta-title').textContent = seoTitle;
+  document.getElementById('meta-desc').setAttribute('content', seoDesc);
+  const canonical = data.canonical_url || `https://victorh4k.com/radar-musical/${data.slug}/`;
+  document.getElementById('meta-canonical').setAttribute('href', canonical);
+  document.getElementById('og-title').setAttribute('content', data.title);
+  document.getElementById('og-desc').setAttribute('content', seoDesc);
+  if (data.featured_image) document.getElementById('og-image').setAttribute('content', data.featured_image);
+
+  // JSON-LD Article
+  const ld = {
+    '@context': 'https://schema.org', '@type': 'Article',
+    headline: data.title, description: seoDesc,
+    datePublished: data.published_at, dateModified: data.updated_at,
+    author: { '@type': 'Person', name: data.author_name || 'VictorH4K' },
+    publisher: { '@type': 'Organization', name: 'VictorH4K', url: 'https://victorh4k.com' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    ...(data.featured_image ? { image: data.featured_image } : {}),
+  };
+  const ldScript = document.createElement('script');
+  ldScript.type = 'application/ld+json'; ldScript.text = JSON.stringify(ld);
+  document.head.appendChild(ldScript);
+
+  // Rellenar contenido
+  if (data.radar_categories?.name) {
+    document.getElementById('art-cat').innerHTML = `<a href="/radar-musical/categoria/${escHtml(data.radar_categories.slug)}/" style="color:#D52B35;text-decoration:none">${escHtml(data.radar_categories.name)}</a>`;
+    document.getElementById('breadcrumb-cat').textContent = data.radar_categories.name;
+  }
+  document.getElementById('art-title').textContent = data.title;
+  document.getElementById('art-author').innerHTML = `<i class="fas fa-user" style="font-size:10px"></i> ${escHtml(data.author_name||'VictorH4K')}`;
+  document.getElementById('art-date').innerHTML = `<i class="fas fa-calendar" style="font-size:10px"></i> ${data.published_at ? new Date(data.published_at).toLocaleDateString('es',{year:'numeric',month:'long',day:'numeric'}) : ''}`;
+  if (data.reading_time_min) document.getElementById('art-reading').innerHTML = `<i class="fas fa-clock" style="font-size:10px"></i> ${data.reading_time_min} min de lectura`;
+
+  if (data.featured_image) {
+    const img = document.getElementById('art-img');
+    img.src = data.featured_image; img.alt = data.featured_image_alt || data.title;
+    img.style.display = 'block';
+  }
+  if (data.excerpt) {
+    document.getElementById('art-excerpt').textContent = data.excerpt;
+    document.getElementById('art-excerpt').style.display = 'block';
+  }
+
+  // Contenido (ya sanitizado al guardarlo, pero aplicamos DOMParser como capa extra)
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(data.content || '', 'text/html');
+  // Eliminar scripts del contenido
+  doc.querySelectorAll('script,iframe[src*="javascript"]').forEach(el => el.remove());
+  document.getElementById('art-content').innerHTML = doc.body.innerHTML;
+
+  // Fuentes
+  if (data.sources?.length) {
+    document.getElementById('art-sources').style.display = 'block';
+    document.getElementById('sources-list').innerHTML = data.sources.map(s =>
+      `<li>${s.url ? `<a href="${escHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escHtml(s.title||s.url)}</a>` : escHtml(s.title||'')}</li>`
+    ).join('');
+  }
+
+  document.getElementById('article-wrap').style.display = 'block';
+
+  // Contador de vistas
+  sbr.from('radar_articles').update({ view_count: (data.view_count||0) + 1 }).eq('id', data.id);
+}
+
+function shareArticle(platform) {
+  const url   = encodeURIComponent(location.href);
+  const title = encodeURIComponent(document.title);
+  if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank');
+  else if (platform === 'whatsapp') window.open(`https://wa.me/?text=${title}%20${url}`, '_blank');
+  else if (platform === 'copy') {
+    navigator.clipboard.writeText(location.href).then(() => alert('Enlace copiado'));
+  }
+}
+window.shareArticle = shareArticle;
+
+loadArticle();
+</script>
+</body>
+</html>

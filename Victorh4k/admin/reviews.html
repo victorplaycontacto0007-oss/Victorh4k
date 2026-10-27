@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Opiniones — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title">Opiniones</span>
+      </div>
+    </header>
+    <main class="a-content">
+      <div id="a-toast"></div>
+      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+        <button class="btn-a btn-a-primary active" onclick="loadReviews('pending',this)">Pendientes</button>
+        <button class="btn-a btn-a-secondary" onclick="loadReviews('approved',this)">Aprobadas</button>
+        <button class="btn-a btn-a-secondary" onclick="loadReviews('rejected',this)">Rechazadas</button>
+      </div>
+      <div id="reviews-list" class="a-card"></div>
+    </main>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+(async () => {
+  const auth = await requireAuth(); if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('reviews');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+  await loadReviews('pending');
+})();
+
+async function loadReviews(status, btn) {
+  if (btn) {
+    document.querySelectorAll('.a-content .btn-a').forEach(b => {
+      b.className = b === btn ? 'btn-a btn-a-primary' : 'btn-a btn-a-secondary';
+    });
+  }
+  const { data } = await sb.from('reviews').select('*').eq('status', status).order('created_at', { ascending: false });
+  const container = document.getElementById('reviews-list');
+  if (!data?.length) { container.innerHTML = '<div class="a-empty"><i class="fas fa-star"></i> Sin opiniones con estado: ' + escHtml(status) + '</div>'; return; }
+  container.innerHTML = data.map(r => `
+    <div id="rv-${escHtml(r.id)}" style="border-bottom:1px solid #e5e5e5;padding:16px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:14px">
+      <div>
+        <strong style="font-size:14px">${escHtml(r.name)}</strong>
+        <div style="color:#D97706;font-size:13px;margin:4px 0">${'★'.repeat(Math.min(r.rating||5,5))}</div>
+        <p style="font-size:13px;color:#444;line-height:1.6">"${escHtml(r.text||r.comment||'')}"</p>
+        <div style="font-size:11px;color:#aaa;margin-top:4px">${fmtDate(r.created_at)}</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-shrink:0">
+        ${status !== 'approved' ? `<button class="btn-a btn-a-secondary btn-a-sm" onclick="act('${escHtml(r.id)}','approved')"><i class="fas fa-check"></i> Aprobar</button>` : ''}
+        ${status !== 'rejected' ? `<button class="btn-a btn-a-danger btn-a-sm" onclick="act('${escHtml(r.id)}','rejected')"><i class="fas fa-times"></i> Rechazar</button>` : ''}
+        <button class="btn-a btn-a-danger btn-a-sm" onclick="act('${escHtml(r.id)}','delete')"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+window.loadReviews = loadReviews;
+
+async function act(id, action) {
+  if (action === 'delete' && !confirm('¿Eliminar esta opinión?')) return;
+  let error;
+  if (action === 'delete') ({ error } = await sb.from('reviews').delete().eq('id', id));
+  else ({ error } = await sb.from('reviews').update({ status: action }).eq('id', id));
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  document.getElementById('rv-' + id)?.remove();
+  toast(action === 'delete' ? 'Eliminada' : action === 'approved' ? 'Aprobada' : 'Rechazada');
+}
+window.act = act;
+</script>
+</body>
+</html>

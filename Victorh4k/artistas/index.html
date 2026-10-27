@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Artistas | VictorH4K</title>
+<meta name="description" content="Conoce a los artistas del subsello VictorH4K: Jack Holy, VictorH4K Producer y joseneiman. Escucha su música en Spotify, Apple Music y más plataformas."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://victorh4k.com/artistas/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/artistas/"/>
+<meta property="og:title" content="Artistas | VictorH4K"/>
+<meta property="og:image" content="https://victorh4k.com/images/og-image.png"/>
+<meta property="og:locale" content="es_CO"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://victorh4k.com/images/og-image.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MusicGroup","name":"VictorH4K","url":"https://victorh4k.com/artistas/","description":"Subsello musical. Artistas: Jack Holy, VictorH4K Producer, joseneiman.","genre":["Pop","Trap","R&B","EDM","Reggaetón"],"member":[{"@type":"Person","name":"Jack Holy","url":"https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns"},{"@type":"Person","name":"VictorH4K Producer","url":"https://open.spotify.com/artist/4uDSnTqKriGk7plg6LuFku"},{"@type":"Person","name":"joseneiman","url":"https://open.spotify.com/artist/52DXUNl2kPMEMTP8ORleFU"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+.roster-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.artist-full {
+  background: var(--white); border: 1px solid var(--gray-border);
+  border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-mid), box-shadow var(--dur-mid);
+  display: flex; flex-direction: column;
+}
+.artist-full:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.artist-visual-wrap {
+  aspect-ratio: 1; background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.artist-bg-photo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: brightness(0.18) saturate(0.5);
+  transition: transform var(--dur-slow);
+}
+.artist-full:hover .artist-bg-photo { transform: scale(1.04); }
+.artist-monogram-lg {
+  font-family: var(--font-display);
+  font-size: clamp(60px,9vw,88px); font-weight: 800;
+  color: var(--white); letter-spacing: -0.04em;
+  position: relative; z-index: 2;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+  user-select: none;
+}
+.artist-live-tag {
+  position: absolute; top: 14px; left: 14px; z-index: 3;
+  display: flex; align-items: center; gap: 5px;
+  font-size: 9px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--red);
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+  animation: liveDot 1.5s ease-in-out infinite;
+}
+@keyframes liveDot { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── Foto de Spotify (cuando carga correctamente) ── */
+.artist-spotify-photo {
+  position: absolute; inset: 0; z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  display: block;
+}
+.artist-spotify-photo.loaded { opacity: 1; }
+/* Degradado sobre la foto para mantener legibilidad del monograma/tags */
+.artist-photo-gradient {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.0) 0%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.65) 100%
+  );
+}
+/* Mientras carga: skeleton shimmer */
+.artist-visual-wrap.loading .artist-bg-photo::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 4;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+/* Badge Spotify en la esquina de la foto */
+.spotify-badge {
+  position: absolute; bottom: 14px; right: 14px; z-index: 5;
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(6px);
+  border-radius: 100px; padding: 4px 9px;
+  font-size: 9px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #1DB954;
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.spotify-badge.visible { opacity: 1; }
+.spotify-badge i { font-size: 11px; }
+/* Ocultar monograma cuando la foto está disponible */
+.has-photo .artist-monogram-lg { opacity: 0; transition: opacity 0.4s ease; }
+/* Ajustar live-tag para que sea visible sobre la foto */
+.has-photo .artist-live-tag { color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+.has-photo .live-dot { background: #1DB954; }
+/* Estado de error: mantiene fallback con monograma */
+.artist-visual-wrap.error .artist-monogram-lg { opacity: 1; }
+.eq-bar-wrap {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: flex-end; gap: 3px; z-index: 3;
+}
+.eq-b {
+  width: 3px; border-radius: 2px; background: var(--red);
+  animation: eqA linear infinite; transform-origin: bottom;
+}
+.eq-b:nth-child(1){height:6px;animation-duration:.70s;animation-delay:.00s}
+.eq-b:nth-child(2){height:14px;animation-duration:.52s;animation-delay:.10s}
+.eq-b:nth-child(3){height:22px;animation-duration:.80s;animation-delay:.05s}
+.eq-b:nth-child(4){height:16px;animation-duration:.60s;animation-delay:.20s}
+.eq-b:nth-child(5){height:26px;animation-duration:.44s;animation-delay:.02s}
+.eq-b:nth-child(6){height:18px;animation-duration:.70s;animation-delay:.15s}
+.eq-b:nth-child(7){height:10px;animation-duration:.55s;animation-delay:.08s}
+.eq-b:nth-child(8){height:20px;animation-duration:.65s;animation-delay:.18s}
+.progress-strip {
+  height: 2px; background: var(--gray-border);
+}
+.progress-fill { height: 100%; background: var(--red); animation: progA 8s linear infinite; }
+@keyframes progA { from{width:0%} to{width:100%} }
+.artist-body { padding: 20px 20px 14px; flex:1; display:flex; flex-direction:column; gap:6px; }
+.artist-n { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--red); }
+.artist-name-lg {
+  font-family: var(--font-display);
+  font-size: clamp(18px,2.2vw,23px); font-weight: 800; color: var(--black); letter-spacing: -0.02em;
+}
+.artist-bio { font-size: 13px; color: var(--gray-dark); line-height: 1.65; margin-top: 4px; }
+.artist-tags { display:flex; gap:4px; flex-wrap:wrap; margin-top:2px; }
+.genre-tag {
+  font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  background: var(--gray-light); border: 1px solid var(--gray-border); color: var(--gray-dark);
+}
+.artist-foot { padding: 0 20px 20px; }
+.platform-links { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:12px; }
+.plat-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 11px; border-radius: var(--r-sm);
+  background: var(--gray-light); border: 1px solid var(--gray-border);
+  font-size: 10px; font-weight: 700; color: var(--gray-dark);
+  transition: all var(--dur-fast);
+}
+.plat-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+@media (max-width:900px) { .roster-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:540px)  { .roster-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio">
+    <img src="/images/logo-victorh4k.png" alt="VictorH4K" width="104" height="52" loading="eager"/>
+  </a>
+  <a href="/admin/" class="nav-cta">Iniciar</a>
+</nav>
+
+<main>
+<section class="page-hero" aria-labelledby="artistas-h1">
+  <div class="page-hero-img" style="background-image:url('/images/studio/studio-microphone.webp')" aria-hidden="true"></div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    <p class="label">Roster</p>
+    <h1 class="heading-xl" id="artistas-h1" style="margin-bottom:16px">Artistas</h1>
+    <div class="divider"></div>
+    <p class="body-lg" style="max-width:480px">
+      Artistas que forman parte del subsello VictorH4K y distribuyen su música globalmente.
+    </p>
+  </div>
+</section>
+
+<section class="section-py" aria-labelledby="roster-h2">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:44px">
+      <p class="label">Artistas del subsello</p>
+      <h2 class="heading-lg" id="roster-h2" style="margin-bottom:12px">Artistas y lanzamientos de VictorH4K</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="roster-grid">
+
+      <article class="artist-full reveal" aria-label="Jack Holy" data-spotify-id="6DJGyCs8tE5gBsnz9QMjns">
+        <div class="artist-visual-wrap loading">
+          <div class="artist-bg-photo" style="background-image:url('/images/studio/music-notes.webp')"></div>
+          <!-- Foto oficial de Spotify (se inyecta dinámicamente) -->
+          <img class="artist-spotify-photo" src="" alt="Foto de perfil de Jack Holy en Spotify" loading="lazy" width="640" height="640"/>
+          <div class="artist-photo-gradient" aria-hidden="true"></div>
+          <div class="artist-live-tag"><span class="live-dot"></span>En reproducción</div>
+          <div class="artist-monogram-lg" aria-hidden="true">JH</div>
+          <div class="eq-bar-wrap" aria-hidden="true">
+            <div class="eq-b"></div><div class="eq-b"></div><div class="eq-b"></div>
+            <div class="eq-b"></div><div class="eq-b"></div><div class="eq-b"></div>
+            <div class="eq-b"></div><div class="eq-b"></div>
+          </div>
+          <div class="spotify-badge" aria-hidden="true"><i class="fab fa-spotify"></i>Spotify</div>
+        </div>
+        <div class="progress-strip"><div class="progress-fill"></div></div>
+        <div class="artist-body">
+          <p class="artist-n">Artista 01</p>
+          <h2 class="artist-name-lg">Jack Holy</h2>
+          <p class="artist-bio">Pop, Trap y R&amp;B con distribución global. Su música está disponible en más de 150 plataformas digitales a través del subsello VictorH4K.</p>
+          <div class="artist-tags">
+            <span class="genre-tag">Pop</span>
+            <span class="genre-tag">Trap</span>
+            <span class="genre-tag">R&amp;B</span>
+          </div>
+        </div>
+        <div class="artist-foot">
+          <div class="platform-links">
+            <a href="https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns" target="_blank" rel="noopener noreferrer" class="plat-btn"><i class="fab fa-spotify" aria-hidden="true"></i> Spotify</a>
+          </div>
+          <a href="https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns" target="_blank" rel="noopener noreferrer" class="btn-spotify" aria-label="Jack Holy en Spotify">
+            <i class="fab fa-spotify" aria-hidden="true"></i> Escuchar en Spotify
+          </a>
+        </div>
+      </article>
+
+      <article class="artist-full reveal reveal-delay-1" aria-label="VictorH4K Producer" data-spotify-id="4uDSnTqKriGk7plg6LuFku">
+        <div class="artist-visual-wrap loading">
+          <div class="artist-bg-photo" style="background-image:url('/images/studio/guitar-dark.webp')"></div>
+          <img class="artist-spotify-photo" src="" alt="Foto de perfil de VictorH4K Producer en Spotify" loading="lazy" width="640" height="640"/>
+          <div class="artist-photo-gradient" aria-hidden="true"></div>
+          <div class="artist-live-tag"><span class="live-dot"></span>En reproducción</div>
+          <div class="artist-monogram-lg" aria-hidden="true">VP</div>
+          <div class="eq-bar-wrap" aria-hidden="true">
+            <div class="eq-b"></div><div class="eq-b"></div><div class="eq-b"></div>
+            <div class="eq-b"></div><div class="eq-b"></div><div class="eq-b"></div>
+            <div class="eq-b"></div><div class="eq-b"></div>
+          </div>
+          <div class="spotify-badge" aria-hidden="true"><i class="fab fa-spotify"></i>Spotify</div>
+        </div>
+        <div class="progress-strip"><div class="progress-fill" style="animation-delay:-3s"></div></div>
+        <div class="artist-body">
+          <p class="artist-n">Artista 02</p>
+          <h2 class="artist-name-lg">VictorH4K Producer</h2>
+          <p class="artist-bio">Productor musical con lanzamientos en EDM y Reggaetón. Fundador del subsello VictorH4K con distribución digital global.</p>
+          <div class="artist-tags">
+            <span class="genre-tag">Producción</span>
+            <span class="genre-tag">EDM</span>
+            <span class="genre-tag">Reggaetón</span>
+          </div>
+        </div>
+        <div class="artist-foot">
+          <div class="platform-links">
+            <a href="https://open.spotify.com/artist/4uDSnTqKriGk7plg6LuFku" target="_blank" rel="noopener noreferrer" class="plat-btn"><i class="fab fa-spotify" aria-hidden="true"></i> Spotify</a>
+          </div>
+          <a href="https://open.spotify.com/artist/4uDSnTqKriGk7plg6LuFku" target="_blank" rel="noopener noreferrer" class="btn-spotify" aria-label="VictorH4K Producer en Spotify">
+            <i class="fab fa-spotify" aria-hidden="true"></i> Escuchar en Spotify
+          </a>
+        </div>
+      </article>
+
+      <article class="artist-full reveal reveal-delay-2" aria-label="joseneiman" data-spotify-id="52DXUNl2kPMEMTP8ORleFU">
+        <div class="artist-visual-wrap loading">
+          <div class="artist-bg-photo" style="background-image:url('/images/studio/studio-dark-room.webp')"></div>
+          <img class="artist-spotify-photo" src="" alt="Foto de perfil de joseneiman en Spotify" loading="lazy" width="640" height="640"/>
+          <div class="artist-photo-gradient" aria-hidden="true"></div>
+          <div class="artist-live-tag"><span class="live-dot"></span>En reproducción</div>
+          <div class="artist-monogram-lg" aria-hidden="true">JN</div>
+          <div class="eq-bar-wrap" aria-hidden="true">
+            <div class="eq-b"></div><div class="eq-b"></div><div class="eq-b"></div>
+            <div class="eq-b"></div><div class="eq-b"></div><div class="eq-b"></div>
+            <div class="eq-b"></div><div class="eq-b"></div>
+          </div>
+          <div class="spotify-badge" aria-hidden="true"><i class="fab fa-spotify"></i>Spotify</div>
+        </div>
+        <div class="progress-strip"><div class="progress-fill" style="animation-delay:-5.5s"></div></div>
+        <div class="artist-body">
+          <p class="artist-n">Artista 03</p>
+          <h2 class="artist-name-lg">joseneiman</h2>
+          <p class="artist-bio">Artista de Pop y R&amp;B con presencia en las principales plataformas de streaming. Distribución bajo el subsello VictorH4K.</p>
+          <div class="artist-tags">
+            <span class="genre-tag">Pop</span>
+            <span class="genre-tag">R&amp;B</span>
+          </div>
+        </div>
+        <div class="artist-foot">
+          <div class="platform-links">
+            <a href="https://open.spotify.com/artist/52DXUNl2kPMEMTP8ORleFU" target="_blank" rel="noopener noreferrer" class="plat-btn"><i class="fab fa-spotify" aria-hidden="true"></i> Spotify</a>
+          </div>
+          <a href="https://open.spotify.com/artist/52DXUNl2kPMEMTP8ORleFU" target="_blank" rel="noopener noreferrer" class="btn-spotify" aria-label="joseneiman en Spotify">
+            <i class="fab fa-spotify" aria-hidden="true"></i> Escuchar en Spotify
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section-py section-bg" aria-labelledby="artistas-cta">
+  <div class="container text-center">
+    <div class="reveal">
+      <p class="label" style="justify-content:center">¿Eres artista?</p>
+      <h2 class="heading-lg" id="artistas-cta" style="margin-bottom:14px">Forma parte del subsello</h2>
+      <div class="divider divider-center"></div>
+      <p class="body-lg" style="max-width:400px;margin:0 auto 28px">
+        Si quieres distribuir tu música y desarrollar tu carrera, cuéntanos sobre ti.
+      </p>
+      <a href="/contacto/" class="btn btn-primary btn-lg">Contactar <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-legal">
+    <a href="/politica-de-privacidad/">Política de privacidad</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/politica-de-cookies/">Política de cookies</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/terminos/">Términos y condiciones de uso</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/acuerdo-de-distribucion/">Acuerdo de distribución</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/mapa-del-sitio/">Mapa del sitio</a>
+  </div>
+</footer>
+<a href="https://wa.me/573026021232" target="_blank" rel="noopener noreferrer" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/shared.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   VictorH4K — Carga de fotos de artistas desde Spotify
+   El fetch va al proxy local /api/spotify-artist (server.js),
+   que maneja las credenciales de forma segura server-side.
+   Las credenciales NUNCA llegan al navegador.
+   ══════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  /* Función de escape HTML para prevenir XSS */
+  function escHtml(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  /* Seleccionar la imagen de mayor resolución disponible */
+  function getBestImage(images) {
+    if (!images || !images.length) return null;
+    /* Spotify devuelve imágenes ordenadas de mayor a menor; tomamos la primera ≥ 300px
+       o la mayor disponible */
+    const preferred = images.find(img => img.width >= 300);
+    return preferred || images[0];
+  }
+
+  /* Cargar la foto de un artista y actualizar su tarjeta */
+  async function loadArtistPhoto(article) {
+    const spotifyId = article.dataset.spotifyId;
+    if (!spotifyId) return;
+
+    const wrap  = article.querySelector('.artist-visual-wrap');
+    const img   = article.querySelector('.artist-spotify-photo');
+    const badge = article.querySelector('.spotify-badge');
+
+    if (!wrap || !img) return;
+
+    try {
+      const resp = await fetch(`/api/spotify-artist?id=${encodeURIComponent(spotifyId)}`);
+
+      if (!resp.ok) {
+        /* API no configurada o error — fallback silencioso */
+        wrap.classList.remove('loading');
+        wrap.classList.add('error');
+        console.info(`[Spotify] Fallback para ${spotifyId}: HTTP ${resp.status}`);
+        return;
+      }
+
+      const data = await resp.json();
+
+      if (data.error) {
+        wrap.classList.remove('loading');
+        wrap.classList.add('error');
+        console.info(`[Spotify] Fallback para ${spotifyId}:`, data.message);
+        return;
+      }
+
+      const bestImg = getBestImage(data.images);
+      if (!bestImg || !bestImg.url) {
+        /* Artista sin foto en Spotify — mantener fallback */
+        wrap.classList.remove('loading');
+        wrap.classList.add('error');
+        return;
+      }
+
+      /* Inyectar la URL de la imagen (viene del servidor, no del cliente) */
+      img.src = bestImg.url;
+      img.alt = `Foto de perfil de ${escHtml(data.name)} en Spotify`;
+
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+        article.classList.add('has-photo');
+        wrap.classList.remove('loading');
+        if (badge) badge.classList.add('visible');
+      }, { once: true });
+
+      img.addEventListener('error', () => {
+        /* La imagen de Spotify no cargó (CORS, CDN, etc.) — fallback */
+        img.removeAttribute('src');
+        wrap.classList.remove('loading');
+        wrap.classList.add('error');
+        console.info(`[Spotify] La imagen no cargó para ${spotifyId}`);
+      }, { once: true });
+
+      /* Si la imagen ya estaba en caché del navegador */
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add('loaded');
+        article.classList.add('has-photo');
+        wrap.classList.remove('loading');
+        if (badge) badge.classList.add('visible');
+      }
+
+    } catch (e) {
+      /* Error de red o servidor no disponible — fallback silencioso */
+      wrap.classList.remove('loading');
+      wrap.classList.add('error');
+      console.info('[Spotify] Servidor no disponible, mostrando fallback:', e.message);
+    }
+  }
+
+  /* Cargar todas las tarjetas con data-spotify-id */
+  const articles = document.querySelectorAll('[data-spotify-id]');
+  if (!articles.length) return;
+
+  /* Usar IntersectionObserver para cargar solo cuando son visibles */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadArtistPhoto(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    articles.forEach(a => io.observe(a));
+  } else {
+    /* Fallback para navegadores sin IntersectionObserver */
+    articles.forEach(a => loadArtistPhoto(a));
+  }
+
+})();
+</script>
+</body>
+</html>

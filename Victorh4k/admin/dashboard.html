@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dashboard — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none">
+          <i class="fas fa-bars"></i>
+        </button>
+        <span class="a-topbar-title">Dashboard</span>
+      </div>
+      <div class="a-topbar-right">
+        <div class="a-user-badge">
+          <div class="a-user-avatar" id="user-initials">–</div>
+          <span id="user-email" style="display:none"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="a-content">
+      <div id="a-toast"></div>
+
+      <!-- Stats -->
+      <div class="a-stats" id="stats-grid">
+        <div class="a-stat"><div class="a-stat-icon"><i class="fas fa-users"></i></div><div class="a-stat-value" id="s-artists">–</div><div class="a-stat-label">Artistas publicados</div></div>
+        <div class="a-stat"><div class="a-stat-icon"><i class="fas fa-compact-disc"></i></div><div class="a-stat-value" id="s-releases">–</div><div class="a-stat-label">Lanzamientos publicados</div></div>
+        <div class="a-stat"><div class="a-stat-icon"><i class="fas fa-newspaper"></i></div><div class="a-stat-value" id="s-articles">–</div><div class="a-stat-label">Artículos publicados</div></div>
+        <div class="a-stat"><div class="a-stat-icon" style="color:#ea580c"><i class="fas fa-edit"></i></div><div class="a-stat-value" id="s-drafts">–</div><div class="a-stat-label">Borradores pendientes</div></div>
+      </div>
+
+      <!-- Accesos rápidos -->
+      <div class="a-card" style="margin-bottom:20px">
+        <div class="a-card-title"><span><i class="fas fa-bolt"></i> Accesos rápidos</span></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/admin/artistas.html?action=new" class="btn-a btn-a-primary"><i class="fas fa-plus"></i> Nuevo artista</a>
+          <a href="/admin/lanzamientos.html?action=new" class="btn-a btn-a-primary"><i class="fas fa-plus"></i> Nuevo lanzamiento</a>
+          <a href="/admin/radar-articulos.html?action=new" class="btn-a btn-a-primary"><i class="fas fa-plus"></i> Nuevo artículo Radar</a>
+          <a href="/admin/reviews.html" class="btn-a btn-a-secondary"><i class="fas fa-star"></i> Moderar opiniones</a>
+        </div>
+      </div>
+
+      <!-- Últimos artículos Radar -->
+      <div class="a-card" style="margin-bottom:20px">
+        <div class="a-card-title">
+          <span><i class="fas fa-newspaper"></i> Últimos artículos de Radar Musical</span>
+          <a href="/admin/radar-articulos.html" class="btn-a btn-a-secondary btn-a-sm">Ver todos</a>
+        </div>
+        <div class="a-table-wrap">
+          <table class="a-table">
+            <thead><tr><th>Título</th><th>Categoría</th><th>Estado</th><th>Publicado</th><th></th></tr></thead>
+            <tbody id="recent-articles"><tr><td colspan="5" class="a-empty"><i class="fas fa-newspaper"></i>Sin artículos aún</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Opiniones pendientes -->
+      <div class="a-card">
+        <div class="a-card-title">
+          <span><i class="fas fa-star"></i> Opiniones pendientes de moderación</span>
+          <a href="/admin/reviews.html" class="btn-a btn-a-secondary btn-a-sm">Ver todas</a>
+        </div>
+        <div id="pending-reviews">
+          <div class="a-empty"><i class="fas fa-check-circle"></i>Sin opiniones pendientes</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+(async () => {
+  const auth = await requireAuth();
+  if (!auth) return;
+
+  // Render nav
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('dashboard');
+
+  // User badge
+  const email = auth.session.user.email;
+  document.getElementById('user-initials').textContent = email[0].toUpperCase();
+  document.getElementById('user-email').textContent = email;
+
+  // Mostrar toggle en móvil
+  if (window.innerWidth <= 900) {
+    document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+  }
+
+  // Cargar stats
+  async function loadStats() {
+    const [
+      { count: artists },
+      { count: releases },
+      { count: articles },
+      { count: drafts },
+    ] = await Promise.all([
+      sb.from('artists').select('id', { count: 'exact', head: true }).eq('is_published', true),
+      sb.from('releases').select('id', { count: 'exact', head: true }).eq('status', 'published'),
+      sb.from('radar_articles').select('id', { count: 'exact', head: true }).eq('status', 'published'),
+      sb.from('radar_articles').select('id', { count: 'exact', head: true }).eq('status', 'draft'),
+    ]);
+    document.getElementById('s-artists').textContent  = artists  ?? 0;
+    document.getElementById('s-releases').textContent = releases ?? 0;
+    document.getElementById('s-articles').textContent = articles ?? 0;
+    document.getElementById('s-drafts').textContent   = drafts   ?? 0;
+  }
+
+  // Cargar artículos recientes
+  async function loadRecentArticles() {
+    const { data } = await sb.from('radar_articles')
+      .select('id, title, slug, status, published_at, radar_categories(name)')
+      .order('created_at', { ascending: false })
+      .limit(5);
+    if (!data?.length) return;
+    const tbody = document.getElementById('recent-articles');
+    tbody.innerHTML = data.map(a => `
+      <tr>
+        <td><strong>${escHtml(a.title)}</strong></td>
+        <td>${a.radar_categories?.name ? `<span class="a-badge a-badge-gray">${escHtml(a.radar_categories.name)}</span>` : '—'}</td>
+        <td>${a.status === 'published' ? '<span class="a-badge a-badge-green">Publicado</span>' : a.status === 'draft' ? '<span class="a-badge a-badge-orange">Borrador</span>' : '<span class="a-badge a-badge-gray">Archivado</span>'}</td>
+        <td>${fmtDate(a.published_at)}</td>
+        <td><a href="/admin/radar-articulos.html?edit=${a.id}" class="btn-a btn-a-secondary btn-a-sm">Editar</a></td>
+      </tr>`).join('');
+  }
+
+  // Cargar opiniones pendientes
+  async function loadPendingReviews() {
+    const { data } = await sb.from('reviews')
+      .select('*').eq('status', 'pending')
+      .order('created_at', { ascending: false }).limit(5);
+    if (!data?.length) return;
+    const container = document.getElementById('pending-reviews');
+    container.innerHTML = data.map(r => `
+      <div class="adm-item" style="background:var(--a-gray-lt);border:1px solid var(--a-gray-bd);border-radius:6px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div>
+          <strong style="font-size:13px">${escHtml(r.name)}</strong>
+          <div style="color:#D97706;font-size:12px;margin:3px 0">${'★'.repeat(Math.min(r.rating||5,5))}</div>
+          <div style="font-size:12px;color:var(--a-gray-2)">"${escHtml(r.text||r.comment||'')}"</div>
+          <div style="font-size:10px;color:var(--a-gray-3);margin-top:4px">${fmtDate(r.created_at)}</div>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <button class="btn-a btn-a-secondary btn-a-sm" onclick="reviewAction('${escHtml(r.id)}','approved',this)">✓ Aprobar</button>
+          <button class="btn-a btn-a-danger btn-a-sm" onclick="reviewAction('${escHtml(r.id)}','rejected',this)">✗ Rechazar</button>
+        </div>
+      </div>`).join('');
+  }
+
+  await Promise.all([loadStats(), loadRecentArticles(), loadPendingReviews()]);
+
+  // Moderar review rápido desde dashboard
+  async function reviewAction(id, status, btn) {
+    btn.disabled = true;
+    const { error } = await sb.from('reviews').update({ status }).eq('id', id);
+    if (error) { toast('Error: ' + error.message, 'error'); btn.disabled = false; return; }
+    toast(status === 'approved' ? 'Opinión aprobada' : 'Opinión rechazada');
+    btn.closest('[class^="adm-item"], div').remove();
+    // Actualizar stats
+    loadStats();
+  }
+  window.reviewAction = reviewAction;
+})();
+</script>
+</body>
+</html>

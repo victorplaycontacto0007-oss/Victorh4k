@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Verificando acceso... | VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+</head>
+<body>
+<div class="a-login-wrap">
+  <div class="a-login-box" style="text-align:center">
+    <div class="a-login-logo" style="justify-content:center;margin-bottom:24px">
+      <div class="mark">VH</div>
+      <div>
+        <div class="text">VictorH4K</div>
+        <div class="sub">Panel Administrativo</div>
+      </div>
+    </div>
+
+    <div id="status" style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <span class="a-spinner" style="width:28px;height:28px"></span>
+      <p style="font-size:13px;color:#888">Verificando acceso...</p>
+    </div>
+
+    <div id="error-box" class="a-alert a-alert-error" style="display:none;margin-top:20px">
+      <i class="fas fa-exclamation-circle"></i>
+      <span id="error-msg">Acceso denegado.</span>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════
+   Callback de Google OAuth.
+   Supabase maneja el hash #access_token automáticamente.
+   Este script verifica:
+   1. Que hay sesión activa tras el redirect
+   2. Que el email es victorplaycontacto0007@gmail.com
+   3. Que existe un registro en admin_profiles
+   ═══════════════════════════════════════════════════════════ */
+
+const ALLOWED_EMAIL = 'victorplaycontacto0007@gmail.com';
+
+function showError(msg) {
+  document.getElementById('status').style.display = 'none';
+  document.getElementById('error-msg').textContent = msg;
+  document.getElementById('error-box').style.display = 'flex';
+  // Redirigir al login después de 3 segundos
+  setTimeout(() => { location.href = '/admin/?error=no_access'; }, 3000);
+}
+
+async function handleCallback() {
+  if (!sb) { showError('Error de conexión con Supabase.'); return; }
+
+  // Esperar a que Supabase procese el hash de la URL (tokens OAuth)
+  await new Promise(resolve => setTimeout(resolve, 800));
+
+  const { data: { session }, error } = await sb.auth.getSession();
+
+  if (error || !session) {
+    showError('No se pudo establecer la sesión. Inténtalo de nuevo.');
+    return;
+  }
+
+  const userEmail = session.user.email?.toLowerCase().trim();
+
+  // ── VERIFICACIÓN 1: Email permitido ──────────────────────────
+  if (userEmail !== ALLOWED_EMAIL.toLowerCase()) {
+    await sb.auth.signOut();
+    showError(`La cuenta ${userEmail} no tiene acceso. Solo se permite una cuenta específica.`);
+    return;
+  }
+
+  // ── VERIFICACIÓN 2: Existe en admin_profiles ─────────────────
+  const { data: profile, error: profileError } = await sb
+    .from('admin_profiles')
+    .select('id, is_active')
+    .eq('user_id', session.user.id)
+    .single();
+
+  if (profileError || !profile) {
+    // Primera vez con Google → intentar crear el registro automáticamente
+    // (solo funciona si is_admin() pasa, o sea, si ejecutaste las migraciones)
+    const { error: insertError } = await sb
+      .from('admin_profiles')
+      .insert({ user_id: session.user.id, full_name: session.user.user_metadata?.full_name || 'Victor', is_active: true });
+
+    if (insertError) {
+      await sb.auth.signOut();
+      showError('Perfil de administrador no encontrado. Ejecuta las migraciones SQL primero.');
+      return;
+    }
+  } else if (!profile.is_active) {
+    await sb.auth.signOut();
+    showError('Tu cuenta está desactivada.');
+    return;
+  }
+
+  // ── Todo correcto → al dashboard ────────────────────────────
+  location.href = '/admin/dashboard.html';
+}
+
+handleCallback();
+</script>
+</body>
+</html>

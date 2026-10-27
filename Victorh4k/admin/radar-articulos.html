@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Artículos Radar — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+<style>
+.status-filter { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.status-filter button { padding:5px 12px; border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; border:1.5px solid #e5e5e5; background:transparent; color:#888; cursor:pointer; transition:all .15s; }
+.status-filter button.active { background:#D52B35; border-color:#D52B35; color:#fff; }
+</style>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title" id="page-title">Artículos Radar Musical</span>
+      </div>
+      <div class="a-topbar-right">
+        <button class="btn-a btn-a-primary" id="btn-new"><i class="fas fa-plus"></i> Nuevo artículo</button>
+      </div>
+    </header>
+
+    <main class="a-content">
+      <div id="a-toast"></div>
+
+      <!-- LISTA -->
+      <div id="view-list">
+        <div class="status-filter">
+          <button class="active" onclick="filterList('all',this)">Todos</button>
+          <button onclick="filterList('draft',this)">Borradores</button>
+          <button onclick="filterList('published',this)">Publicados</button>
+          <button onclick="filterList('archived',this)">Archivados</button>
+        </div>
+        <div class="a-card">
+          <div class="a-table-wrap">
+            <table class="a-table">
+              <thead><tr><th>Título</th><th>Categoría</th><th>Estado</th><th>Publicado</th><th>Lectura</th><th></th></tr></thead>
+              <tbody id="articles-tbody"><tr><td colspan="6" class="a-empty"><span class="a-spinner"></span></td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDITOR -->
+      <div id="view-form" style="display:none">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button class="btn-a btn-a-secondary" id="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+            <h2 style="font-size:15px;font-weight:700" id="form-heading">Nuevo artículo</h2>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn-a btn-a-secondary" id="btn-preview"><i class="fas fa-eye"></i> Vista previa</button>
+            <button class="btn-a btn-a-secondary" id="btn-draft"><i class="fas fa-save"></i> Guardar borrador</button>
+            <button class="btn-a btn-a-primary" id="btn-publish"><i class="fas fa-paper-plane"></i> Publicar</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 300px;gap:20px">
+          <!-- Editor principal -->
+          <div>
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-form-group" style="margin-bottom:12px">
+                <input type="text" class="a-input" id="f-title" placeholder="Título del artículo" style="font-size:20px;font-weight:700;border:none;border-bottom:2px solid #e5e5e5;border-radius:0;padding-left:0;padding-right:0"/>
+              </div>
+              <div class="a-form-group">
+                <input type="text" class="a-input" id="f-excerpt" placeholder="Extracto breve (aparece en listados y resultados de búsqueda)..."/>
+              </div>
+            </div>
+
+            <!-- Editor WYSIWYG -->
+            <div class="a-card">
+              <div class="a-card-title" style="margin-bottom:0"><span><i class="fas fa-pen"></i> Contenido</span></div>
+              <div class="a-editor-wrap" style="margin-top:12px">
+                <div class="a-editor-toolbar">
+                  <!-- Formato -->
+                  <button class="a-toolbar-btn" onclick="fmt('bold')" title="Negrita"><i class="fas fa-bold"></i></button>
+                  <button class="a-toolbar-btn" onclick="fmt('italic')" title="Cursiva"><i class="fas fa-italic"></i></button>
+                  <button class="a-toolbar-btn" onclick="fmt('underline')" title="Subrayado"><i class="fas fa-underline"></i></button>
+                  <div class="a-toolbar-sep"></div>
+                  <!-- Encabezados -->
+                  <button class="a-toolbar-btn" onclick="fmtBlock('h2')" title="H2" style="font-weight:800;font-size:11px">H2</button>
+                  <button class="a-toolbar-btn" onclick="fmtBlock('h3')" title="H3" style="font-weight:700;font-size:11px">H3</button>
+                  <button class="a-toolbar-btn" onclick="fmtBlock('p')" title="Párrafo" style="font-size:11px">P</button>
+                  <div class="a-toolbar-sep"></div>
+                  <!-- Listas -->
+                  <button class="a-toolbar-btn" onclick="fmt('insertUnorderedList')" title="Lista"><i class="fas fa-list-ul"></i></button>
+                  <button class="a-toolbar-btn" onclick="fmt('insertOrderedList')" title="Lista numerada"><i class="fas fa-list-ol"></i></button>
+                  <div class="a-toolbar-sep"></div>
+                  <!-- Especiales -->
+                  <button class="a-toolbar-btn" onclick="fmtBlock('blockquote')" title="Cita"><i class="fas fa-quote-right"></i></button>
+                  <button class="a-toolbar-btn" onclick="insertLink()" title="Enlace"><i class="fas fa-link"></i></button>
+                  <button class="a-toolbar-btn" onclick="insertTable()" title="Tabla"><i class="fas fa-table"></i></button>
+                  <div class="a-toolbar-sep"></div>
+                  <button class="a-toolbar-btn" onclick="fmt('removeFormat')" title="Quitar formato"><i class="fas fa-eraser"></i></button>
+                </div>
+                <div class="a-editor-body" id="editor-body" contenteditable="true"
+                     data-placeholder="Escribe el contenido del artículo aquí..."></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel derecho -->
+          <div>
+            <!-- Imagen destacada -->
+            <div class="a-card" style="margin-bottom:14px">
+              <div class="a-card-title" style="font-size:12px;margin-bottom:10px"><span><i class="fas fa-image"></i> Imagen destacada</span></div>
+              <label class="a-image-upload" id="img-upload-area" for="img-file" style="margin-bottom:8px">
+                <input type="file" id="img-file" accept="image/jpeg,image/png,image/webp"/>
+                <div id="img-placeholder"><i class="fas fa-cloud-upload-alt" style="font-size:20px;color:#aaa;margin-bottom:6px;display:block"></i><div style="font-size:12px;color:#aaa">Subir imagen</div></div>
+                <img id="img-preview" src="" alt="" style="display:none;width:100%;height:150px;object-fit:cover;border-radius:6px"/>
+              </label>
+              <input type="url" class="a-input" id="f-img-url" placeholder="O URL externa" style="margin-bottom:6px"/>
+              <input type="text" class="a-input" id="f-img-alt" placeholder="Texto alternativo (accesibilidad)"/>
+            </div>
+
+            <!-- Metadatos -->
+            <div class="a-card" style="margin-bottom:14px">
+              <div class="a-card-title" style="font-size:12px;margin-bottom:10px"><span><i class="fas fa-info-circle"></i> Metadatos</span></div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-slug">Slug / URL</label>
+                <input type="text" class="a-input" id="f-slug" placeholder="url-del-articulo"/>
+                <div class="a-form-hint">/radar-musical/<span id="slug-preview" style="color:#D52B35"></span></div>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-category">Categoría</label>
+                <select class="a-select" id="f-category"><option value="">Sin categoría</option></select>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-author">Autor</label>
+                <input type="text" class="a-input" id="f-author" value="VictorH4K"/>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-pub-date">Fecha publicación</label>
+                <input type="datetime-local" class="a-input" id="f-pub-date"/>
+              </div>
+            </div>
+
+            <!-- SEO -->
+            <div class="a-card" style="margin-bottom:14px">
+              <div class="a-card-title" style="font-size:12px;margin-bottom:10px"><span><i class="fas fa-search"></i> SEO</span></div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-seo-title">Título SEO <span id="seo-title-count" style="color:#aaa">(0/70)</span></label>
+                <input type="text" class="a-input" id="f-seo-title" maxlength="70" placeholder="Título para Google..."/>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-seo-desc">Meta descripción <span id="seo-desc-count" style="color:#aaa">(0/160)</span></label>
+                <textarea class="a-textarea" id="f-seo-desc" rows="3" maxlength="160" placeholder="Descripción para Google..."></textarea>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-canonical">URL canónica</label>
+                <input type="url" class="a-input" id="f-canonical" placeholder="https://victorh4k.com/radar-musical/..."/>
+              </div>
+            </div>
+
+            <!-- Fuentes -->
+            <div class="a-card" style="margin-bottom:14px">
+              <div class="a-card-title" style="font-size:12px;margin-bottom:8px"><span><i class="fas fa-book-open"></i> Fuentes</span></div>
+              <div id="sources-list"></div>
+              <button class="btn-a btn-a-secondary btn-a-sm" onclick="addSource()" style="margin-top:6px"><i class="fas fa-plus"></i> Añadir fuente</button>
+            </div>
+
+            <div style="display:flex;gap:8px">
+              <button class="btn-a btn-a-danger" id="btn-delete" style="display:none"><i class="fas fa-trash"></i> Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Preview overlay -->
+<div id="preview-overlay" class="a-preview-overlay" style="display:none">
+  <div class="a-preview-box">
+    <div class="a-preview-header">
+      <span>Vista previa del artículo</span>
+      <button class="btn-a btn-a-secondary btn-a-sm" onclick="closePreview()"><i class="fas fa-times"></i> Cerrar</button>
+    </div>
+    <div id="preview-content" style="padding:32px;max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+let currentId = null;
+let filterStatus = 'all';
+let sourcesCount = 0;
+
+(async () => {
+  const auth = await requireAuth();
+  if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('radar');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+
+  await loadCategories();
+
+  // Auto-slug
+  document.getElementById('f-title').addEventListener('input', function() {
+    if (!currentId) {
+      const s = makeSlug(this.value);
+      document.getElementById('f-slug').value = s;
+      document.getElementById('slug-preview').textContent = s;
+    }
+  });
+  document.getElementById('f-slug').addEventListener('input', function() {
+    document.getElementById('slug-preview').textContent = this.value;
+  });
+
+  // Contadores SEO
+  document.getElementById('f-seo-title').addEventListener('input', function() {
+    document.getElementById('seo-title-count').textContent = `(${this.value.length}/70)`;
+  });
+  document.getElementById('f-seo-desc').addEventListener('input', function() {
+    document.getElementById('seo-desc-count').textContent = `(${this.value.length}/160)`;
+  });
+
+  // Preview imagen
+  document.getElementById('img-file').addEventListener('change', function() {
+    const file = this.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('img-preview').src = e.target.result;
+      document.getElementById('img-preview').style.display = 'block';
+      document.getElementById('img-placeholder').style.display = 'none';
+      document.getElementById('img-upload-area').classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Protección contra pérdida de cambios
+  window.addEventListener('beforeunload', e => {
+    if (document.getElementById('view-form').style.display !== 'none') {
+      e.preventDefault(); e.returnValue = '';
+    }
+  });
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('action') === 'new') showForm(null);
+  else if (params.get('edit')) loadAndEdit(params.get('edit'));
+  else loadList();
+
+  document.getElementById('btn-new').addEventListener('click', () => showForm(null));
+  document.getElementById('btn-back').addEventListener('click', () => { showList(); loadList(); });
+  document.getElementById('btn-draft').addEventListener('click', () => save('draft'));
+  document.getElementById('btn-publish').addEventListener('click', () => save('published'));
+  document.getElementById('btn-preview').addEventListener('click', showPreview);
+  document.getElementById('btn-delete').addEventListener('click', remove);
+})();
+
+async function loadCategories() {
+  const { data } = await sb.from('radar_categories').select('*').order('sort_order');
+  const sel = document.getElementById('f-category');
+  (data||[]).forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id; opt.textContent = c.name;
+    sel.appendChild(opt);
+  });
+}
+
+async function loadList() {
+  let query = sb.from('radar_articles')
+    .select('id, title, slug, status, published_at, reading_time_min, radar_categories(name)')
+    .order('created_at', { ascending: false });
+  if (filterStatus !== 'all') query = query.eq('status', filterStatus);
+  const { data } = await query;
+  const tbody = document.getElementById('articles-tbody');
+  if (!data?.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="a-empty"><i class="fas fa-newspaper"></i> Sin artículos. <a href="#" onclick="showForm(null)">Crear el primero</a></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = data.map(a => `
+    <tr>
+      <td style="max-width:300px"><strong>${escHtml(a.title)}</strong><div style="font-size:11px;color:#888">/radar-musical/${escHtml(a.slug)}</div></td>
+      <td>${a.radar_categories?.name ? `<span class="a-badge a-badge-gray">${escHtml(a.radar_categories.name)}</span>` : '—'}</td>
+      <td>${a.status==='published'?'<span class="a-badge a-badge-green">Publicado</span>':a.status==='draft'?'<span class="a-badge a-badge-orange">Borrador</span>':'<span class="a-badge a-badge-gray">Archivado</span>'}</td>
+      <td>${fmtDate(a.published_at)}</td>
+      <td>${a.reading_time_min ? a.reading_time_min + ' min' : '—'}</td>
+      <td style="white-space:nowrap">
+        <a href="/radar-musical/${escHtml(a.slug)}/" target="_blank" class="btn-a btn-a-secondary btn-a-sm" title="Ver artículo"><i class="fas fa-external-link-alt"></i></a>
+        <button class="btn-a btn-a-secondary btn-a-sm" onclick="loadAndEdit('${escHtml(a.id)}')">Editar</button>
+      </td>
+    </tr>`).join('');
+}
+
+window.filterList = function(status, btn) {
+  filterStatus = status;
+  document.querySelectorAll('.status-filter button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadList();
+};
+
+async function loadAndEdit(id) {
+  const { data, error } = await sb.from('radar_articles').select('*').eq('id', id).single();
+  if (error || !data) { toast('Error al cargar artículo', 'error'); return; }
+  showForm(data);
+}
+
+function showList() {
+  document.getElementById('view-list').style.display = '';
+  document.getElementById('view-form').style.display = 'none';
+  document.getElementById('page-title').textContent = 'Artículos Radar Musical';
+  currentId = null;
+}
+function showForm(article) {
+  document.getElementById('view-list').style.display = 'none';
+  document.getElementById('view-form').style.display = '';
+  document.getElementById('page-title').textContent = article ? 'Editar artículo' : 'Nuevo artículo';
+  document.getElementById('form-heading').textContent = article ? 'Editar artículo' : 'Nuevo artículo';
+  document.getElementById('btn-delete').style.display = article ? 'inline-flex' : 'none';
+  currentId = article?.id || null;
+
+  document.getElementById('f-title').value      = article?.title || '';
+  document.getElementById('f-excerpt').value    = article?.excerpt || '';
+  document.getElementById('f-slug').value       = article?.slug || '';
+  document.getElementById('slug-preview').textContent = article?.slug || '';
+  document.getElementById('f-category').value  = article?.category_id || '';
+  document.getElementById('f-author').value     = article?.author_name || 'VictorH4K';
+  document.getElementById('f-seo-title').value  = article?.seo_title || '';
+  document.getElementById('f-seo-desc').value   = article?.seo_description || '';
+  document.getElementById('f-canonical').value  = article?.canonical_url || '';
+  document.getElementById('f-img-url').value    = article?.featured_image || '';
+  document.getElementById('f-img-alt').value    = article?.featured_image_alt || '';
+
+  // Fecha de publicación
+  if (article?.published_at) {
+    const d = new Date(article.published_at);
+    document.getElementById('f-pub-date').value = d.toISOString().slice(0,16);
+  } else {
+    document.getElementById('f-pub-date').value = new Date().toISOString().slice(0,16);
+  }
+
+  // Contenido en el editor
+  document.getElementById('editor-body').innerHTML = article?.content || '';
+
+  // Imagen
+  const prev = document.getElementById('img-preview');
+  const ph   = document.getElementById('img-placeholder');
+  const area = document.getElementById('img-upload-area');
+  if (article?.featured_image) {
+    prev.src = article.featured_image; prev.style.display = 'block';
+    ph.style.display = 'none'; area.classList.add('has-image');
+  } else {
+    prev.src = ''; prev.style.display = 'none';
+    ph.style.display = 'block'; area.classList.remove('has-image');
+  }
+
+  // Fuentes
+  sourcesCount = 0;
+  document.getElementById('sources-list').innerHTML = '';
+  (article?.sources || []).forEach(s => addSourceWithData(s));
+
+  // Actualizar contadores
+  document.getElementById('seo-title-count').textContent = `(${(article?.seo_title||'').length}/70)`;
+  document.getElementById('seo-desc-count').textContent  = `(${(article?.seo_description||'').length}/160)`;
+}
+
+/* ── Editor commands ── */
+function fmt(cmd) { document.execCommand(cmd, false, null); document.getElementById('editor-body').focus(); }
+function fmtBlock(tag) {
+  if (tag === 'blockquote') { document.execCommand('formatBlock', false, 'blockquote'); }
+  else { document.execCommand('formatBlock', false, tag); }
+  document.getElementById('editor-body').focus();
+}
+function insertLink() {
+  const url = prompt('URL del enlace:');
+  if (url) { document.execCommand('createLink', false, url); document.getElementById('editor-body').focus(); }
+}
+function insertTable() {
+  const rows = parseInt(prompt('Número de filas:', '3')) || 3;
+  const cols = parseInt(prompt('Número de columnas:', '3')) || 3;
+  let html = '<table><thead><tr>';
+  for (let c = 0; c < cols; c++) html += `<th>Encabezado ${c+1}</th>`;
+  html += '</tr></thead><tbody>';
+  for (let r = 0; r < rows - 1; r++) {
+    html += '<tr>';
+    for (let c = 0; c < cols; c++) html += '<td>Celda</td>';
+    html += '</tr>';
+  }
+  html += '</tbody></table><p></p>';
+  document.execCommand('insertHTML', false, html);
+  document.getElementById('editor-body').focus();
+}
+
+/* ── Fuentes ── */
+window.addSource = () => addSourceWithData({});
+function addSourceWithData(s) {
+  const i = sourcesCount++;
+  const el = document.createElement('div');
+  el.style.cssText = 'display:grid;grid-template-columns:1fr auto;gap:6px;margin-bottom:8px;align-items:start';
+  el.innerHTML = `
+    <div>
+      <input type="text" class="a-input" id="src-title-${i}" placeholder="Título de la fuente" value="${escHtml(s.title||'')}" style="margin-bottom:4px"/>
+      <input type="url" class="a-input" id="src-url-${i}" placeholder="URL" value="${escHtml(s.url||'')}"/>
+    </div>
+    <button class="btn-a btn-a-danger btn-a-sm" onclick="this.parentElement.remove()" style="margin-top:2px"><i class="fas fa-times"></i></button>`;
+  document.getElementById('sources-list').appendChild(el);
+}
+function getSources() {
+  const sources = [];
+  document.querySelectorAll('[id^="src-title-"]').forEach(el => {
+    const i = el.id.split('-').pop();
+    const title = el.value.trim();
+    const url   = document.getElementById(`src-url-${i}`)?.value.trim();
+    if (title || url) sources.push({ title, url });
+  });
+  return sources;
+}
+
+/* ── Save ── */
+async function save(status) {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { toast('El título es obligatorio', 'error'); return; }
+
+  const btnId = status === 'draft' ? 'btn-draft' : 'btn-publish';
+  const btn = document.getElementById(btnId);
+  btn.disabled = true; btn.innerHTML = '<span class="a-spinner"></span>';
+
+  let imgUrl = document.getElementById('f-img-url').value.trim() || null;
+  const imgFile = document.getElementById('img-file').files[0];
+  if (imgFile) {
+    const uploaded = await uploadImage(imgFile, 'radar', 'featured');
+    if (uploaded) imgUrl = uploaded;
+  }
+
+  const content = document.getElementById('editor-body').innerHTML;
+  const slug    = document.getElementById('f-slug').value.trim() || makeSlug(title);
+
+  const payload = {
+    title,
+    slug,
+    excerpt:           document.getElementById('f-excerpt').value.trim() || null,
+    content,
+    featured_image:    imgUrl,
+    featured_image_alt:document.getElementById('f-img-alt').value.trim(),
+    category_id:       document.getElementById('f-category').value || null,
+    author_name:       document.getElementById('f-author').value.trim() || 'VictorH4K',
+    status,
+    published_at:      status === 'published' ? (document.getElementById('f-pub-date').value ? new Date(document.getElementById('f-pub-date').value).toISOString() : new Date().toISOString()) : null,
+    seo_title:         document.getElementById('f-seo-title').value.trim() || null,
+    seo_description:   document.getElementById('f-seo-desc').value.trim() || null,
+    canonical_url:     document.getElementById('f-canonical').value.trim() || null,
+    sources:           getSources(),
+    reading_time_min:  readingTime(content),
+  };
+
+  let articleId = currentId;
+  if (currentId) {
+    const { error } = await sb.from('radar_articles').update(payload).eq('id', currentId);
+    if (error) { toast('Error: ' + error.message, 'error'); btn.disabled = false; btn.innerHTML = status==='draft'?'<i class="fas fa-save"></i> Guardar borrador':'<i class="fas fa-paper-plane"></i> Publicar'; return; }
+  } else {
+    const { data, error } = await sb.from('radar_articles').insert(payload).select().single();
+    if (error) { toast('Error: ' + error.message, 'error'); btn.disabled = false; btn.innerHTML = status==='draft'?'<i class="fas fa-save"></i> Guardar borrador':'<i class="fas fa-paper-plane"></i> Publicar'; return; }
+    articleId = data.id;
+    currentId = articleId;
+    document.getElementById('btn-delete').style.display = 'inline-flex';
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = status==='draft'?'<i class="fas fa-save"></i> Guardar borrador':'<i class="fas fa-paper-plane"></i> Publicar';
+  toast(status === 'published' ? '¡Artículo publicado!' : 'Borrador guardado');
+
+  // Si se publicó, generar el HTML estático
+  if (status === 'published') {
+    await generateStaticArticle(articleId);
+  }
+}
+
+async function remove() {
+  if (!currentId) return;
+  if (!confirm('¿Eliminar este artículo permanentemente?')) return;
+  const { error } = await sb.from('radar_articles').delete().eq('id', currentId);
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  toast('Artículo eliminado');
+  showList(); loadList();
+}
+
+/* ── Generar página estática vía API server ── */
+async function generateStaticArticle(id) {
+  try {
+    const resp = await fetch(`/api/generate-article?id=${id}`, { method: 'POST' });
+    if (resp.ok) { toast('Página estática generada — SEO listo'); }
+    else { toast('Artículo guardado (genera el HTML reiniciando el servidor)', 'info'); }
+  } catch(e) {
+    toast('Guardado. Para SEO: reinicia el servidor para regenerar páginas.', 'info');
+  }
+}
+
+/* ── Preview ── */
+function showPreview() {
+  const title   = document.getElementById('f-title').value || '(Sin título)';
+  const excerpt = document.getElementById('f-excerpt').value || '';
+  const content = document.getElementById('editor-body').innerHTML || '<p style="color:#aaa">Sin contenido aún</p>';
+  const imgUrl  = document.getElementById('f-img-url').value || document.getElementById('img-preview').src || '';
+
+  document.getElementById('preview-content').innerHTML = `
+    ${imgUrl ? `<img src="${escHtml(imgUrl)}" style="width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:24px" alt=""/>` : ''}
+    <h1 style="font-size:26px;font-weight:800;margin-bottom:12px;line-height:1.2">${escHtml(title)}</h1>
+    ${excerpt ? `<p style="font-size:15px;color:#666;font-style:italic;margin-bottom:20px">${escHtml(excerpt)}</p>` : ''}
+    <div style="font-size:15px;line-height:1.75;color:#222">${content}</div>`;
+
+  document.getElementById('preview-overlay').style.display = 'flex';
+}
+window.closePreview = () => { document.getElementById('preview-overlay').style.display = 'none'; };
+// Cerrar preview con Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePreview(); });
+</script>
+</body>
+</html>

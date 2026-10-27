@@ -1,0 +1,17 @@
+# VictorH4K + Radar Musical — robots.txt
+
+User-agent: *
+Allow: /
+
+# Recursos necesarios para renderizar
+Allow: /shared.css
+Allow: /shared.js
+Allow: /assets/
+Allow: /images/
+Allow: /radar-musical/
+
+# Proteger rutas administrativas
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://victorh4k.com/sitemap.xml

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Configuración — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title">Configuración general</span>
+      </div>
+      <div class="a-topbar-right">
+        <button class="btn-a btn-a-primary" onclick="saveConfig()"><i class="fas fa-save"></i> Guardar</button>
+      </div>
+    </header>
+    <main class="a-content">
+      <div id="a-toast"></div>
+      <div style="max-width:680px">
+        <div class="a-card" style="margin-bottom:16px">
+          <div class="a-card-title"><span><i class="fas fa-globe"></i> Sitio principal</span></div>
+          <div class="a-form-group"><label class="a-form-label" for="cfg-title">Título del sitio</label><input type="text" class="a-input" id="cfg-title"/></div>
+          <div class="a-form-group"><label class="a-form-label" for="cfg-desc">Descripción</label><textarea class="a-textarea" id="cfg-desc" rows="2"></textarea></div>
+          <div class="a-form-group"><label class="a-form-label" for="cfg-wa">WhatsApp (número con código país)</label><input type="text" class="a-input" id="cfg-wa" placeholder="573026021232"/></div>
+          <div class="a-form-group"><label class="a-form-label" for="cfg-ig">Instagram URL</label><input type="url" class="a-input" id="cfg-ig"/></div>
+          <div class="a-form-group"><label class="a-form-label" for="cfg-yt">YouTube URL</label><input type="url" class="a-input" id="cfg-yt"/></div>
+        </div>
+        <div class="a-card" style="margin-bottom:16px">
+          <div class="a-card-title"><span><i class="fas fa-newspaper"></i> Radar Musical</span></div>
+          <div class="a-form-group"><label class="a-form-label" for="cfg-rt">Título de Radar Musical</label><input type="text" class="a-input" id="cfg-rt"/></div>
+          <div class="a-form-group"><label class="a-form-label" for="cfg-rd">Descripción de Radar Musical</label><textarea class="a-textarea" id="cfg-rd" rows="2"></textarea></div>
+        </div>
+        <div class="a-card">
+          <div class="a-card-title"><span><i class="fas fa-info-circle"></i> Información del sistema</span></div>
+          <div style="font-size:13px;color:#666;line-height:1.8">
+            <div><strong>Supabase:</strong> wmxmfserrqbxvnvghvnp.supabase.co</div>
+            <div><strong>Entorno:</strong> localhost:3000</div>
+            <div style="margin-top:12px">
+              <a href="https://supabase.com/dashboard/project/wmxmfserrqbxvnvghvnp" target="_blank" class="btn-a btn-a-secondary btn-a-sm"><i class="fas fa-external-link-alt"></i> Abrir Supabase Dashboard</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+const CFG_FIELDS = {
+  'site_title':       'cfg-title',
+  'site_description': 'cfg-desc',
+  'contact_whatsapp': 'cfg-wa',
+  'contact_instagram':'cfg-ig',
+  'contact_youtube':  'cfg-yt',
+  'radar_title':      'cfg-rt',
+  'radar_description':'cfg-rd',
+};
+(async () => {
+  const auth = await requireAuth(); if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('config');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+  const { data } = await sb.from('site_config').select('*');
+  (data||[]).forEach(row => {
+    const elId = CFG_FIELDS[row.key];
+    if (elId) document.getElementById(elId).value = row.value || '';
+  });
+})();
+async function saveConfig() {
+  const updates = Object.entries(CFG_FIELDS).map(([key, elId]) => ({
+    key, value: document.getElementById(elId).value.trim()
+  }));
+  const { error } = await sb.from('site_config').upsert(updates);
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  toast('Configuración guardada');
+}
+window.saveConfig = saveConfig;
+</script>
+</body>
+</html>

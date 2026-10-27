@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>El sello | VictorH4K — Sello discográfico independiente</title>
+<meta name="description" content="VictorH4K es un sello discográfico independiente. Gestión, distribución digital y desarrollo de proyectos musicales. Modelo de regalías 70/30. Colombia."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://victorh4k.com/el-sello/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/el-sello/"/>
+<meta property="og:title" content="El sello | VictorH4K — Sello discográfico independiente"/>
+<meta property="og:description" content="Sello discográfico independiente. Gestión, distribución digital y desarrollo de proyectos musicales. Modelo de regalías 70/30."/>
+<meta property="og:image" content="https://victorh4k.com/images/og-image.png"/>
+<meta property="og:locale" content="es_CO"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="El sello | VictorH4K"/>
+<meta name="twitter:image" content="https://victorh4k.com/images/og-image.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VictorH4K","url":"https://victorh4k.com/","description":"Sello discográfico independiente enfocado en la gestión, distribución digital y desarrollo de proyectos musicales.","foundingLocation":{"@type":"Place","name":"Colombia"},"sameAs":["https://www.instagram.com/victorh4k/","https://www.youtube.com/@VictorH4K"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+/* ══════════════════════════════════════════
+   LAYOUT GENERAL: sidebar + contenido
+   ══════════════════════════════════════════ */
+.sello-wrap {
+  display: grid;
+  grid-template-columns: 228px 1fr;
+  gap: 32px;
+  align-items: start;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 40px var(--pad-x) 80px;
+}
+
+/* ── SIDEBAR OSCURO ── */
+.sello-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 20px);
+  align-self: start;
+}
+.sidebar-box {
+  background: #111111;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.sidebar-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 10px; font-weight: 800; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45);
+}
+.sidebar-head i { color: var(--red); font-size: 10px; }
+.sidebar-nav { display: flex; flex-direction: column; padding: 6px 0; }
+.sidebar-nav a {
+  display: block; padding: 9px 16px;
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all .15s;
+  line-height: 1.35;
+}
+.sidebar-nav a:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.04);
+  border-left-color: rgba(255,255,255,0.2);
+}
+.sidebar-nav a.active {
+  color: #fff;
+  background: rgba(213,43,53,0.12);
+  border-left-color: var(--red);
+  font-weight: 700;
+}
+.sidebar-cta {
+  padding: 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.sidebar-cta a {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: var(--red); color: #fff;
+  padding: 10px 12px; border-radius: 8px;
+  font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; transition: background .15s;
+}
+.sidebar-cta a:hover { background: var(--red-hover); }
+
+/* ── CONTENIDO ── */
+.sello-content {
+  min-width: 0;
+  display: flex; flex-direction: column; gap: 0;
+}
+
+/* Secciones con scroll-margin */
+.sello-sec {
+  scroll-margin-top: calc(var(--nav-h) + 20px);
+  padding: 40px 0;
+  border-bottom: 1px solid var(--gray-border);
+}
+.sello-sec:last-child { border-bottom: none; }
+
+/* Número de sección */
+.sec-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 6px;
+  background: var(--black); color: #fff;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+}
+.sec-heading {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+}
+.sec-heading h2 {
+  font-family: var(--font-display);
+  font-size: clamp(20px,2.4vw,26px); font-weight: 800;
+  color: var(--black); letter-spacing: -0.02em;
+}
+.sec-divider {
+  height: 2px; background: var(--red); width: 36px; margin-bottom: 18px;
+}
+
+/* Grids de tarjetas */
+.cards-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.info-card {
+  background: var(--gray-light); border: 1px solid var(--gray-border);
+  border-radius: var(--r-md); padding: 18px;
+  transition: border-color .15s, transform .15s;
+}
+.info-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.info-card-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(213,43,53,0.08); border: 1px solid rgba(213,43,53,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--red); margin-bottom: 10px;
+}
+.info-card h3 { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 5px; }
+.info-card p  { font-size: 12px; color: var(--gray-dark); line-height: 1.6; }
+
+/* ── BLOQUE REGALÍAS — estilo imagen ── */
+.royalty-panel {
+  background: #111; border-radius: 12px;
+  padding: 28px 28px 24px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.royalty-pcts {
+  display: flex; align-items: baseline; gap: 12px;
+}
+.rp-big {
+  font-family: var(--font-display);
+  font-size: clamp(52px,6vw,76px);
+  font-weight: 800; line-height: 1; letter-spacing: -0.04em;
+}
+.rp-big.artist { color: var(--red); }
+.rp-big.label  { color: rgba(255,255,255,0.25); }
+.rp-label {
+  font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.rp-label.artist { color: rgba(255,255,255,0.65); }
+.rp-label.label  { color: rgba(255,255,255,0.25); }
+.rp-sep { font-size: 24px; color: rgba(255,255,255,0.15); font-weight: 300; align-self: center; }
+.royalty-divider { height: 1px; background: rgba(255,255,255,0.08); }
+.royalty-includes-title {
+  font-size: 10px; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+  margin-bottom: 12px;
+}
+.royalty-list { display: flex; flex-direction: column; gap: 9px; }
+.royalty-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.4;
+}
+.royalty-list li i {
+  color: var(--red); font-size: 11px; margin-top: 1px; flex-shrink: 0;
+}
+.royalty-note {
+  font-size: 11px; color: rgba(255,255,255,0.25);
+  line-height: 1.65; font-style: italic;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 14px; margin-top: 4px;
+}
+
+/* Contrato: 3 cajas */
+.contract-boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.contract-box {
+  background: var(--gray-light); border: 1px solid var(--gray-border);
+  border-radius: var(--r-md); padding: 20px; text-align: center;
+}
+.contract-box .big-val {
+  font-family: var(--font-display); font-weight: 800; line-height: 1;
+  font-size: clamp(26px,3vw,38px); color: var(--black); margin-bottom: 6px;
+}
+.contract-box .big-val em { font-style: normal; color: var(--red); }
+.contract-box .box-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gray-dark);
+}
+.contract-box .box-desc {
+  font-size: 12px; color: var(--gray-dark); margin-top: 8px; line-height: 1.55;
+}
+
+/* Requisitos checklist */
+.req-list { display: flex; flex-direction: column; gap: 8px; }
+.req-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px; border-radius: var(--r-sm);
+  background: var(--gray-light); border: 1px solid var(--gray-border);
+  font-size: 13px; color: var(--gray-dark); line-height: 1.5;
+}
+.req-item i { color: var(--red); font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+
+/* Modalidades */
+.modal-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.modal-card {
+  background: var(--gray-light); border: 1px solid var(--gray-border);
+  border-radius: var(--r-md); padding: 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: border-color .15s, transform .15s;
+}
+.modal-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.modal-tag {
+  font-size: 9px; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--red);
+}
+.modal-card h3 { font-size: 14px; font-weight: 800; color: var(--black); }
+.modal-card p  { font-size: 12px; color: var(--gray-dark); line-height: 1.6; flex: 1; }
+
+/* Responsabilidades */
+.resp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.resp-col {
+  background: var(--gray-light); border: 1px solid var(--gray-border);
+  border-radius: var(--r-md); padding: 20px;
+}
+.resp-col h3 {
+  font-size: 13px; font-weight: 800; color: var(--black); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.resp-col h3 i { color: var(--red); font-size: 12px; }
+.resp-col ul { display: flex; flex-direction: column; gap: 7px; }
+.resp-col li {
+  font-size: 12px; color: var(--gray-dark); line-height: 1.5;
+  padding-left: 14px; position: relative;
+}
+.resp-col li::before { content: '—'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+
+/* ── INCUMPLIMIENTO — panel oscuro ── */
+.incump-panel {
+  background: #111; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.incump-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(213,43,53,0.08);
+}
+.incump-num {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: var(--red); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; flex-shrink: 0;
+}
+.incump-header h3 {
+  font-family: var(--font-display); font-size: 20px; font-weight: 800;
+  color: #fff; letter-spacing: -0.02em;
+}
+.incump-body { padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.incump-divider { height: 1px; background: rgba(255,255,255,0.07); }
+.incump-body p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+.incump-body p strong { color: #fff; }
+.incump-cases { display: flex; flex-direction: column; gap: 8px; }
+.incump-case {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55;
+}
+.incump-case i { color: var(--red); font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+
+/* FAQ acordeón */
+.faq-list { display: flex; flex-direction: column; gap: 6px; }
+.faq-item {
+  background: var(--white); border: 1px solid var(--gray-border);
+  border-radius: var(--r-sm); overflow: hidden;
+  transition: border-color .15s;
+}
+.faq-item.open { border-color: var(--red); }
+.faq-q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; background: transparent; border: none; cursor: pointer;
+  text-align: left; gap: 12px;
+  font-size: 13px; font-weight: 700; color: var(--black); font-family: var(--font-body);
+  transition: background .12s;
+}
+.faq-q:hover { background: var(--gray-light); }
+.faq-q i { color: var(--red); flex-shrink: 0; transition: transform .25s; font-size: 11px; }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s cubic-bezier(.65,0,.35,1); padding: 0 18px; }
+.faq-item.open .faq-a { padding: 0 18px 16px; }
+.faq-a p { font-size: 13px; color: var(--gray-dark); line-height: 1.7; }
+
+/* Contacto final */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.checklist { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+.checklist li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: var(--gray-dark); line-height: 1.5;
+}
+.checklist li i { color: var(--red); font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+
+/* Nota/alerta inline */
+.note-box {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 13px 16px; border-radius: var(--r-sm);
+  background: rgba(59,130,246,0.05); border: 1px solid rgba(59,130,246,0.18);
+  font-size: 12px; color: #1d4ed8; line-height: 1.65;
+}
+.note-box i { font-size: 12px; margin-top: 1px; flex-shrink: 0; }
+
+/* Responsive */
+@media (max-width: 1040px) {
+  .sello-wrap { grid-template-columns: 200px 1fr; }
+}
+@media (max-width: 900px) {
+  .sello-wrap { grid-template-columns: 1fr; padding-top: 0; }
+  .sello-sidebar { display: none; }
+  .cards-3, .modal-cards, .contract-boxes { grid-template-columns: 1fr 1fr; }
+  .resp-cols, .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) {
+  .cards-3, .modal-cards, .contract-boxes, .cards-2 { grid-template-columns: 1fr; }
+  .royalty-pcts { flex-wrap: wrap; gap: 8px; }
+}
+
+/* ── BARRA LEGAL/NAV INFERIOR ── */
+.sello-legal-bar {
+  border-top: 1px solid var(--gray-border);
+  background: var(--white);
+  padding: 18px var(--pad-x);
+}
+.sello-legal-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 2px;
+}
+.sello-legal-bar a {
+  font-size: 12px;
+  color: var(--gray-dark);
+  text-decoration: none;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: color .14s, background .14s;
+  white-space: nowrap;
+}
+.sello-legal-bar a:hover {
+  color: var(--red);
+  background: rgba(213,43,53,0.05);
+}
+.sello-legal-bar a.legal-highlight {
+  color: var(--red);
+  font-weight: 700;
+}
+.sello-legal-bar a.legal-highlight:hover {
+  background: rgba(213,43,53,0.08);
+}
+.legal-sep {
+  color: var(--gray-border);
+  font-size: 14px;
+  user-select: none;
+  padding: 0 1px;
+}
+@media (max-width: 640px) {
+  .sello-legal-bar { padding: 14px var(--pad-x); }
+  .sello-legal-bar a { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio">
+    <img src="/images/logo-victorh4k.png" alt="VictorH4K" width="104" height="52" loading="eager"/>
+  </a>
+  <a href="/admin/" class="nav-cta">Iniciar</a>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="page-hero" aria-labelledby="sello-h1">
+  <div class="page-hero-img" style="background-image:url('/images/studio/audio-cables.webp')" aria-hidden="true"></div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    <p class="label">Sello discográfico independiente</p>
+    <h1 class="heading-xl" id="sello-h1" style="margin-bottom:14px">El sello</h1>
+    <div class="divider"></div>
+    <p class="body-lg" style="max-width:520px;color:rgba(255,255,255,0.65)">
+      VictorH4K es un sello discográfico independiente enfocado en la gestión, la distribución digital y el desarrollo de proyectos musicales reales.
+    </p>
+  </div>
+</section>
+
+<!-- LAYOUT SIDEBAR + CONTENIDO -->
+<div class="sello-wrap">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sello-sidebar" aria-label="Contenido de la página">
+    <div class="sidebar-box">
+      <div class="sidebar-head">
+        <i class="fas fa-bars" aria-hidden="true"></i> Contenido
+      </div>
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <a href="#que-es"             class="active">El sello</a>
+        <a href="#distribucion">Distribución</a>
+        <a href="#regalias">Regalías</a>
+        <a href="#contrato">Contrato</a>
+        <a href="#requisitos">Requisitos</a>
+        <a href="#modalidades">Modalidades</a>
+        <a href="#responsabilidades">Responsabilidades</a>
+        <a href="#incumplimiento">Incumplimiento</a>
+        <a href="#faq">Preguntas frecuentes</a>
+        <a href="#contacto-sello">Trabajar con nosotros</a>
+      </nav>
+      <div class="sidebar-cta">
+        <a href="#contacto-sello">
+          <i class="fas fa-circle" style="font-size:6px" aria-hidden="true"></i>
+          Enviar propuesta
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── CONTENIDO ── -->
+  <div class="sello-content">
+
+    <!-- 1. QUÉ ES -->
+    <section id="que-es" class="sello-sec" aria-labelledby="sec-quees">
+      <div class="sec-heading">
+        <span class="sec-num">1</span>
+        <h2 id="sec-quees">¿Qué es VictorH4K?</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <p class="body-md" style="margin-bottom:14px">
+        VictorH4K es un <strong>sello discográfico independiente</strong> enfocado en la gestión, el desarrollo y la distribución digital de proyectos musicales de artistas reales, emergentes y establecidos.
+      </p>
+      <p class="body-md" style="margin-bottom:14px">
+        Nuestro objetivo es brindar a los artistas una estructura profesional para publicar su música, organizar sus lanzamientos y desarrollar su presencia en las principales plataformas digitales de streaming.
+      </p>
+      <p class="body-md" style="margin-bottom:20px">
+        Trabajamos con artistas que buscan iniciar su trayectoria musical y con artistas que ya cuentan con un catálogo publicado y desean continuar desarrollando su proyecto mediante una gestión organizada. Nuestro enfoque principal es la <strong>gestión discográfica, la distribución y el desarrollo</strong> de los proyectos musicales que forman parte del sello.
+      </p>
+      <div class="cards-3">
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-compact-disc" aria-hidden="true"></i></div>
+          <h3>Gestión discográfica</h3>
+          <p>Coordinación de publicaciones, catálogo y estrategia de lanzamientos para cada proyecto.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+          <h3>Distribución global</h3>
+          <p>Presencia en más de 150 plataformas digitales a través de la infraestructura del sello.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-user-music" aria-hidden="true"></i></div>
+          <h3>Desarrollo artístico</h3>
+          <p>Acompañamiento para construir y consolidar la identidad musical del artista.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. DISTRIBUCIÓN -->
+    <section id="distribucion" class="sello-sec" aria-labelledby="sec-dist">
+      <div class="sec-heading">
+        <span class="sec-num">2</span>
+        <h2 id="sec-dist">Distribución musical digital</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <p class="body-md" style="margin-bottom:20px">
+        VictorH4K trabaja con <strong>The Orchard</strong> para gestionar la distribución digital de la música de sus artistas. Los lanzamientos se distribuyen en las principales plataformas del mundo.
+      </p>
+      <div class="cards-3" style="margin-bottom:16px">
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-file-audio" aria-hidden="true"></i></div>
+          <h3>Preparación</h3>
+          <p>Gestión de materiales, portadas, metadatos y coordinación de cada lanzamiento.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-upload" aria-hidden="true"></i></div>
+          <h3>Entrega y publicación</h3>
+          <p>Envío a Spotify, Apple Music, YouTube Music, TIDAL, Deezer, Amazon Music y más de 150 plataformas.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></div>
+          <h3>Seguimiento</h3>
+          <p>Organización del catálogo, seguimiento del proceso de publicación y orientación sobre perfiles digitales.</p>
+        </div>
+      </div>
+      <div class="note-box">
+        <i class="fas fa-info-circle"></i>
+        <span><strong>Acceso al panel:</strong> La distribución se gestiona internamente a través del sello. Los artistas no reciben acceso directo al panel administrativo de The Orchard. Esta medida permite mantener una gestión centralizada del catálogo y los metadatos.</span>
+      </div>
+    </section>
+
+    <!-- 3. REGALÍAS -->
+    <section id="regalias" class="sello-sec" aria-labelledby="sec-reg">
+      <div class="sec-heading">
+        <span class="sec-num">3</span>
+        <h2 id="sec-reg">Modelo de regalías</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <div class="royalty-panel">
+        <!-- Porcentajes -->
+        <div class="royalty-pcts">
+          <div>
+            <div class="rp-big artist">70%</div>
+            <div class="rp-label artist">Artista</div>
+          </div>
+          <div class="rp-sep">/</div>
+          <div>
+            <div class="rp-big label">30%</div>
+            <div class="rp-label label">VictorH4K</div>
+          </div>
+        </div>
+        <div class="royalty-divider"></div>
+        <!-- Incluye -->
+        <div>
+          <div class="royalty-includes-title">Incluye:</div>
+          <ul class="royalty-list">
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i>Distribución a todas las plataformas digitales.</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i>Soporte prioritario hasta en 48 horas.</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i>Gestión de regalías y reportes de ingresos.</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i>Lanzamientos organizados y coordinados.</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i>Soporte para perfiles de artista (Spotify for Artists y Apple Music for Artists).</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i>Organización del catálogo musical.</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i>Prioridad en la revisión y gestión de lanzamientos.</li>
+          </ul>
+        </div>
+        <p class="royalty-note">
+          Ejemplo ilustrativo: si el importe neto distribuible es de 100 unidades monetarias, el artista recibe 70 y el sello 30. La liquidación real dependerá de los ingresos efectivamente recibidos, los ajustes aplicables y las condiciones del contrato. No se garantizan ingresos ni cifras específicas por reproducciones.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. CONTRATO -->
+    <section id="contrato" class="sello-sec" aria-labelledby="sec-cont">
+      <div class="sec-heading">
+        <span class="sec-num">4</span>
+        <h2 id="sec-cont">Contrato y permanencia</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <p class="body-md" style="margin-bottom:20px">La colaboración entre VictorH4K y el artista se formaliza mediante un acuerdo que establece las condiciones de distribución, la participación en las regalías y las responsabilidades de las partes.</p>
+      <div class="contract-boxes" style="margin-bottom:16px">
+        <div class="contract-box">
+          <div class="big-val"><em>1</em> año</div>
+          <div class="box-label">Duración mínima</div>
+          <div class="box-desc">Período inicial de contratación de un año, conforme a las condiciones del contrato individual.</div>
+        </div>
+        <div class="contract-box">
+          <div class="big-val" style="font-size:clamp(18px,2.5vw,28px)">Renovable</div>
+          <div class="box-label">Por acuerdo mutuo</div>
+          <div class="box-desc">La continuidad podrá acordarse entre las partes al finalizar el período correspondiente.</div>
+        </div>
+        <div class="contract-box">
+          <div class="big-val" style="font-size:clamp(18px,2.5vw,28px)">Definida</div>
+          <div class="box-label">Terminación</div>
+          <div class="box-desc">Los plazos, obligaciones pendientes y procedimiento de cancelación quedan definidos en el contrato.</div>
+        </div>
+      </div>
+      <div class="note-box">
+        <i class="fas fa-shield-halved"></i>
+        <span>Las condiciones aquí descritas corresponden al modelo general del sello. Las obligaciones legalmente exigibles quedarán definidas en el contrato individual firmado entre las partes.</span>
+      </div>
+    </section>
+
+    <!-- 5. REQUISITOS -->
+    <section id="requisitos" class="sello-sec" aria-labelledby="sec-req">
+      <div class="sec-heading">
+        <span class="sec-num">5</span>
+        <h2 id="sec-req">Requisitos para ingresar</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <p class="body-md" style="margin-bottom:18px">VictorH4K busca trabajar con proyectos musicales reales, organizados y con una visión de continuidad.</p>
+      <ul class="req-list" style="margin-bottom:14px">
+        <li class="req-item"><i class="fas fa-user-check" aria-hidden="true"></i><span>El proyecto debe corresponder a un artista real con identidad artística propia.</span></li>
+        <li class="req-item"><i class="fas fa-gavel" aria-hidden="true"></i><span>El artista debe contar con los derechos y autorizaciones necesarios sobre la música que pretende distribuir.</span></li>
+        <li class="req-item"><i class="fas fa-music" aria-hidden="true"></i><span>Se requiere un catálogo inicial de referencia de al menos <strong>20 canciones</strong> para comenzar el proceso de evaluación.</span></li>
+        <li class="req-item"><i class="fas fa-folder-open" aria-hidden="true"></i><span>Proporcionar archivos de audio, portadas y metadatos en los formatos requeridos.</span></li>
+        <li class="req-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Cumplir las políticas de distribución y los requisitos técnicos aplicables.</span></li>
+        <li class="req-item"><i class="fas fa-handshake" aria-hidden="true"></i><span>Estar dispuesto a formalizar las condiciones de colaboración y regalías antes de iniciar el trabajo.</span></li>
+      </ul>
+      <div class="note-box" style="margin-bottom:8px">
+        <i class="fas fa-info-circle"></i>
+        <span><strong>Catálogos existentes:</strong> Los artistas que ya tengan música publicada pueden presentar su catálogo para evaluación. Si trabajan con otra distribuidora, el sello revisará las posibilidades de incorporar el catálogo conforme a los requisitos técnicos y contractuales aplicables.</span>
+      </div>
+      <div class="note-box" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.08);color:#444">
+        <i class="fas fa-robot" style="color:var(--red)"></i>
+        <span><strong>Política sobre IA:</strong> El sello prioriza proyectos musicales reales con identidad artística propia. No busca incorporar proyectos basados en la generación automatizada de música como sustituto de un proyecto artístico real.</span>
+      </div>
+    </section>
+
+    <!-- 6. MODALIDADES -->
+    <section id="modalidades" class="sello-sec" aria-labelledby="sec-mod">
+      <div class="sec-heading">
+        <span class="sec-num">6</span>
+        <h2 id="sec-mod">Modalidades de colaboración</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <p class="body-md" style="margin-bottom:18px">VictorH4K contempla diferentes necesidades de trabajo, evaluadas según el proyecto y formalizadas mediante el acuerdo correspondiente.</p>
+      <div class="modal-cards">
+        <div class="modal-card">
+          <div class="modal-tag">Modalidad A</div>
+          <h3>Distribución musical</h3>
+          <p>Para artistas con música preparada que necesitan gestionar su distribución digital: materiales, metadatos, entrega y coordinación de publicaciones.</p>
+        </div>
+        <div class="modal-card">
+          <div class="modal-tag">Modalidad B</div>
+          <h3>Distribución y acompañamiento</h3>
+          <p>Para artistas que además de distribuir su música necesitan apoyo para organizar su catálogo, planificar publicaciones y mejorar la presentación del proyecto.</p>
+        </div>
+        <div class="modal-card">
+          <div class="modal-tag">Modalidad C</div>
+          <h3>Con apoyo promocional</h3>
+          <p>Para artistas interesados en evaluar acciones de promoción. Las condiciones se definen antes de comenzar. No se garantizan reproducciones ni resultados comerciales.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. RESPONSABILIDADES -->
+    <section id="responsabilidades" class="sello-sec" aria-labelledby="sec-resp">
+      <div class="sec-heading">
+        <span class="sec-num">7</span>
+        <h2 id="sec-resp">Responsabilidades</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <div class="resp-cols">
+        <div class="resp-col">
+          <h3><i class="fas fa-user" aria-hidden="true"></i>Del artista</h3>
+          <ul>
+            <li>Proporcionar información correcta sobre identidad artística y lanzamientos.</li>
+            <li>Entregar archivos de audio, portadas y metadatos en los formatos requeridos.</li>
+            <li>Contar con los derechos y autorizaciones necesarios para distribuir sus canciones.</li>
+            <li>Informar sobre colaboraciones, compositores y otros titulares de derechos.</li>
+            <li>Evitar el uso no autorizado de grabaciones o composiciones de terceros.</li>
+            <li>Cumplir las condiciones del contrato y mantener comunicación clara.</li>
+          </ul>
+        </div>
+        <div class="resp-col">
+          <h3><i class="fas fa-building" aria-hidden="true"></i>De VictorH4K</h3>
+          <ul>
+            <li>Coordinar la entrega de música para distribución.</li>
+            <li>Revisar los materiales suministrados por el artista.</li>
+            <li>Gestionar las publicaciones a través de la estructura de distribución.</li>
+            <li>Organizar la información del catálogo del artista.</li>
+            <li>Orientar al artista sobre la reclamación de perfiles oficiales.</li>
+            <li>Comunicar las condiciones de participación en regalías y facilitar reportes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. INCUMPLIMIENTO -->
+    <section id="incumplimiento" class="sello-sec" aria-labelledby="sec-incump">
+      <div class="sec-heading">
+        <span class="sec-num" style="background:var(--red)">8</span>
+        <h2 id="sec-incump">Incumplimiento</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <div class="incump-panel">
+        <div class="incump-header">
+          <div class="incump-num">8</div>
+          <h3>Incumplimiento</h3>
+        </div>
+        <div class="incump-body">
+          <p>
+            El incumplimiento de cualquiera de las cláusulas del acuerdo autoriza a la parte no culpable a exigir su cumplimiento, o a dar por rescindido el mismo sin más trámite, en ambos casos con los daños y perjuicios correspondientes y en ejercicio de las demás facultades que le acuerden el contrato o la ley.
+          </p>
+          <div class="incump-divider"></div>
+          <p>
+            <strong>VictorH4K se reserva el derecho</strong> de suspender o finalizar los servicios de distribución antes de la finalización del período de concesión para uno o varios artistas o lanzamientos, en los siguientes casos:
+          </p>
+          <div class="incump-cases">
+            <div class="incump-case"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span>Incumplimiento de las condiciones del contrato por parte del artista.</span></div>
+            <div class="incump-case"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span>Uso de materiales que infrinjan derechos de autor, contengan grabaciones no autorizadas o presenten información engañosa sobre sus autores.</span></div>
+            <div class="incump-case"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span>Incumplimiento de las políticas de las plataformas de distribución o del distribuidor que comprometan la operación del sello.</span></div>
+            <div class="incump-case"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span>Declaración falsa o engañosa sobre los derechos, autoría o características de los materiales entregados.</span></div>
+            <div class="incump-case"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span>Cualquier conducta que genere responsabilidades legales, reputacionales o comerciales para VictorH4K.</span></div>
+          </div>
+          <div class="incump-divider"></div>
+          <p style="color:rgba(255,255,255,0.4);font-size:12px;font-style:italic">
+            La terminación del acuerdo por incumplimiento no generará obligación de reembolso sobre las tarifas o períodos ya ejecutados. El procedimiento aplicable al catálogo distribuido quedará definido en el contrato individual firmado entre las partes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FAQ -->
+    <section id="faq" class="sello-sec" aria-labelledby="sec-faq">
+      <div class="sec-heading">
+        <span class="sec-num">9</span>
+        <h2 id="sec-faq">Preguntas frecuentes</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Cuánto recibe el artista por sus regalías? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>El modelo general es del 70% para el artista y 30% para VictorH4K, según la base de cálculo y las condiciones del contrato individual.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Cuál es la duración mínima del contrato? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>El período mínimo inicial es de un año. La renovación, terminación y procedimientos aplicables se establecen en el acuerdo correspondiente.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Recibo acceso al panel de The Orchard? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>No. La gestión se realiza internamente a través del sello. El artista no recibe acceso directo al panel de The Orchard, lo que permite mantener una gestión centralizada del catálogo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Puedo gestionar mi perfil de Spotify for Artists? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>Sí. El artista puede administrar su perfil mediante las herramientas oficiales de Spotify. VictorH4K puede ayudar con el proceso de reclamación cuando corresponda.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Necesito tener 20 canciones? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>Se solicita un catálogo inicial de al menos 20 canciones para evaluar el proyecto. Cumplir este criterio no garantiza aceptación automática ni implica publicar las 20 canciones simultáneamente.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Se garantizan reproducciones o ingresos? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>No. Las reproducciones, ingresos, crecimiento de audiencia e inclusión en playlists dependen de diversos factores y no pueden garantizarse.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Qué pasa si VictorH4K incumple? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>El incumplimiento por parte del sello autoriza al artista a exigir su cumplimiento o dar por rescindido el acuerdo, con derecho a los daños y perjuicios correspondientes conforme a lo establecido en el contrato y la ley aplicable.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿La música generada con IA es aceptada? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-a"><p>El sello prioriza proyectos musicales reales. No busca incorporar música generada con IA como sustituto de un proyecto artístico real. Los criterios se comunicarán antes de aceptar cualquier catálogo.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. CONTACTO -->
+    <section id="contacto-sello" class="sello-sec" aria-labelledby="sec-contact" style="border-bottom:none">
+      <div class="sec-heading">
+        <span class="sec-num">10</span>
+        <h2 id="sec-contact">Trabajar con nosotros</h2>
+      </div>
+      <div class="sec-divider"></div>
+      <div class="contact-grid">
+        <div>
+          <p class="body-md" style="margin-bottom:14px">Si eres artista y buscas una estructura profesional para gestionar la distribución digital de tu música, organizar tu catálogo y desarrollar tu proyecto, puedes enviarnos tu propuesta.</p>
+          <p style="font-size:13px;font-weight:700;color:var(--black);margin-bottom:8px">Para facilitar la evaluación inicial, prepara:</p>
+          <ul class="checklist">
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Nombre artístico y país</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Enlace a tu perfil musical o catálogo publicado</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Cantidad aproximada de canciones disponibles</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Descripción breve de tu proyecto</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Tipo de colaboración que buscas</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Géneros musicales principales</span></li>
+          </ul>
+          <p style="font-size:11px;color:#aaa;font-style:italic;margin-top:12px">La recepción de una propuesta no implica aceptación automática. Cada proyecto se evalúa según sus características y las condiciones disponibles.</p>
+        </div>
+        <div>
+          <div class="card" style="text-align:center;padding:32px 24px">
+            <div style="width:52px;height:52px;border-radius:50%;background:rgba(213,43,53,0.08);border:1px solid rgba(213,43,53,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px;color:var(--red)">
+              <i class="fas fa-headphones" aria-hidden="true"></i>
+            </div>
+            <h3 style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px">Envía tu propuesta</h3>
+            <p style="font-size:13px;color:var(--gray-dark);margin-bottom:22px;line-height:1.6">Respondemos en menos de 2 horas, de lunes a domingo.</p>
+            <a href="https://wa.me/573026021232?text=Hola%2C+quiero+presentar+mi+proyecto+a+VictorH4K" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+            <div style="margin-top:12px">
+              <a href="/contacto/" class="btn btn-outline" style="width:100%;justify-content:center">
+                <i class="fas fa-envelope" aria-hidden="true"></i> Formulario
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /sello-content -->
+</div><!-- /sello-wrap -->
+
+<!-- ══ BARRA DE LINKS LEGALES / NAVEGACIÓN INTERNA ══ -->
+<nav class="sello-legal-bar" aria-label="Índice de secciones">
+  <div class="sello-legal-inner">
+    <a href="#que-es">El sello</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#distribucion">Distribución</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#regalias">Regalías 70/30</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#contrato">Contrato</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#requisitos">Requisitos</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#modalidades">Modalidades</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#responsabilidades">Responsabilidades</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#incumplimiento">Incumplimiento</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#faq">Preguntas frecuentes</a>
+    <span class="legal-sep" aria-hidden="true">·</span>
+    <a href="#contacto-sello" class="legal-highlight">Enviar propuesta</a>
+  </div>
+</nav>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-legal">
+    <a href="/politica-de-privacidad/">Política de privacidad</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/politica-de-cookies/">Política de cookies</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/terminos/">Términos y condiciones de uso</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/acuerdo-de-distribucion/">Acuerdo de distribución</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/mapa-del-sitio/">Mapa del sitio</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/573026021232?text=Hola%2C+quiero+presentar+mi+proyecto+a+VictorH4K" target="_blank" rel="noopener noreferrer" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/shared.js"></script>
+<script>
+/* ── FAQ acordeón ── */
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item   = btn.parentElement;
+    const answer = btn.nextElementSibling;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(fi => {
+      fi.classList.remove('open');
+      fi.querySelector('.faq-a').style.maxHeight = '0';
+      fi.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded','true');
+    }
+  });
+});
+
+/* ── Resaltar sección activa en sidebar con IntersectionObserver ── */
+const sections = document.querySelectorAll('.sello-sec[id]');
+const navLinks  = document.querySelectorAll('.sidebar-nav a');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>

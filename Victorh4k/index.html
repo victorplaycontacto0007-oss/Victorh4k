@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>VictorH4K | Subsello musical</title>
+<meta name="description" content="VictorH4K es un subsello musical enfocado en el desarrollo artístico y la publicación de lanzamientos. Artistas: Jack Holy, VictorH4K Producer, joseneiman."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#111111"/>
+<link rel="canonical" href="https://victorh4k.com/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/assets/site.webmanifest"/>
+<meta property="og:site_name" content="VictorH4K"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://victorh4k.com/"/>
+<meta property="og:title" content="VictorH4K | Subsello musical"/>
+<meta property="og:description" content="Subsello musical enfocado en el desarrollo artístico y la publicación de lanzamientos. Colombia."/>
+<meta property="og:image" content="https://victorh4k.com/images/og-image.png"/>
+<meta property="og:locale" content="es_CO"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="VictorH4K | Subsello musical"/>
+<meta name="twitter:image" content="https://victorh4k.com/images/og-image.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://victorh4k.com/#organization","name":"VictorH4K","url":"https://victorh4k.com/","description":"Subsello musical enfocado en el desarrollo artístico y la publicación de lanzamientos musicales.","sameAs":["https://www.instagram.com/victorh4k/","https://www.youtube.com/@VictorH4K"]},{"@type":"WebSite","@id":"https://victorh4k.com/#website","url":"https://victorh4k.com/","name":"VictorH4K","publisher":{"@id":"https://victorh4k.com/#organization"},"inLanguage":"es"},{"@type":"WebPage","@id":"https://victorh4k.com/#webpage","url":"https://victorh4k.com/","name":"VictorH4K | Subsello musical","isPartOf":{"@id":"https://victorh4k.com/#website"},"inLanguage":"es"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="/shared.css"/>
+<style>
+/* ── HERO ── */
+#hero {
+  min-height: 90vh; display: flex; align-items: center;
+  padding-top: var(--nav-h); position: relative; overflow: hidden;
+  background: var(--white);
+}
+
+/* Fondo SVG sutil: ondas de frecuencia musical */
+.hero-wave-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  overflow: hidden;
+}
+.hero-wave-bg svg {
+  position: absolute; bottom: 0; left: 0; width: 100%; height: auto;
+  opacity: 0.045;
+}
+/* Línea de acento derecha */
+.hero-wave-bg::after {
+  content: '';
+  position: absolute; top: 0; right: clamp(40px, 8vw, 120px);
+  width: 1px; height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--red) 30%, var(--red) 70%, transparent);
+  opacity: 0.18;
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: var(--max-w); width: 100%;
+  margin: 0 auto; padding: clamp(56px, 8vw, 96px) var(--pad-x);
+  display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+}
+.hero-content { max-width: 580px; }
+.hero-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 10px; font-weight: 700; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 24px;
+}
+.hero-kicker::before { content:''; width:20px; height:1px; background:var(--red); }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800; line-height: 1.0; letter-spacing: -0.035em;
+  color: var(--black); margin-bottom: 20px;
+}
+.hero-title em { font-style: normal; color: var(--red); }
+.hero-desc {
+  font-size: clamp(15px, 1.4vw, 17px); color: var(--gray-dark);
+  line-height: 1.75; max-width: 460px; margin-bottom: 36px;
+}
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-ctas .btn-primary { background: var(--red); border-color: var(--red); color: #fff; }
+.hero-ctas .btn-primary:hover { background: var(--red-hover); }
+.hero-ctas .btn-outline { color: var(--black); border-color: var(--black); }
+.hero-ctas .btn-outline:hover { background: var(--black); color: #fff; }
+
+/* Ornamento 3D: canvas Three.js */
+.hero-3d-wrap {
+  width: clamp(260px, 32vw, 440px);
+  height: clamp(260px, 32vw, 440px);
+  flex-shrink: 0;
+  position: relative;
+}
+#hero-canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none; /* no interfiere con botones ni menú */
+}
+@media (max-width: 680px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-3d-wrap { display: none; }
+}
+
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; z-index: 2;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: #ccc;
+}
+.hero-scroll::after {
+  content:''; width:1px; height:28px;
+  background: linear-gradient(to bottom, var(--red), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+/* ── STRIP "EL SONIDO" ── */
+.brand-strip {
+  background: var(--black); border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08); padding: 40px 0;
+}
+.brand-strip-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.brand-phrase {
+  font-family: var(--font-display);
+  font-size: clamp(18px,2.4vw,26px); font-weight: 800;
+  color: var(--white); letter-spacing: -0.02em;
+}
+.brand-phrase em { font-style:normal; color:var(--red); }
+.brand-strip .btn-outline {
+  color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2);
+}
+.brand-strip .btn-outline:hover { background: rgba(255,255,255,0.06); color:var(--white); }
+
+/* ── CTA FINAL ── */
+.cta-section {
+  background: var(--black); padding: clamp(64px,8vw,112px) 0;
+  position: relative; overflow: hidden;
+}
+.cta-photo {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('/images/studio/audio-cables.webp');
+  background-size: cover; background-position: center;
+  filter: brightness(0.15) saturate(0.5);
+}
+.cta-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(17,17,17,0.7), rgba(17,17,17,0.85));
+}
+.cta-inner { position: relative; z-index: 2; text-align: center; }
+.cta-inner .heading-lg { color: var(--white); }
+.cta-inner .body-lg { color: rgba(255,255,255,0.6); }
+
+</style>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="Cargando VictorH4K">
+  <img src="/assets/og-image.png" alt="VictorH4K" class="loader-logo"/>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<nav id="nav" aria-label="Navegación principal">
+  <a href="/" class="nav-logo" aria-label="VictorH4K — Inicio">
+    <img src="/images/logo-victorh4k.png" alt="VictorH4K" width="104" height="52" loading="eager"/>
+  </a>
+  <a href="/admin/" class="nav-cta">Iniciar</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section id="hero" aria-labelledby="hero-h1">
+  <!-- Fondo: ondas de frecuencia SVG (sin fotos, sin personas) -->
+  <div class="hero-wave-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#111111" d="M0,160 C180,60 360,260 540,160 C720,60 900,260 1080,160 C1260,60 1380,200 1440,160 L1440,320 L0,320 Z"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-kicker">Independent Record Label</p>
+      <h1 class="hero-title" id="hero-h1">
+        Victor<em>H4K</em>,<br/>subsello<br/>musical.
+      </h1>
+      <p class="hero-desc">
+        Subsello musical enfocado en la creación, el desarrollo artístico y el lanzamiento de música.
+      </p>
+      <div class="hero-ctas">
+        <a href="/artistas/" class="btn btn-primary btn-lg">
+          <i class="fas fa-users" aria-hidden="true"></i> Nuestros artistas
+        </a>
+        <a href="/el-sello/" class="btn btn-outline btn-lg">Conocer el sello</a>
+      </div>
+    </div>
+    <!-- Ornamento 3D: ondas de sonido Three.js (solo geometría, sin fotos, sin personas) -->
+    <div class="hero-3d-wrap" aria-hidden="true">
+      <canvas id="hero-canvas"></canvas>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Spotify</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Apple Music</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>YouTube Music</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Amazon Music</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>TIDAL</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Deezer</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>+150 plataformas</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Spotify</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Apple Music</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>YouTube Music</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Amazon Music</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>TIDAL</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Deezer</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>+150 plataformas</span>
+  </div>
+</div>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <div class="container">
+    <div class="brand-strip-inner">
+      <p class="brand-phrase">El sonido tiene <em>una identidad.</em></p>
+      <a href="/el-sello/" class="btn btn-outline btn-sm">Conocer el sello</a>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN DISTRIBUCIÓN / PLATAFORMAS -->
+<section class="section-py" aria-labelledby="dist-h2" style="background:var(--white)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+      <!-- TEXTO IZQUIERDO -->
+      <div class="reveal">
+        <p class="label">Distribución global</p>
+        <h2 class="heading-lg" id="dist-h2" style="margin-bottom:16px">
+          Tu música,<br/>en todas partes.
+        </h2>
+        <div class="divider"></div>
+        <p class="body-lg" style="margin-bottom:16px">
+          Distribuimos tu música a Spotify, Apple Music, Amazon Music, TIDAL, Deezer, YouTube Music y más de 150 plataformas y tiendas digitales en todo el mundo.
+        </p>
+        <p class="body-md">
+          A través de la infraestructura del sello, tus lanzamientos llegan a oyentes en todos los continentes desde el primer día de publicación.
+        </p>
+      </div>
+
+      <!-- GRID DE LOGOS DERECHO -->
+      <div class="reveal reveal-delay-2">
+        <div class="plat-logos-grid" aria-label="Plataformas de distribución">
+
+          <!-- Fila 1 -->
+          <a href="https://open.spotify.com/artist/6DJGyCs8tE5gBsnz9QMjns" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Spotify" style="background:#000">
+            <i class="fab fa-spotify" style="color:#1DB954;font-size:28px"></i>
+          </a>
+          <a href="https://music.apple.com/us/artist/jack-holy/1498767978" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Apple Music" style="background:linear-gradient(135deg,#fb5c74,#fc3c44)">
+            <i class="fab fa-apple" style="color:#fff;font-size:28px"></i>
+          </a>
+          <a href="https://www.tiktok.com/music" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en TikTok" style="background:#000">
+            <i class="fab fa-tiktok" style="color:#fff;font-size:24px"></i>
+          </a>
+
+          <!-- Fila 2 -->
+          <a href="https://www.pandora.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Pandora" style="background:#3668ff">
+            <span style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-.02em">pandora</span>
+          </a>
+          <a href="https://music.amazon.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Escuchar en Amazon Music" style="background:#1a9cd8">
+            <i class="fab fa-amazon" style="color:#fff;font-size:24px"></i>
+          </a>
+          <a href="https://www.instagram.com/victorh4k/" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="VictorH4K en Instagram" style="background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4)">
+            <i class="fab fa-instagram" style="color:#fff;font-size:26px"></i>
+          </a>
+          <a href="https://www.youtube.com/@VictorH4K" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="VictorH4K en YouTube" style="background:#fff;border:1px solid #e5e5e5">
+            <i class="fab fa-youtube" style="color:#FF0000;font-size:28px"></i>
+          </a>
+
+          <!-- Fila 3 -->
+          <a href="https://tidal.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="TIDAL" style="background:#000">
+            <span style="font-size:13px;font-weight:800;color:#fff;letter-spacing:.04em">TIDAL</span>
+          </a>
+          <a href="https://www.iheart.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="iHeartRadio" style="background:#C6002B">
+            <i class="fas fa-heart" style="color:#fff;font-size:22px"></i>
+          </a>
+          <a href="https://www.deezer.com" target="_blank" rel="noopener noreferrer" class="plat-logo-tile" aria-label="Deezer" style="background:#A238FF">
+            <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:.02em">deezer</span>
+          </a>
+
+          <!-- +otras -->
+          <div class="plat-logo-tile plat-mas" style="border:1.5px dashed var(--gray-border);background:transparent;color:var(--gray-dark)">
+            <span style="font-size:12px;font-weight:700">+ otras</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.plat-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.plat-logo-tile {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform .18s, box-shadow .18s;
+  overflow: hidden;
+}
+.plat-logo-tile:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+}
+.plat-mas {
+  cursor: default;
+  border-radius: 16px !important;
+}
+.plat-mas:hover { transform: none; box-shadow: none; }
+
+@media (max-width: 860px) {
+  #dist-h2 ~ * .plat-logos-grid,
+  .plat-logos-grid { grid-template-columns: repeat(4,1fr); }
+  #dist-h2 { font-size: clamp(24px,4vw,40px); }
+}
+@media (max-width: 680px) {
+  .section-py > .container > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .plat-logos-grid { grid-template-columns: repeat(4,1fr); }
+}
+</style>
+
+<!-- CTA FINAL -->
+<section class="cta-section" aria-labelledby="cta-h2">
+  <div class="cta-photo" aria-hidden="true"></div>
+  <div class="cta-overlay" aria-hidden="true"></div>
+  <div class="cta-inner container reveal">
+    <p class="label" style="justify-content:center;color:var(--red)">¿Eres artista?</p>
+    <h2 class="heading-lg" id="cta-h2" style="margin-bottom:14px;color:var(--white)">Únete al subsello</h2>
+    <div class="divider divider-center"></div>
+    <p class="body-lg" style="max-width:400px;margin:0 auto 32px;color:rgba(255,255,255,0.55)">
+      Si quieres desarrollar tu carrera musical y distribuir tu música globalmente, hablemos.
+    </p>
+    <a href="/contacto/" class="btn btn-primary btn-lg">
+      Contactar <i class="fas fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-legal">
+    <a href="/politica-de-privacidad/">Política de privacidad</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/politica-de-cookies/">Política de cookies</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/terminos/">Términos y condiciones de uso</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/acuerdo-de-distribucion/">Acuerdo de distribución</a>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="/mapa-del-sitio/">Mapa del sitio</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/573026021232?text=Hola%2C+vi+victorh4k.com" target="_blank" rel="noopener noreferrer" id="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/shared.js"></script>
+
+<!-- Three.js r160 — ondas de sonido 3D interactivas en el hero -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" crossorigin="anonymous"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Respetar prefers-reduced-motion ── */
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  /* ── Paleta VictorH4K ── */
+  const C = {
+    bg:    0xFFFFFF,   // blanco
+    wave1: 0x111111,   // negro
+    wave2: 0xD52B35,   // rojo
+    wave3: 0xE5E5E5,   // gris borde
+    wave4: 0x444444,   // gris oscuro
+  };
+
+  /* ── Renderer ── */
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true,
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(C.bg, 0); // transparente para ver fondo blanco del HTML
+
+  /* ── Scene / Camera ── */
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+  camera.position.set(0, 0, 5);
+
+  /* ── Parámetros de onda ── */
+  const WAVES = 5;        // número de curvas
+  const POINTS = 120;     // puntos por curva
+  const X_RANGE = 4.2;
+  const Y_SPREAD = 1.4;   // separación vertical entre ondas
+  const AMP = [0.30, 0.55, 0.45, 0.35, 0.25];  // amplitudes
+  const FREQ = [1.2, 0.9, 1.5, 1.1, 0.8];       // frecuencias
+  const SPEED = [0.6, 0.5, 0.7, 0.55, 0.65];    // velocidades de fase
+  const COLORS = [C.wave3, C.wave1, C.wave2, C.wave4, C.wave3];
+  const OPACITIES = [0.35, 0.7, 0.85, 0.55, 0.25];
+  const LINE_W = 1; // WebGL solo soporta grosor 1 en la mayoría de GPUs
+
+  /* ── Crear geometrías de línea ── */
+  const lines = [];
+  const posArrays = [];
+
+  for (let w = 0; w < WAVES; w++) {
+    const positions = new Float32Array(POINTS * 3);
+    posArrays.push(positions);
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const mat = new THREE.LineBasicMaterial({
+      color: COLORS[w],
+      transparent: true,
+      opacity: OPACITIES[w],
+    });
+
+    const line = new THREE.Line(geo, mat);
+    scene.add(line);
+    lines.push({ geo, mat, waveIdx: w });
+  }
+
+  /* ── Malla de puntos (dots) para profundidad ── */
+  const dotCount = 40;
+  const dotPositions = new Float32Array(dotCount * 3);
+  const dotGeo = new THREE.BufferGeometry();
+  dotGeo.setAttribute('position', new THREE.BufferAttribute(dotPositions, 3));
+  const dotMat = new THREE.PointsMaterial({
+    color: C.wave2,
+    size: 0.03,
+    transparent: true,
+    opacity: 0.4,
+  });
+  const dots = new THREE.Points(dotGeo, dotMat);
+  scene.add(dots);
+
+  /* ── Posición inicial de los dots ── */
+  for (let i = 0; i < dotCount; i++) {
+    dotPositions[i * 3]     = (Math.random() - 0.5) * X_RANGE * 2;
+    dotPositions[i * 3 + 1] = (Math.random() - 0.5) * Y_SPREAD * 2.5;
+    dotPositions[i * 3 + 2] = (Math.random() - 0.5) * 1.5;
+  }
+
+  /* ── Mouse ── */
+  let mouseX = 0, mouseY = 0;
+  let targetX = 0, targetY = 0;
+
+  function onMouseMove(e) {
+    const rect = canvas.getBoundingClientRect();
+    // Normalizar [-1, 1]
+    mouseX = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+    mouseY = ((e.clientY - rect.top)  / rect.height - 0.5) * -2;
+  }
+  // Solo en escritorio
+  if (!('ontouchstart' in window)) {
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+  }
+
+  /* ── Resize ── */
+  function resize() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    if (renderer.domElement.width !== w || renderer.domElement.height !== h) {
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+  }
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+
+  /* ── Loop de animación ── */
+  let animId = null;
+  let t = 0;
+
+  function animate() {
+    animId = requestAnimationFrame(animate);
+
+    if (reducedMotion) {
+      // Sin movimiento pero renderiza una vez estática
+      t = 1.5;
+    } else {
+      t += 0.012;
+    }
+
+    /* Suavizar seguimiento del mouse */
+    targetX += (mouseX - targetX) * 0.04;
+    targetY += (mouseY - targetY) * 0.04;
+
+    /* Inclinar la cámara suavemente según el mouse */
+    camera.position.x = targetX * 0.4;
+    camera.position.y = targetY * 0.2;
+    camera.lookAt(0, 0, 0);
+
+    /* Actualizar curvas de onda */
+    for (let w = 0; w < WAVES; w++) {
+      const { geo, waveIdx } = lines[w];
+      const pos = geo.attributes.position.array;
+      const yBase = (waveIdx - (WAVES - 1) / 2) * (Y_SPREAD / (WAVES - 1));
+
+      for (let i = 0; i < POINTS; i++) {
+        const x = (i / (POINTS - 1) - 0.5) * X_RANGE;
+        // Superposición de dos senoidales → forma más orgánica
+        const y = yBase
+          + Math.sin(x * FREQ[waveIdx] + t * SPEED[waveIdx]) * AMP[waveIdx]
+          + Math.sin(x * FREQ[waveIdx] * 0.5 + t * SPEED[waveIdx] * 0.7 + waveIdx) * AMP[waveIdx] * 0.4;
+        // Profundidad: z varía suavemente con x y el tiempo
+        const z = Math.sin(x * 0.8 + t * 0.3 + waveIdx * 1.1) * 0.5;
+
+        pos[i * 3]     = x;
+        pos[i * 3 + 1] = y;
+        pos[i * 3 + 2] = z;
+      }
+      geo.attributes.position.needsUpdate = true;
+    }
+
+    /* Rotar grupo de dots lentamente */
+    dots.rotation.y = t * 0.08;
+    dots.rotation.x = Math.sin(t * 0.04) * 0.15;
+
+    renderer.render(scene, camera);
+
+    if (reducedMotion) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+  }
+
+  animate();
+
+  /* ── Cleanup cuando la sección sale del viewport (IntersectionObserver) ── */
+  const heroSection = document.getElementById('hero');
+  if (heroSection && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          if (animId) { cancelAnimationFrame(animId); animId = null; }
+        } else {
+          if (!animId && !reducedMotion) animate();
+        }
+      });
+    }, { threshold: 0.1 });
+    io.observe(heroSection);
+  }
+
+})();
+</script>
+</body>
+</html>

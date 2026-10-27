@@ -1,0 +1,24 @@
+# ── Secretos y credenciales — NUNCA subir ──
+.env
+.env.local
+.env.*.local
+.env.production
+
+# ── Node ──
+node_modules/
+npm-debug.log*
+
+# ── Backups locales ──
+_backup_*/
+*.bak
+index.html.bak
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ──
+.vscode/settings.json
+*.suo
+*.user

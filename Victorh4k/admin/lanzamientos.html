@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lanzamientos — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title" id="page-title">Lanzamientos</span>
+      </div>
+      <div class="a-topbar-right">
+        <button class="btn-a btn-a-primary" id="btn-new"><i class="fas fa-plus"></i> Nuevo lanzamiento</button>
+      </div>
+    </header>
+
+    <main class="a-content">
+      <div id="a-toast"></div>
+
+      <div id="view-list">
+        <div class="a-card">
+          <div class="a-table-wrap">
+            <table class="a-table">
+              <thead><tr><th>Portada</th><th>Título</th><th>Tipo</th><th>Fecha</th><th>Estado</th><th></th></tr></thead>
+              <tbody id="releases-tbody">
+                <tr><td colspan="6" class="a-empty"><span class="a-spinner"></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-form" style="display:none">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <button class="btn-a btn-a-secondary" id="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+          <h2 style="font-size:16px;font-weight:700" id="form-heading">Nuevo lanzamiento</h2>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 300px;gap:20px">
+          <div>
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-card-title"><span><i class="fas fa-compact-disc"></i> Datos del lanzamiento</span></div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-title">Título *</label>
+                <input type="text" class="a-input" id="f-title" placeholder="Nombre del lanzamiento"/>
+              </div>
+              <div class="a-form-row">
+                <div class="a-form-group">
+                  <label class="a-form-label" for="f-slug">Slug</label>
+                  <input type="text" class="a-input" id="f-slug" placeholder="nombre-lanzamiento"/>
+                </div>
+                <div class="a-form-group">
+                  <label class="a-form-label" for="f-type">Tipo</label>
+                  <select class="a-select" id="f-type">
+                    <option value="single">Single</option>
+                    <option value="ep">EP</option>
+                    <option value="album">Álbum</option>
+                    <option value="remix">Remix</option>
+                  </select>
+                </div>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-date">Fecha de lanzamiento</label>
+                <input type="date" class="a-input" id="f-date"/>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label" for="f-desc">Descripción</label>
+                <textarea class="a-textarea" id="f-desc" rows="3" placeholder="Descripción del lanzamiento..."></textarea>
+              </div>
+              <div class="a-form-group">
+                <label class="a-form-label">Artistas asociados</label>
+                <div id="artists-checkboxes" style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 0">
+                  <span style="color:#aaa;font-size:12px">Cargando artistas...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="a-card">
+              <div class="a-card-title"><span><i class="fas fa-link"></i> Plataformas</span></div>
+              <div class="a-form-group"><label class="a-form-label" for="f-spotify">Spotify URL</label><input type="url" class="a-input" id="f-spotify" placeholder="https://open.spotify.com/..."/></div>
+              <div class="a-form-group"><label class="a-form-label" for="f-apple">Apple Music URL</label><input type="url" class="a-input" id="f-apple" placeholder="https://music.apple.com/..."/></div>
+              <div class="a-form-group"><label class="a-form-label" for="f-youtube">YouTube URL</label><input type="url" class="a-input" id="f-youtube" placeholder="https://youtube.com/..."/></div>
+              <div class="a-form-group"><label class="a-form-label" for="f-deezer">Deezer URL</label><input type="url" class="a-input" id="f-deezer" placeholder="https://deezer.com/..."/></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-card-title"><span><i class="fas fa-image"></i> Portada</span></div>
+              <label class="a-image-upload" id="cover-upload-area" for="cover-file">
+                <input type="file" id="cover-file" accept="image/jpeg,image/png,image/webp"/>
+                <div id="cover-placeholder">
+                  <i class="fas fa-cloud-upload-alt" style="font-size:24px;color:#aaa;margin-bottom:8px;display:block"></i>
+                  <div style="font-size:13px;color:#aaa">Subir portada</div>
+                </div>
+                <img id="cover-preview" src="" alt="" style="display:none;width:100%;height:200px;object-fit:cover;border-radius:6px"/>
+              </label>
+              <div class="a-form-group" style="margin-top:10px">
+                <label class="a-form-label" for="f-cover-url">O URL externa</label>
+                <input type="url" class="a-input" id="f-cover-url" placeholder="https://..."/>
+              </div>
+            </div>
+
+            <div class="a-card" style="margin-bottom:16px">
+              <div class="a-card-title"><span><i class="fas fa-toggle-on"></i> Estado</span></div>
+              <select class="a-select" id="f-status">
+                <option value="draft">Borrador</option>
+                <option value="published">Publicado</option>
+                <option value="archived">Archivado</option>
+              </select>
+            </div>
+
+            <div style="display:flex;gap:10px">
+              <button class="btn-a btn-a-primary" id="btn-save" style="flex:1;justify-content:center"><i class="fas fa-save"></i> Guardar</button>
+              <button class="btn-a btn-a-danger" id="btn-delete" style="display:none"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+let currentId = null;
+let allArtists = [];
+
+(async () => {
+  const auth = await requireAuth();
+  if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('lanzamientos');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+
+  // Cargar artistas para checkboxes
+  const { data } = await sb.from('artists').select('id, name').eq('is_published', true).order('sort_order');
+  allArtists = data || [];
+
+  document.getElementById('f-title').addEventListener('input', function() {
+    if (!currentId) document.getElementById('f-slug').value = makeSlug(this.value);
+  });
+  document.getElementById('cover-file').addEventListener('change', function() {
+    const file = this.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('cover-preview').src = e.target.result;
+      document.getElementById('cover-preview').style.display = 'block';
+      document.getElementById('cover-placeholder').style.display = 'none';
+      document.getElementById('cover-upload-area').classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('action') === 'new') showForm(null);
+  else loadList();
+
+  document.getElementById('btn-new').addEventListener('click', () => showForm(null));
+  document.getElementById('btn-back').addEventListener('click', () => { showList(); loadList(); });
+  document.getElementById('btn-save').addEventListener('click', save);
+  document.getElementById('btn-delete').addEventListener('click', remove);
+})();
+
+async function loadList() {
+  const { data } = await sb.from('releases')
+    .select('*, release_artists(artist_id, artists(name))')
+    .order('release_date', { ascending: false });
+  const tbody = document.getElementById('releases-tbody');
+  if (!data?.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="a-empty"><i class="fas fa-compact-disc"></i> Sin lanzamientos aún</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = data.map(r => `
+    <tr>
+      <td>${r.cover_url ? `<img src="${escHtml(r.cover_url)}" style="width:40px;height:40px;border-radius:4px;object-fit:cover" loading="lazy" alt=""/>` : '<div style="width:40px;height:40px;border-radius:4px;background:#f5f5f5;display:flex;align-items:center;justify-content:center"><i class="fas fa-music" style="color:#aaa"></i></div>'}</td>
+      <td><strong>${escHtml(r.title)}</strong><div style="font-size:11px;color:#888">${(r.release_artists||[]).map(ra=>escHtml(ra.artists?.name||'')).filter(Boolean).join(', ')||'—'}</div></td>
+      <td><span class="a-badge a-badge-gray">${r.release_type||'single'}</span></td>
+      <td>${r.release_date ? new Date(r.release_date).toLocaleDateString('es') : '—'}</td>
+      <td>${r.status==='published'?'<span class="a-badge a-badge-green">Publicado</span>':r.status==='draft'?'<span class="a-badge a-badge-orange">Borrador</span>':'<span class="a-badge a-badge-gray">Archivado</span>'}</td>
+      <td><button class="btn-a btn-a-secondary btn-a-sm" onclick='editRelease(${JSON.stringify(r)})'>Editar</button></td>
+    </tr>`).join('');
+}
+
+function renderArtistCheckboxes(selectedIds = []) {
+  const container = document.getElementById('artists-checkboxes');
+  if (!allArtists.length) { container.innerHTML = '<span style="color:#aaa;font-size:12px">Sin artistas disponibles</span>'; return; }
+  container.innerHTML = allArtists.map(a => `
+    <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;padding:6px 10px;border:1px solid #e5e5e5;border-radius:6px;${selectedIds.includes(a.id)?'background:#f5f5f5':''}">
+      <input type="checkbox" value="${a.id}" ${selectedIds.includes(a.id)?'checked':''} style="accent-color:#D52B35"/>
+      ${escHtml(a.name)}
+    </label>`).join('');
+}
+
+function getSelectedArtistIds() {
+  return Array.from(document.querySelectorAll('#artists-checkboxes input:checked')).map(el => el.value);
+}
+
+function showList() {
+  document.getElementById('view-list').style.display = '';
+  document.getElementById('view-form').style.display = 'none';
+  document.getElementById('page-title').textContent = 'Lanzamientos';
+  currentId = null;
+}
+function showForm(release, selectedArtistIds = []) {
+  document.getElementById('view-list').style.display = 'none';
+  document.getElementById('view-form').style.display = '';
+  document.getElementById('page-title').textContent = release ? 'Editar lanzamiento' : 'Nuevo lanzamiento';
+  document.getElementById('form-heading').textContent = release ? 'Editar lanzamiento' : 'Nuevo lanzamiento';
+  document.getElementById('btn-delete').style.display = release ? 'inline-flex' : 'none';
+  currentId = release?.id || null;
+
+  document.getElementById('f-title').value    = release?.title || '';
+  document.getElementById('f-slug').value     = release?.slug || '';
+  document.getElementById('f-type').value     = release?.release_type || 'single';
+  document.getElementById('f-date').value     = release?.release_date || '';
+  document.getElementById('f-desc').value     = release?.description || '';
+  document.getElementById('f-spotify').value  = release?.spotify_url || '';
+  document.getElementById('f-apple').value    = release?.apple_music_url || '';
+  document.getElementById('f-youtube').value  = release?.youtube_url || '';
+  document.getElementById('f-deezer').value   = release?.deezer_url || '';
+  document.getElementById('f-cover-url').value= release?.cover_url || '';
+  document.getElementById('f-status').value   = release?.status || 'draft';
+
+  const prev = document.getElementById('cover-preview');
+  const ph   = document.getElementById('cover-placeholder');
+  const area = document.getElementById('cover-upload-area');
+  if (release?.cover_url) {
+    prev.src = release.cover_url; prev.style.display = 'block';
+    ph.style.display = 'none'; area.classList.add('has-image');
+  } else {
+    prev.src = ''; prev.style.display = 'none';
+    ph.style.display = 'block'; area.classList.remove('has-image');
+  }
+  renderArtistCheckboxes(selectedArtistIds);
+}
+
+window.editRelease = async (r) => {
+  const { data: ra } = await sb.from('release_artists').select('artist_id').eq('release_id', r.id);
+  showForm(r, (ra||[]).map(x=>x.artist_id));
+};
+
+async function save() {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { toast('El título es obligatorio', 'error'); return; }
+
+  const btn = document.getElementById('btn-save');
+  btn.disabled = true; btn.innerHTML = '<span class="a-spinner"></span> Guardando...';
+
+  let coverUrl = document.getElementById('f-cover-url').value.trim() || null;
+  const coverFile = document.getElementById('cover-file').files[0];
+  if (coverFile) {
+    const uploaded = await uploadImage(coverFile, 'covers', 'releases');
+    if (uploaded) coverUrl = uploaded;
+  }
+
+  const payload = {
+    title,
+    slug:            document.getElementById('f-slug').value.trim() || makeSlug(title),
+    release_type:    document.getElementById('f-type').value,
+    release_date:    document.getElementById('f-date').value || null,
+    description:     document.getElementById('f-desc').value.trim() || null,
+    spotify_url:     document.getElementById('f-spotify').value.trim() || null,
+    apple_music_url: document.getElementById('f-apple').value.trim() || null,
+    youtube_url:     document.getElementById('f-youtube').value.trim() || null,
+    deezer_url:      document.getElementById('f-deezer').value.trim() || null,
+    cover_url:       coverUrl,
+    status:          document.getElementById('f-status').value,
+  };
+
+  let releaseId = currentId;
+  if (currentId) {
+    const { error } = await sb.from('releases').update(payload).eq('id', currentId);
+    if (error) { toast('Error: ' + error.message, 'error'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-save"></i> Guardar'; return; }
+  } else {
+    const { data, error } = await sb.from('releases').insert(payload).select().single();
+    if (error) { toast('Error: ' + error.message, 'error'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-save"></i> Guardar'; return; }
+    releaseId = data.id;
+  }
+
+  // Actualizar artistas asociados
+  await sb.from('release_artists').delete().eq('release_id', releaseId);
+  const artistIds = getSelectedArtistIds();
+  if (artistIds.length) {
+    await sb.from('release_artists').insert(artistIds.map(aid => ({ release_id: releaseId, artist_id: aid })));
+  }
+
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-save"></i> Guardar';
+  toast(currentId ? 'Lanzamiento actualizado' : 'Lanzamiento creado');
+  showList(); loadList();
+}
+
+async function remove() {
+  if (!currentId) return;
+  if (!confirm('¿Eliminar este lanzamiento?')) return;
+  await sb.from('release_artists').delete().eq('release_id', currentId);
+  const { error } = await sb.from('releases').delete().eq('id', currentId);
+  if (error) { toast('Error: ' + error.message, 'error'); return; }
+  toast('Lanzamiento eliminado');
+  showList(); loadList();
+}
+</script>
+</body>
+</html>
