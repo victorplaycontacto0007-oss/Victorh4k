@@ -1,6 +1,12 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "rewrites": [
+    {
+      "source": "/radar-musical/:slug/",
+      "destination": "/radar-musical/articulo/index.html"
+    }
+  ],
   "redirects": [
     { "source": "/music",        "destination": "/artistas/",   "statusCode": 301 },
     { "source": "/music/",       "destination": "/artistas/",   "statusCode": 301 },
