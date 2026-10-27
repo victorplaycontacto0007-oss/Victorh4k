@@ -15,7 +15,7 @@ const fs    = require('fs');
 const path  = require('path');
 const url   = require('url');
 
-const ROOT = path.join(__dirname, 'Victorh4k');
+const ROOT = path.join(__dirname);
 const PORT = 3000;
 
 /* ─── Leer credenciales desde .env.local ─────────────────────────────── */
