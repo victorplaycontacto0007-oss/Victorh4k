@@ -1,0 +1,55 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/music",        "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/music/",       "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/digital",      "destination": "/",            "statusCode": 301 },
+    { "source": "/digital/",     "destination": "/",            "statusCode": 301 },
+    { "source": "/proyectos",    "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/proyectos/",   "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/lanzamientos", "destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/lanzamientos/","destination": "/artistas/",   "statusCode": 301 },
+    { "source": "/nosotros",     "destination": "/el-sello/",   "statusCode": 301 },
+    { "source": "/nosotros/",    "destination": "/el-sello/",   "statusCode": 301 }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options",    "value": "nosniff" },
+        { "key": "X-Frame-Options",           "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy",           "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy",        "value": "geolocation=(), microphone=(), camera=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [{ "key": "Content-Type", "value": "application/xml" }]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain" }]
+    },
+    {
+      "source": "/assets/site.webmanifest",
+      "headers": [{ "key": "Content-Type", "value": "application/manifest+json" }]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/(favicon.ico|favicon-32x32\\.png|favicon-48x48\\.png|apple-touch-icon\\.png)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    }
+  ]
+}
