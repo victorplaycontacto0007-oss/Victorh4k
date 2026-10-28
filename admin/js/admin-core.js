@@ -168,6 +168,12 @@ function renderAdminNav(activeSection) {
       <a href="/admin/radar-categorias.html" class="${activeSection==='categorias'?'active':''}">
         <i class="fas fa-tag"></i> Categorías
       </a>
+      <a href="/admin/radar-comentarios.html" class="${activeSection==='radar-comentarios'?'active':''}">
+        <i class="fas fa-comments"></i> Comentarios
+      </a>
+      <a href="/admin/radar-estadisticas.html" class="${activeSection==='radar-stats'?'active':''}">
+        <i class="fas fa-chart-bar"></i> Estadísticas
+      </a>
       <div class="a-nav-section">Configuración</div>
       <a href="/admin/configuracion.html" class="${activeSection==='config'?'active':''}">
         <i class="fas fa-cog"></i> General

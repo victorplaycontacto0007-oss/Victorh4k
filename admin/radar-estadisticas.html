@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Estadísticas Radar — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+<style>
+/* Tabla de rendimiento */
+.perf-table { width:100%; border-collapse:collapse; font-size:13px; }
+.perf-table th { text-align:left; padding:9px 12px; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#888; border-bottom:1px solid #e5e5e5; white-space:nowrap; cursor:pointer; user-select:none; }
+.perf-table th:hover { color:#111; }
+.perf-table th .sort-icon { margin-left:4px; opacity:.4; }
+.perf-table th.sorted .sort-icon { opacity:1; color:#D52B35; }
+.perf-table td { padding:10px 12px; border-bottom:1px solid #f5f5f5; vertical-align:middle; }
+.perf-table tr:last-child td { border-bottom:none; }
+.perf-table tr:hover td { background:#fafafa; }
+.art-title-cell { font-weight:600; color:#111; max-width:260px; }
+.art-title-cell a { color:#111; text-decoration:none; }
+.art-title-cell a:hover { color:#D52B35; }
+.trend-up   { color:#16a34a; font-weight:700; }
+.trend-flat { color:#888; }
+.trend-down { color:#D52B35; font-weight:700; }
+/* Panel de detalle */
+#detail-panel { display:none; }
+.detail-stats { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin-bottom:24px; }
+.detail-stat { background:#f9f9f9; border:1px solid #e5e5e5; border-radius:8px; padding:14px; text-align:center; }
+.detail-stat-value { font-size:24px; font-weight:800; color:#111; }
+.detail-stat-label { font-size:11px; color:#888; margin-top:4px; }
+/* Gráfico de barras simple */
+.bar-chart { margin:20px 0; }
+.bar-row { display:flex; align-items:center; gap:10px; margin-bottom:5px; font-size:11px; }
+.bar-row .day-label { width:80px; color:#888; text-align:right; flex-shrink:0; }
+.bar-row .bar-wrap  { flex:1; background:#f0f0f0; border-radius:4px; height:14px; overflow:hidden; }
+.bar-row .bar-fill  { height:100%; background:#D52B35; border-radius:4px; min-width:2px; transition:width .3s; }
+.bar-row .bar-val   { width:32px; color:#444; font-weight:700; flex-shrink:0; }
+/* Filtro de período */
+.period-filter { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
+.period-btn { padding:5px 12px; border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.04em; border:1.5px solid #e5e5e5; background:transparent; color:#888; cursor:pointer; transition:all .15s; }
+.period-btn.active { background:#D52B35; border-color:#D52B35; color:#fff; }
+/* Plataformas */
+.platform-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.platform-pill { background:#f0f0f0; padding:4px 12px; border-radius:100px; font-size:12px; font-weight:600; color:#444; }
+@media(max-width:700px) { .detail-stats{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title" id="page-title">Estadísticas Radar Musical</span>
+      </div>
+      <div class="a-topbar-right" id="detail-back-wrap" style="display:none">
+        <button class="btn-a btn-a-secondary btn-a-sm" onclick="showOverview()"><i class="fas fa-arrow-left"></i> Volver</button>
+      </div>
+    </header>
+
+    <main class="a-content">
+      <div id="a-toast"></div>
+
+      <!-- ── VISTA GENERAL ── -->
+      <div id="overview-panel">
+        <div class="a-stats" style="margin-bottom:20px" id="global-stats">
+          <div class="a-stat"><div class="a-stat-icon"><i class="fas fa-newspaper"></i></div><div class="a-stat-value" id="g-articles">—</div><div class="a-stat-label">Artículos publicados</div></div>
+          <div class="a-stat"><div class="a-stat-icon"><i class="fas fa-eye"></i></div><div class="a-stat-value" id="g-views">—</div><div class="a-stat-label">Vistas totales</div></div>
+          <div class="a-stat"><div class="a-stat-icon" style="color:#16a34a"><i class="fas fa-share-alt"></i></div><div class="a-stat-value" id="g-shares">—</div><div class="a-stat-label">Compartidos</div></div>
+          <div class="a-stat"><div class="a-stat-icon" style="color:#888"><i class="fas fa-comments"></i></div><div class="a-stat-value" id="g-comments">—</div><div class="a-stat-label">Comentarios aprobados</div></div>
+        </div>
+
+        <div class="a-card">
+          <div class="a-card-title">
+            <span><i class="fas fa-chart-bar"></i> Rendimiento por artículo</span>
+            <div style="display:flex;gap:8px;align-items:center">
+              <select id="sort-by" onchange="renderTable()" style="font-size:11px;padding:4px 8px;border:1.5px solid #e5e5e5;border-radius:6px;color:#444">
+                <option value="views">Más vistos</option>
+                <option value="shares">Más compartidos</option>
+                <option value="comments">Más comentados</option>
+                <option value="date">Más recientes</option>
+              </select>
+              <button class="btn-a btn-a-secondary btn-a-sm" onclick="loadOverview()"><i class="fas fa-sync-alt"></i></button>
+            </div>
+          </div>
+          <div class="a-table-wrap">
+            <table class="perf-table">
+              <thead>
+                <tr>
+                  <th>Artículo</th>
+                  <th onclick="setSortCol('date')">Publicado <i class="fas fa-sort sort-icon"></i></th>
+                  <th onclick="setSortCol('views')">Vistas <i class="fas fa-sort sort-icon"></i></th>
+                  <th onclick="setSortCol('shares')">Compartidos <i class="fas fa-sort sort-icon"></i></th>
+                  <th onclick="setSortCol('comments')">Comentarios <i class="fas fa-sort sort-icon"></i></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="perf-tbody"><tr><td colspan="6" style="text-align:center;padding:32px"><span class="a-spinner"></span></td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DETALLE DE UN ARTÍCULO ── -->
+      <div id="detail-panel">
+        <div style="margin-bottom:20px">
+          <h2 style="font-size:16px;font-weight:700;color:#111" id="detail-title">—</h2>
+          <p style="font-size:12px;color:#888;margin-top:4px" id="detail-date">—</p>
+        </div>
+
+        <div class="period-filter" id="period-filter">
+          <button class="period-btn active" data-days="1" onclick="setPeriod(1,this)">24 h</button>
+          <button class="period-btn" data-days="7" onclick="setPeriod(7,this)">7 días</button>
+          <button class="period-btn" data-days="30" onclick="setPeriod(30,this)">30 días</button>
+          <button class="period-btn" data-days="90" onclick="setPeriod(90,this)">90 días</button>
+          <button class="period-btn" data-days="9999" onclick="setPeriod(9999,this)">Todo</button>
+        </div>
+
+        <div class="detail-stats" id="detail-stats-grid">
+          <div class="detail-stat"><div class="detail-stat-value" id="d-total-views">—</div><div class="detail-stat-label">Vistas totales</div></div>
+          <div class="detail-stat"><div class="detail-stat-value" id="d-unique-views">—</div><div class="detail-stat-label">Únicas est.</div></div>
+          <div class="detail-stat"><div class="detail-stat-value" id="d-shares">—</div><div class="detail-stat-label">Compartidos</div></div>
+          <div class="detail-stat" style="background:#f0fdf4;border-color:#bbf7d0"><div class="detail-stat-value" style="color:#16a34a" id="d-comments-ok">—</div><div class="detail-stat-label">Comentarios aprobados</div></div>
+          <div class="detail-stat" style="background:rgba(234,88,12,0.05);border-color:rgba(234,88,12,0.2)"><div class="detail-stat-value" style="color:#ea580c" id="d-comments-pending">—</div><div class="detail-stat-label">Pendientes</div></div>
+          <div class="detail-stat"><div class="detail-stat-value" id="d-comments-rejected">—</div><div class="detail-stat-label">Rechazados</div></div>
+          <div class="detail-stat"><div class="detail-stat-value" id="d-views-24h">—</div><div class="detail-stat-label">Vistas 24 h</div></div>
+          <div class="detail-stat"><div class="detail-stat-value" id="d-views-7d">—</div><div class="detail-stat-label">Vistas 7 días</div></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex-wrap:wrap">
+          <div class="a-card">
+            <div class="a-card-title"><span><i class="fas fa-chart-line"></i> Vistas por día</span></div>
+            <div class="bar-chart" id="views-chart"><div style="color:#aaa;font-size:13px;text-align:center;padding:24px">Sin datos suficientes</div></div>
+          </div>
+          <div class="a-card">
+            <div class="a-card-title"><span><i class="fas fa-share-alt"></i> Compartidos por plataforma</span></div>
+            <div id="shares-detail" style="font-size:13px;color:#888;padding-top:8px">—</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+'use strict';
+let articlesData = [];
+let currentSortCol = 'views';
+let currentSortDir = 'desc';
+let currentArticle = null;
+let currentPeriod  = 9999;
+
+async function init() {
+  const auth = await requireAuth();
+  if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('radar-stats');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+
+  // Si viene con ?article=id en la URL, abrir detalle directamente
+  const urlParams = new URLSearchParams(location.search);
+  const artId = urlParams.get('article');
+  if (artId) {
+    await loadOverview();
+    const art = articlesData.find(a => a.id === artId);
+    if (art) openDetail(art);
+  } else {
+    await loadOverview();
+  }
+}
+
+async function loadOverview() {
+  // Artículos publicados
+  const { data: articles } = await sb.from('radar_articles')
+    .select('id, title, slug, published_at, view_count')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+
+  if (!articles?.length) {
+    document.getElementById('perf-tbody').innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#aaa">No hay artículos publicados aún</td></tr>';
+    return;
+  }
+
+  // Cargar shares y comments en paralelo para todos los artículos
+  const [{ data: allShares }, { data: allComments }] = await Promise.all([
+    sb.from('radar_article_shares').select('article_id'),
+    sb.from('radar_article_comments').select('article_id, status')
+  ]);
+
+  const sharesMap   = {};
+  const commentsMap = {};
+  (allShares   || []).forEach(r => { sharesMap[r.article_id]   = (sharesMap[r.article_id]   || 0) + 1; });
+  (allComments || []).forEach(r => {
+    if (!commentsMap[r.article_id]) commentsMap[r.article_id] = { approved:0, pending:0, rejected:0 };
+    if (commentsMap[r.article_id][r.status] !== undefined) commentsMap[r.article_id][r.status]++;
+  });
+
+  articlesData = articles.map(a => ({
+    ...a,
+    shares:   sharesMap[a.id]   || 0,
+    comments: commentsMap[a.id] || { approved:0, pending:0, rejected:0 }
+  }));
+
+  // Totales globales
+  const totalViews    = articlesData.reduce((s,a) => s + (a.view_count||0), 0);
+  const totalShares   = articlesData.reduce((s,a) => s + a.shares, 0);
+  const totalComments = articlesData.reduce((s,a) => s + a.comments.approved, 0);
+  document.getElementById('g-articles').textContent = articlesData.length;
+  document.getElementById('g-views').textContent    = totalViews.toLocaleString('es');
+  document.getElementById('g-shares').textContent   = totalShares;
+  document.getElementById('g-comments').textContent = totalComments;
+
+  renderTable();
+}
+
+function renderTable() {
+  const sortKey = document.getElementById('sort-by').value;
+  const sorted  = [...articlesData].sort((a, b) => {
+    if (sortKey === 'views')    return (b.view_count||0) - (a.view_count||0);
+    if (sortKey === 'shares')   return b.shares - a.shares;
+    if (sortKey === 'comments') return b.comments.approved - a.comments.approved;
+    if (sortKey === 'date')     return new Date(b.published_at) - new Date(a.published_at);
+    return 0;
+  });
+
+  document.getElementById('perf-tbody').innerHTML = sorted.map(a => {
+    const views    = (a.view_count || 0).toLocaleString('es');
+    const pubDate  = a.published_at ? new Date(a.published_at).toLocaleDateString('es',{year:'numeric',month:'short',day:'numeric'}) : '—';
+    const pending  = a.comments.pending > 0
+      ? `<span class="a-badge a-badge-orange" style="margin-left:4px">${a.comments.pending} pend.</span>` : '';
+    return `<tr>
+      <td class="art-title-cell"><a href="/radar-musical/${escHtml(a.slug)}/" target="_blank" rel="noopener">${escHtml(a.title)}</a></td>
+      <td style="color:#888;font-size:12px">${pubDate}</td>
+      <td style="font-weight:700">${views}</td>
+      <td>${a.shares}</td>
+      <td>${a.comments.approved}${pending}</td>
+      <td><button class="btn-a btn-a-secondary btn-a-sm" onclick="openDetail(articlesData.find(x=>x.id==='${a.id}'))"><i class="fas fa-chart-bar"></i> Stats</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function setSortCol(col) {
+  document.getElementById('sort-by').value = col;
+  renderTable();
+}
+
+async function openDetail(article) {
+  if (!article) return;
+  currentArticle = article;
+  currentPeriod  = 9999;
+
+  document.getElementById('overview-panel').style.display = 'none';
+  document.getElementById('detail-panel').style.display   = 'block';
+  document.getElementById('detail-back-wrap').style.display = 'block';
+  document.getElementById('page-title').textContent = 'Estadísticas del artículo';
+  document.getElementById('detail-title').textContent = article.title;
+  document.getElementById('detail-date').textContent  = article.published_at
+    ? 'Publicado: ' + new Date(article.published_at).toLocaleDateString('es',{year:'numeric',month:'long',day:'numeric'})
+    : '';
+
+  document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.period-btn[data-days="9999"]').classList.add('active');
+
+  await loadDetail(article.id);
+}
+
+function showOverview() {
+  document.getElementById('overview-panel').style.display = 'block';
+  document.getElementById('detail-panel').style.display   = 'none';
+  document.getElementById('detail-back-wrap').style.display = 'none';
+  document.getElementById('page-title').textContent = 'Estadísticas Radar Musical';
+}
+
+async function setPeriod(days, btn) {
+  currentPeriod = days;
+  document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (currentArticle) await loadDetail(currentArticle.id);
+}
+
+async function loadDetail(articleId) {
+  // Cargar stats completas
+  const [statsRes, viewsByDayRes, sharesByPlatRes] = await Promise.all([
+    sb.rpc('get_article_stats', { p_article_id: articleId }),
+    sb.rpc('get_article_views_by_day', { p_article_id: articleId, p_days: currentPeriod === 9999 ? 365 : currentPeriod }),
+    sb.from('radar_article_shares').select('platform').eq('article_id', articleId)
+  ]);
+
+  const stats = statsRes.data || {};
+  document.getElementById('d-total-views').textContent    = (stats.total_views   || 0).toLocaleString('es');
+  document.getElementById('d-unique-views').textContent   = (stats.unique_views_est || 0).toLocaleString('es');
+  document.getElementById('d-shares').textContent         = stats.total_shares   || 0;
+  document.getElementById('d-comments-ok').textContent    = stats.comments_approved  || 0;
+  document.getElementById('d-comments-pending').textContent = stats.comments_pending || 0;
+  document.getElementById('d-comments-rejected').textContent = stats.comments_rejected || 0;
+  document.getElementById('d-views-24h').textContent      = stats.views_last_24h  || 0;
+  document.getElementById('d-views-7d').textContent       = stats.views_last_7d   || 0;
+
+  // Gráfico de vistas por día
+  const chartEl   = document.getElementById('views-chart');
+  const dayData   = viewsByDayRes.data || [];
+  if (dayData.length === 0) {
+    chartEl.innerHTML = '<div style="color:#aaa;font-size:13px;text-align:center;padding:24px">Sin datos de vistas aún</div>';
+  } else {
+    const maxViews = Math.max(...dayData.map(d => parseInt(d.views)));
+    chartEl.innerHTML = dayData.map(d => {
+      const pct = maxViews > 0 ? Math.round((parseInt(d.views) / maxViews) * 100) : 0;
+      const label = new Date(d.day).toLocaleDateString('es',{month:'short',day:'numeric'});
+      return `<div class="bar-row">
+        <span class="day-label">${label}</span>
+        <div class="bar-wrap"><div class="bar-fill" style="width:${pct}%"></div></div>
+        <span class="bar-val">${d.views}</span>
+      </div>`;
+    }).join('');
+  }
+
+  // Compartidos por plataforma
+  const platforms = { twitter:0, whatsapp:0, facebook:0, copy:0, native:0 };
+  (sharesByPlatRes.data || []).forEach(r => { if (platforms[r.platform] !== undefined) platforms[r.platform]++; });
+  const platLabels = { twitter:'Twitter/X', whatsapp:'WhatsApp', facebook:'Facebook', copy:'Copiar enlace', native:'Nativo' };
+  const platItems  = Object.entries(platforms).filter(([,v]) => v > 0);
+  document.getElementById('shares-detail').innerHTML = platItems.length
+    ? `<div class="platform-list">${platItems.map(([k,v]) => `<span class="platform-pill"><strong>${v}</strong> ${platLabels[k]||k}</span>`).join('')}</div>`
+    : '<p style="font-size:13px;color:#aaa;text-align:center;padding:16px 0">Aún no hay compartidos registrados</p>';
+}
+
+window.openDetail  = openDetail;
+window.showOverview = showOverview;
+window.setPeriod   = setPeriod;
+window.setSortCol  = setSortCol;
+window.renderTable = renderTable;
+
+init();
+</script>
+</body>
+</html>

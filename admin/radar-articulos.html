@@ -288,6 +288,7 @@ async function loadList() {
       <td style="white-space:nowrap">
         <a href="/radar-musical/${escHtml(a.slug)}/" target="_blank" class="btn-a btn-a-secondary btn-a-sm" title="Ver artículo"><i class="fas fa-external-link-alt"></i></a>
         <button class="btn-a btn-a-secondary btn-a-sm" onclick="loadAndEdit('${escHtml(a.id)}')">Editar</button>
+        <a href="/admin/radar-estadisticas.html?article=${escHtml(a.id)}" class="btn-a btn-a-secondary btn-a-sm" title="Ver estadísticas"><i class="fas fa-chart-bar"></i></a>
       </td>
     </tr>`).join('');
 }

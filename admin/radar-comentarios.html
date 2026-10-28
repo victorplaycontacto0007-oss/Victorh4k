@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Comentarios Radar — VictorH4K Admin</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/admin/css/admin.css"/>
+<style>
+.status-filter { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.status-filter button { padding:5px 14px; border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; border:1.5px solid #e5e5e5; background:transparent; color:#888; cursor:pointer; transition:all .15s; }
+.status-filter button.active { background:#D52B35; border-color:#D52B35; color:#fff; }
+.comment-row { border-bottom:1px solid #f0f0f0; padding:16px 0; }
+.comment-row:last-child { border-bottom:none; }
+.comment-meta { display:flex; align-items:center; gap:12px; margin-bottom:6px; flex-wrap:wrap; }
+.comment-author { font-size:13px; font-weight:700; color:#111; }
+.comment-date { font-size:11px; color:#aaa; }
+.comment-article-link { font-size:11px; color:#D52B35; text-decoration:none; }
+.comment-article-link:hover { text-decoration:underline; }
+.comment-body { font-size:13px; color:#444; line-height:1.65; margin-bottom:10px; white-space:pre-wrap; word-break:break-word; }
+.comment-actions { display:flex; gap:7px; flex-wrap:wrap; }
+.filter-row { display:flex; align-items:center; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+.filter-row select { padding:7px 10px; border:1.5px solid #e5e5e5; border-radius:6px; font-size:12px; color:#444; background:#fff; cursor:pointer; min-width:200px; }
+.stats-bar { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:640px) { .stats-bar{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+<div class="a-layout">
+  <div id="sidebar-root"></div>
+  <div class="a-main">
+    <header class="a-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="a-menu-toggle" class="btn-a btn-a-secondary btn-a-sm" style="display:none"><i class="fas fa-bars"></i></button>
+        <span class="a-topbar-title">Comentarios de Radar Musical</span>
+      </div>
+      <div class="a-topbar-right">
+        <button class="btn-a btn-a-secondary btn-a-sm" onclick="loadComments()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+      </div>
+    </header>
+
+    <main class="a-content">
+      <div id="a-toast"></div>
+
+      <!-- Estadísticas rápidas -->
+      <div class="stats-bar" id="stats-bar">
+        <div class="a-stat">
+          <div class="a-stat-icon"><i class="fas fa-clock"></i></div>
+          <div class="a-stat-value" id="cnt-pending">—</div>
+          <div class="a-stat-label">Pendientes</div>
+        </div>
+        <div class="a-stat">
+          <div class="a-stat-icon" style="color:#16a34a"><i class="fas fa-check-circle"></i></div>
+          <div class="a-stat-value" id="cnt-approved">—</div>
+          <div class="a-stat-label">Aprobados</div>
+        </div>
+        <div class="a-stat">
+          <div class="a-stat-icon" style="color:#888"><i class="fas fa-ban"></i></div>
+          <div class="a-stat-value" id="cnt-rejected">—</div>
+          <div class="a-stat-label">Rechazados</div>
+        </div>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filter-row">
+        <div class="status-filter" id="status-filter">
+          <button class="active" data-status="pending" onclick="setStatus('pending',this)">Pendientes</button>
+          <button data-status="approved" onclick="setStatus('approved',this)">Aprobados</button>
+          <button data-status="rejected" onclick="setStatus('rejected',this)">Rechazados</button>
+          <button data-status="all" onclick="setStatus('all',this)">Todos</button>
+        </div>
+        <select id="filter-article" onchange="loadComments()">
+          <option value="">Todos los artículos</option>
+        </select>
+      </div>
+
+      <!-- Lista -->
+      <div class="a-card">
+        <div class="a-card-title">
+          <span><i class="fas fa-comments"></i> Comentarios</span>
+          <span id="total-label" style="font-size:12px;font-weight:400;color:#888"></span>
+        </div>
+        <div id="comments-list"><div style="text-align:center;padding:40px"><span class="a-spinner"></span></div></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+<script src="/admin/js/admin-core.js"></script>
+<script>
+'use strict';
+let currentStatus = 'pending';
+let currentArticleId = '';
+
+async function init() {
+  const auth = await requireAuth();
+  if (!auth) return;
+  document.getElementById('sidebar-root').innerHTML = renderAdminNav('radar-comentarios');
+  if (window.innerWidth <= 900) document.getElementById('a-menu-toggle').style.display = 'inline-flex';
+
+  await Promise.all([loadArticleFilter(), loadCounts(), loadComments()]);
+}
+
+async function loadArticleFilter() {
+  const { data } = await sb.from('radar_articles')
+    .select('id, title')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+  const sel = document.getElementById('filter-article');
+  (data || []).forEach(a => {
+    const opt = document.createElement('option');
+    opt.value = a.id;
+    opt.textContent = a.title.length > 60 ? a.title.slice(0, 60) + '…' : a.title;
+    sel.appendChild(opt);
+  });
+}
+
+async function loadCounts() {
+  const { data } = await sb.from('radar_article_comments')
+    .select('status');
+  if (!data) return;
+  const counts = { pending: 0, approved: 0, rejected: 0 };
+  data.forEach(r => { if (counts[r.status] !== undefined) counts[r.status]++; });
+  document.getElementById('cnt-pending').textContent  = counts.pending;
+  document.getElementById('cnt-approved').textContent = counts.approved;
+  document.getElementById('cnt-rejected').textContent = counts.rejected;
+}
+
+async function loadComments() {
+  const list = document.getElementById('comments-list');
+  list.innerHTML = '<div style="text-align:center;padding:40px"><span class="a-spinner"></span></div>';
+  currentArticleId = document.getElementById('filter-article').value;
+
+  let query = sb.from('radar_article_comments')
+    .select('*, radar_articles(title, slug)', { count: 'exact' })
+    .order('created_at', { ascending: false });
+
+  if (currentStatus !== 'all') query = query.eq('status', currentStatus);
+  if (currentArticleId) query = query.eq('article_id', currentArticleId);
+
+  const { data, count, error } = await query;
+
+  if (error) {
+    console.error('[Admin] Error comentarios:', error);
+    list.innerHTML = `<div class="a-empty"><i class="fas fa-exclamation-triangle"></i> Error cargando comentarios</div>`;
+    return;
+  }
+
+  document.getElementById('total-label').textContent = `${count || 0} comentario${count !== 1 ? 's' : ''}`;
+
+  if (!data?.length) {
+    list.innerHTML = `<div style="text-align:center;padding:48px;color:#aaa">
+      <i class="fas fa-comments" style="font-size:32px;opacity:.3;margin-bottom:12px;display:block"></i>
+      No hay comentarios ${currentStatus !== 'all' ? 'en este estado' : ''}
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = data.map(c => {
+    const statusBadge = c.status === 'approved'
+      ? `<span class="a-badge a-badge-green">Aprobado</span>`
+      : c.status === 'rejected'
+      ? `<span class="a-badge a-badge-gray">Rechazado</span>`
+      : `<span class="a-badge a-badge-orange">Pendiente</span>`;
+
+    const articleTitle = c.radar_articles?.title || 'Artículo eliminado';
+    const articleSlug  = c.radar_articles?.slug;
+    const articleLink  = articleSlug
+      ? `<a href="/radar-musical/${escHtml(articleSlug)}/" target="_blank" rel="noopener" class="comment-article-link"><i class="fas fa-external-link-alt"></i> ${escHtml(articleTitle)}</a>`
+      : `<span style="font-size:11px;color:#888">${escHtml(articleTitle)}</span>`;
+
+    const approveBtn = c.status !== 'approved'
+      ? `<button class="btn-a btn-a-secondary btn-a-sm" onclick="moderateComment('${c.id}','approved')"><i class="fas fa-check"></i> Aprobar</button>` : '';
+    const rejectBtn  = c.status !== 'rejected'
+      ? `<button class="btn-a btn-a-secondary btn-a-sm" onclick="moderateComment('${c.id}','rejected')"><i class="fas fa-ban"></i> Rechazar</button>` : '';
+    const deleteBtn  = `<button class="btn-a btn-a-danger btn-a-sm" onclick="deleteComment('${c.id}')"><i class="fas fa-trash"></i> Eliminar</button>`;
+
+    return `<div class="comment-row" id="cr-${c.id}">
+      <div class="comment-meta">
+        <span class="comment-author"><i class="fas fa-user" style="font-size:10px;margin-right:4px;color:#aaa"></i>${escHtml(c.author_name)}</span>
+        ${statusBadge}
+        <span class="comment-date"><i class="fas fa-calendar" style="font-size:10px;margin-right:3px"></i>${new Date(c.created_at).toLocaleString('es', {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
+        ${articleLink}
+      </div>
+      <p class="comment-body">${escHtml(c.content)}</p>
+      <div class="comment-actions">${approveBtn}${rejectBtn}${deleteBtn}</div>
+    </div>`;
+  }).join('');
+}
+
+async function moderateComment(id, newStatus) {
+  const { error } = await sb.from('radar_article_comments')
+    .update({ status: newStatus })
+    .eq('id', id);
+  if (error) { toast('Error al actualizar comentario', 'error'); return; }
+  toast(newStatus === 'approved' ? 'Comentario aprobado' : 'Comentario rechazado', 'success');
+  document.getElementById('cr-' + id)?.remove();
+  await loadCounts();
+}
+
+async function deleteComment(id) {
+  if (!confirm('¿Eliminar este comentario permanentemente? Esta acción no se puede deshacer.')) return;
+  const { error } = await sb.from('radar_article_comments').delete().eq('id', id);
+  if (error) { toast('Error al eliminar comentario', 'error'); return; }
+  toast('Comentario eliminado', 'success');
+  document.getElementById('cr-' + id)?.remove();
+  await loadCounts();
+}
+
+function setStatus(status, btn) {
+  currentStatus = status;
+  document.querySelectorAll('#status-filter button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadComments();
+}
+
+window.moderateComment = moderateComment;
+window.deleteComment   = deleteComment;
+window.setStatus       = setStatus;
+
+init();
+</script>
+</body>
+</html>

@@ -48,7 +48,37 @@
 .sources-box ul { list-style:none; padding:0; }
 .sources-box li { font-size:13px; margin-bottom:6px; }
 .sources-box a { color:#D52B35; }
-.sidebar-card { background:#f9f9f9; border:1px solid #e5e5e5; border-radius:10px; padding:18px; margin-bottom:16px; }
+/* ── Estadísticas de artículo ── */
+.article-stats-bar { display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:8px; padding-top:12px; border-top:1px solid #f0f0f0; }
+.article-stat { display:flex; align-items:center; gap:5px; font-size:12px; color:#999; }
+.article-stat i { font-size:11px; }
+/* ── Sección de comentarios ── */
+.comments-section { margin-top:48px; padding-top:40px; border-top:2px solid #f0f0f0; }
+.comments-section-title { font-family:var(--font-display); font-size:20px; font-weight:800; color:#111; margin-bottom:24px; letter-spacing:-0.02em; display:flex; align-items:center; gap:10px; }
+.comments-section-title .cnt-badge { background:#D52B35; color:#fff; font-size:11px; font-weight:700; padding:2px 8px; border-radius:100px; font-family:var(--font-body,sans-serif); letter-spacing:0; }
+.comment-item { padding:18px 0; border-bottom:1px solid #f0f0f0; }
+.comment-item:last-child { border-bottom:none; }
+.comment-item-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap; }
+.comment-avatar { width:32px; height:32px; border-radius:50%; background:#D52B35; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; flex-shrink:0; }
+.comment-item-name { font-size:13px; font-weight:700; color:#111; }
+.comment-item-date { font-size:11px; color:#bbb; }
+.comment-item-body { font-size:14px; color:#444; line-height:1.7; white-space:pre-wrap; word-break:break-word; padding-left:42px; }
+/* Formulario de comentarios */
+.comment-form-wrap { background:#f9f9f9; border:1px solid #e5e5e5; border-radius:12px; padding:22px; margin-top:28px; }
+.comment-form-title { font-size:13px; font-weight:700; color:#444; letter-spacing:.04em; text-transform:uppercase; margin-bottom:16px; }
+.comment-form-wrap input,
+.comment-form-wrap textarea { width:100%; padding:10px 13px; border:1.5px solid #e5e5e5; border-radius:7px; font-size:13px; color:#111; background:#fff; outline:none; transition:border-color .15s; font-family:inherit; }
+.comment-form-wrap input:focus,
+.comment-form-wrap textarea:focus { border-color:#D52B35; }
+.comment-form-wrap textarea { resize:vertical; min-height:100px; line-height:1.65; }
+.comment-form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+.comment-form-disclaimer { font-size:11px; color:#bbb; margin-top:6px; display:flex; align-items:center; gap:5px; }
+.comment-submit-btn { margin-top:12px; background:#D52B35; color:#fff; border:none; padding:10px 22px; border-radius:7px; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; transition:background .15s; display:flex; align-items:center; gap:7px; }
+.comment-submit-btn:hover { background:#B82028; }
+.comment-submit-btn:disabled { opacity:.6; cursor:not-allowed; }
+.comment-success-msg { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:14px 18px; font-size:13px; color:#16a34a; display:none; align-items:center; gap:10px; margin-top:12px; }
+.comment-error-msg { background:#fff1f2; border:1px solid #fecdd3; border-radius:8px; padding:14px 18px; font-size:13px; color:#D52B35; display:none; align-items:center; gap:10px; margin-top:12px; }
+@media(max-width:600px) { .comment-form-row{grid-template-columns:1fr;} .comment-item-body{padding-left:0;margin-top:8px;} }.sidebar-card { background:#f9f9f9; border:1px solid #e5e5e5; border-radius:10px; padding:18px; margin-bottom:16px; }
 .sidebar-card h4 { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#888; margin-bottom:12px; }
 .related-link { display:block; font-size:13px; font-weight:600; color:#111; margin-bottom:10px; line-height:1.4; }
 .related-link:hover { color:#D52B35; }
@@ -105,6 +135,11 @@
             <span id="art-date"></span>
             <span id="art-reading"></span>
           </div>
+          <div class="article-stats-bar" id="art-stats-bar" style="display:none">
+            <span class="article-stat" id="stat-views"><i class="fas fa-eye"></i> <span id="stat-views-n">0</span> visualizaciones</span>
+            <span class="article-stat" id="stat-shares"><i class="fas fa-share-alt"></i> <span id="stat-shares-n">0</span> compartidos</span>
+            <span class="article-stat" id="stat-comments"><i class="fas fa-comment"></i> <span id="stat-comments-n">0</span> comentarios</span>
+          </div>
         </header>
         <img id="art-img" class="article-featured-img" src="" alt="" style="display:none" loading="eager"/>
         <p id="art-excerpt" class="article-excerpt-lead" style="display:none"></p>
@@ -113,13 +148,54 @@
           <h4><i class="fas fa-book-open"></i> Fuentes</h4>
           <ul id="sources-list"></ul>
         </div>
+
+        <!-- ── SECCIÓN DE COMENTARIOS ── -->
+        <section class="comments-section" id="comments-section" aria-label="Comentarios">
+          <h2 class="comments-section-title">
+            <i class="fas fa-comments" style="color:#D52B35;font-size:18px"></i>
+            Comentarios
+            <span class="cnt-badge" id="comments-cnt" style="display:none">0</span>
+          </h2>
+
+          <!-- Lista de comentarios aprobados -->
+          <div id="comments-list">
+            <div style="text-align:center;padding:20px;color:#ccc"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid #e5e5e5;border-top-color:#D52B35;animation:spinC .7s linear infinite"></span></div>
+          </div>
+          <style>@keyframes spinC{to{transform:rotate(360deg)}}</style>
+
+          <!-- Formulario para enviar comentario -->
+          <div class="comment-form-wrap">
+            <div class="comment-form-title"><i class="fas fa-pen" style="color:#D52B35;margin-right:6px"></i>Deja tu comentario</div>
+            <div class="comment-form-row">
+              <input type="text" id="cm-name" placeholder="Tu nombre o alias *" maxlength="80" autocomplete="name"/>
+              <input type="email" id="cm-email" placeholder="Email (opcional, no se muestra)" maxlength="120" autocomplete="email"/>
+            </div>
+            <textarea id="cm-body" placeholder="Escribe tu comentario aquí..." maxlength="2000" rows="4"></textarea>
+            <p class="comment-form-disclaimer"><i class="fas fa-shield-alt"></i> Tu comentario será revisado por el equipo antes de publicarse.</p>
+            <!-- Anti-spam honeypot (oculto) -->
+            <input type="text" id="cm-hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true"/>
+            <button class="comment-submit-btn" id="cm-submit-btn" onclick="submitComment()">
+              <i class="fas fa-paper-plane"></i> Enviar comentario
+            </button>
+            <div class="comment-success-msg" id="cm-success" role="alert">
+              <i class="fas fa-check-circle"></i>
+              <span>¡Gracias! Tu comentario ha sido enviado correctamente y está pendiente de aprobación.</span>
+            </div>
+            <div class="comment-error-msg" id="cm-error" role="alert">
+              <i class="fas fa-exclamation-circle"></i>
+              <span id="cm-error-msg">Ocurrió un error. Por favor intenta de nuevo.</span>
+            </div>
+          </div>
+        </section>
       </main>
       <aside class="article-sidebar">
         <div class="sidebar-card">
           <h4>Compartir</h4>
           <button class="share-btn" onclick="shareArticle('twitter')"><i class="fab fa-twitter"></i> Twitter / X</button>
           <button class="share-btn" onclick="shareArticle('whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+          <button class="share-btn" onclick="shareArticle('facebook')"><i class="fab fa-facebook"></i> Facebook</button>
           <button class="share-btn" onclick="shareArticle('copy')"><i class="fas fa-link"></i> Copiar enlace</button>
+          <button class="share-btn" id="btn-share-native" onclick="shareArticle('native')" style="display:none"><i class="fas fa-share-alt"></i> Compartir</button>
         </div>
         <div class="sidebar-card" id="related-box" style="display:none">
           <h4>Artículos relacionados</h4>
@@ -156,19 +232,29 @@ const sbr = supabase.createClient(SB_URL_R, SB_KEY_R);
 
 function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+/* ── Obtener o crear session key anónima para deduplicación ── */
+function getSessionKey() {
+  const KEY = 'vhk_sid';
+  let sid = localStorage.getItem(KEY);
+  if (!sid) {
+    sid = 'sk_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+    try { localStorage.setItem(KEY, sid); } catch(e) {}
+  }
+  return sid;
+}
+
 // Obtener slug de la URL: /radar-musical/SLUG/ o ?slug=SLUG
 function getSlug() {
-  // Primero intentar query param (fallback)
   const qs = new URLSearchParams(location.search).get('slug');
   if (qs) return qs;
-  // Luego el pathname: /radar-musical/SLUG/
   const p = location.pathname.split('/').filter(Boolean);
-  // p[0] = 'radar-musical', p[1] = slug (si no es 'articulo' ni 'categoria')
   if (p.length >= 2 && p[0] === 'radar-musical' && p[1] !== 'articulo' && p[1] !== 'categoria') {
     return p[1];
   }
   return null;
 }
+
+let currentArticleId = null;
 
 async function loadArticle() {
   const slug = getSlug();
@@ -189,6 +275,8 @@ async function loadArticle() {
     document.getElementById('article-error').style.display = 'block';
     return;
   }
+
+  currentArticleId = data.id;
 
   // Actualizar SEO
   const seoTitle = data.seo_title || (data.title + ' — Radar Musical');
@@ -236,10 +324,9 @@ async function loadArticle() {
     document.getElementById('art-excerpt').style.display = 'block';
   }
 
-  // Contenido (ya sanitizado al guardarlo, pero aplicamos DOMParser como capa extra)
+  // Contenido sanitizado
   const parser = new DOMParser();
   const doc = parser.parseFromString(data.content || '', 'text/html');
-  // Eliminar scripts del contenido
   doc.querySelectorAll('script,iframe[src*="javascript"]').forEach(el => el.remove());
   document.getElementById('art-content').innerHTML = doc.body.innerHTML;
 
@@ -253,20 +340,190 @@ async function loadArticle() {
 
   document.getElementById('article-wrap').style.display = 'block';
 
-  // Contador de vistas
-  sbr.from('radar_articles').update({ view_count: (data.view_count||0) + 1 }).eq('id', data.id);
+  // ── Registrar visita con deduplicación (RPC nuevo) ──
+  try {
+    await sbr.rpc('record_article_view', {
+      p_article_id:  data.id,
+      p_session_key: getSessionKey()
+    });
+  } catch(e) {
+    // Fallback al método original si la RPC no existe aún
+    sbr.from('radar_articles').update({ view_count: (data.view_count||0) + 1 }).eq('id', data.id);
+  }
+
+  // ── Mostrar estadísticas públicas ──
+  loadPublicStats(data.id, data.view_count);
+
+  // ── Compartir nativo (si el dispositivo lo soporta) ──
+  if (navigator.share) {
+    document.getElementById('btn-share-native').style.display = 'flex';
+  }
+
+  // ── Cargar comentarios ──
+  loadComments(data.id);
 }
 
-function shareArticle(platform) {
-  const url   = encodeURIComponent(location.href);
-  const title = encodeURIComponent(document.title);
-  if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank');
-  else if (platform === 'whatsapp') window.open(`https://wa.me/?text=${title}%20${url}`, '_blank');
-  else if (platform === 'copy') {
-    navigator.clipboard.writeText(location.href).then(() => alert('Enlace copiado'));
+/* ── Estadísticas públicas (vistas + compartidos + comentarios) ── */
+async function loadPublicStats(articleId, fallbackViews) {
+  try {
+    const [{ count: sharesCount }, { count: commentsCount }] = await Promise.all([
+      sbr.from('radar_article_shares').select('id', { count: 'exact', head: true }).eq('article_id', articleId),
+      sbr.from('radar_article_comments').select('id', { count: 'exact', head: true }).eq('article_id', articleId).eq('status', 'approved')
+    ]);
+
+    // Recargar view_count actualizado
+    const { data: art } = await sbr.from('radar_articles').select('view_count').eq('id', articleId).single();
+    const views = art?.view_count ?? fallbackViews ?? 0;
+
+    document.getElementById('stat-views-n').textContent    = views;
+    document.getElementById('stat-shares-n').textContent   = sharesCount || 0;
+    document.getElementById('stat-comments-n').textContent = commentsCount || 0;
+    document.getElementById('art-stats-bar').style.display = 'flex';
+
+    // Actualizar badge de conteo en el título de comentarios
+    if (commentsCount > 0) {
+      const badge = document.getElementById('comments-cnt');
+      badge.textContent = commentsCount;
+      badge.style.display = 'inline-flex';
+    }
+  } catch(e) {
+    // Stats no críticas — silencioso
   }
 }
-window.shareArticle = shareArticle;
+
+/* ── Cargar comentarios aprobados ── */
+async function loadComments(articleId) {
+  const list = document.getElementById('comments-list');
+  const { data, error } = await sbr.from('radar_article_comments')
+    .select('id, author_name, content, created_at')
+    .eq('article_id', articleId)
+    .eq('status', 'approved')
+    .order('created_at', { ascending: true });
+
+  if (error || !data?.length) {
+    list.innerHTML = `<p style="color:#bbb;font-size:13px;text-align:center;padding:16px 0">Sé el primero en comentar este artículo.</p>`;
+    return;
+  }
+
+  list.innerHTML = data.map(c => {
+    const initial = c.author_name.trim()[0].toUpperCase();
+    return `<div class="comment-item">
+      <div class="comment-item-header">
+        <div class="comment-avatar" aria-hidden="true">${escHtml(initial)}</div>
+        <span class="comment-item-name">${escHtml(c.author_name)}</span>
+        <span class="comment-item-date">${new Date(c.created_at).toLocaleDateString('es',{year:'numeric',month:'long',day:'numeric'})}</span>
+      </div>
+      <p class="comment-item-body">${escHtml(c.content)}</p>
+    </div>`;
+  }).join('');
+}
+
+/* ── Enviar comentario ── */
+async function submitComment() {
+  const btn      = document.getElementById('cm-submit-btn');
+  const nameEl   = document.getElementById('cm-name');
+  const emailEl  = document.getElementById('cm-email');
+  const bodyEl   = document.getElementById('cm-body');
+  const honeypot = document.getElementById('cm-hp');
+  const successEl = document.getElementById('cm-success');
+  const errorEl   = document.getElementById('cm-error');
+  const errorMsg  = document.getElementById('cm-error-msg');
+
+  // Honeypot anti-spam
+  if (honeypot.value) return;
+
+  successEl.style.display = 'none';
+  errorEl.style.display   = 'none';
+
+  const name    = nameEl.value.trim();
+  const email   = emailEl.value.trim();
+  const content = bodyEl.value.trim();
+
+  // Validación
+  if (name.length < 2) {
+    errorMsg.textContent = 'El nombre debe tener al menos 2 caracteres.';
+    errorEl.style.display = 'flex'; nameEl.focus(); return;
+  }
+  if (content.length < 5) {
+    errorMsg.textContent = 'El comentario es demasiado corto (mínimo 5 caracteres).';
+    errorEl.style.display = 'flex'; bodyEl.focus(); return;
+  }
+  if (content.length > 2000) {
+    errorMsg.textContent = 'El comentario no puede superar 2000 caracteres.';
+    errorEl.style.display = 'flex'; bodyEl.focus(); return;
+  }
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errorMsg.textContent = 'El email no tiene un formato válido.';
+    errorEl.style.display = 'flex'; emailEl.focus(); return;
+  }
+  if (!currentArticleId) return;
+
+  // Límite de frecuencia local: no más de 1 comentario cada 60 segundos
+  const lastSubmit = parseInt(sessionStorage.getItem('vhk_last_comment') || '0');
+  if (Date.now() - lastSubmit < 60000) {
+    errorMsg.textContent = 'Por favor espera un momento antes de enviar otro comentario.';
+    errorEl.style.display = 'flex'; return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+  const payload = {
+    article_id:   currentArticleId,
+    author_name:  name,
+    content:      content,
+    status:       'pending'
+  };
+  if (email) payload.author_email = email;
+
+  const { error } = await sbr.from('radar_article_comments').insert(payload);
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar comentario';
+
+  if (error) {
+    console.error('[Radar] Error enviando comentario:', error);
+    errorMsg.textContent = 'Ocurrió un error al enviar el comentario. Por favor intenta de nuevo.';
+    errorEl.style.display = 'flex';
+    return;
+  }
+
+  sessionStorage.setItem('vhk_last_comment', Date.now().toString());
+  successEl.style.display = 'flex';
+  nameEl.value = '';
+  emailEl.value = '';
+  bodyEl.value = '';
+}
+
+/* ── Compartir artículo (con registro) ── */
+async function shareArticle(platform) {
+  const url   = encodeURIComponent(location.href);
+  const title = encodeURIComponent(document.title);
+
+  if (platform === 'twitter')   window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank');
+  else if (platform === 'whatsapp') window.open(`https://wa.me/?text=${title}%20${url}`, '_blank');
+  else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  else if (platform === 'copy') {
+    navigator.clipboard.writeText(location.href).then(() => {
+      const btn = document.querySelector('.share-btn[onclick*="copy"]');
+      if (btn) { const orig = btn.innerHTML; btn.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!'; setTimeout(() => btn.innerHTML = orig, 2000); }
+    });
+  }
+  else if (platform === 'native' && navigator.share) {
+    try { await navigator.share({ title: document.title, url: location.href }); }
+    catch(e) { return; } // Cancelado por el usuario — no registrar
+  }
+
+  // Registrar el compartido (fire-and-forget)
+  if (currentArticleId) {
+    sbr.from('radar_article_shares').insert({ article_id: currentArticleId, platform });
+    // Actualizar contador en pantalla
+    const el = document.getElementById('stat-shares-n');
+    if (el) el.textContent = (parseInt(el.textContent) || 0) + 1;
+  }
+}
+window.shareArticle  = shareArticle;
+window.submitComment = submitComment;
 
 loadArticle();
 </script>
