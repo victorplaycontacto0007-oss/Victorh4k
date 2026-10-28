@@ -139,17 +139,22 @@ async function loadArticles() {
 
   let query = sbr.from('radar_articles')
     .select('id, title, slug, excerpt, featured_image, published_at, reading_time_min, radar_categories(name,slug)', { count: 'exact' })
-    .eq('status', 'published').lte('published_at', new Date().toISOString())
+    .eq('status', 'published')
     .order('published_at', { ascending: false })
     .range((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE - 1);
 
   if (activeCat) query = query.eq('category_id', activeCat);
 
-  const { data, count } = await query;
+  const { data, error, count } = await query;
   totalCount = count || 0;
 
   document.getElementById('loading-state').style.display = 'none';
 
+  if (error) {
+    console.error('[Radar] Error cargando artículos:', error);
+    document.getElementById('empty-state').style.display = 'block';
+    return;
+  }
   if (!data?.length) { document.getElementById('empty-state').style.display = 'block'; return; }
 
   document.getElementById('articles-grid').style.display = 'grid';
