@@ -179,12 +179,16 @@ async function loadArticle() {
   }
 
   const { data, error } = await sbr.from('radar_articles')
-    .select('*, radar_categories(name,slug), radar_related_articles(related_id)')
+    .select('*, radar_categories(name,slug)')
     .eq('slug', slug).eq('status', 'published').single();
 
   document.getElementById('article-loading').style.display = 'none';
 
-  if (error || !data) { document.getElementById('article-error').style.display = 'block'; return; }
+  if (error || !data) {
+    console.error('[Radar] Supabase error:', error, '| slug:', slug);
+    document.getElementById('article-error').style.display = 'block';
+    return;
+  }
 
   // Actualizar SEO
   const seoTitle = data.seo_title || (data.title + ' — Radar Musical');
